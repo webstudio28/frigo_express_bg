@@ -1,0 +1,486 @@
+---
+layout: base.njk
+title: Начало
+description: ВЕГА ТЕСТ - компютърна диагностика за здравословно хранене с най-подходящите храни за вашия организъм
+---
+
+
+<!-- Hero Section Only -->
+<section class="relative min-h-[calc(100vh-5rem)] flex items-center">
+    <div class="absolute inset-0"></div>
+    <img src="{{ '/assets/images/cta.jpg' | url }}" alt="CTA Image" style="opacity: 0.3;" class="absolute top-[-5rem] left-0 w-full h-screen object-cover object-center md:object-center -z-10">
+    <div class="pb-16 max-w-7xl w-full mx-auto px-4 relative z-10 flex flex-col-reverse md:flex-row gap-4 md:gap-0 items-center justify-evenly md:justify-center min-h-[60vh]">
+        <!-- Left: Text -->
+        <div class="flex-1 flex flex-col justify-center gap-4 items-start text-left md:pr-12 z-20 relative mt-0 md:mt-0 w-full">
+
+
+            <h1 class="text-2xl  w-full text-center md:text-left text-primary-dark-gray md:text-4xl lg:text-5xl font-bold mb-4 relative z-10">
+                <span>Твоят личен баланс</span>
+                <span class="block text-primary-evergreen  relative text-xl lg:text-4xl ">
+          С моите продукти и услуги
+        </span>
+            </h1>
+
+            {# <p class="text-lg md:text-xl text-primary-deepsea mb-4 md:mb-8 max-w-lg relative z-10 leading-relaxed">
+        Персонализирани решения, холистични терапии и продукти, които поддържат твоето естествено равновесие.
+      </p> #}
+
+            <div class="flex flex-wrap justify-center md:justify-start gap-2 text-xs md:text-sm text-primary-evergreen mb-4 md:mb-6 relative z-10 text-center md:text-left">
+                {% for category in homepageServices.categories %}
+                    {% for service in category.services %}
+                        {% for s in services %}
+                            {% if s.name == service.name %}
+                                <a href="{{ ('/uslugi/' ~ s.slug ~ '/') | url }}" class="px-3 py-1 rounded-full border border-primary-evergreen/30 bg-white/70 shadow-sm hover:bg-primary-evergreen hover:text-white transition-colors">
+                                    {{ service.name }}
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                {% endfor %}
+            </div>
+
+            <div class="hero-cta flex flex-row gap-2 md:gap-4 relative z-10 w-full justify-center md:justify-start">
+                <a href="{{ '/uslugi/' | url }}" class="btn-primary flex justify-center items-center">
+          Всички услуги
+        </a>
+                <a href="{{ '/produkti/' | url }}" class="btn-secondary flex justify-center items-center">
+          Всички продукти
+        </a>
+            </div>
+        </div>
+        <!-- Right: Playful Blob Card with Lottie Animation -->
+        <div class="flex-1 flex justify-center items-center w-full h-full relative md:mt-0 max-w-full overflow-hidden">
+
+                <img src="{{ '/assets/images/hero1.webp' | url }}" alt="Вега Тест диагностика" class="shadow-md border border-primary-dune mb-4 w-4/5 sm:w-3/4 lg:w-full rounded-3xl max-w-lg lg:max-w-xl relative z-10 object-contain">
+                </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why choose us Section -->
+<section class="py-12 bg-primary-sand/30 flex">
+    <div class="max-w-7xl w-full mx-auto px-4 flex flex-col justify-center items-center gap-12 md:gap-14">
+        <!-- Header -->
+        <div class="w-full text-left z-[100]">
+
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-evergreen mb-4">
+                Подход
+            </h2>
+            <p class="w-full text-medium md:text-lg	 text-primary-deepsea max-w-5xl leading-relaxed">
+Ще бъдете посрещнати с внимание още при пристигането. На всяка стъпка – при мен и по време на диагностиката – вниманието и грижата са водещи.
+            </p>
+        </div>
+
+        <div class="approach-container grid lg:grid-cols-2 gap-12 items-center">
+
+            <!-- Left Side: Features -->
+            <div class="order-2 sm:order-1 flex flex-col gap-6">
+                <!-- Feature 1 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg flex items-center gap-4">
+                    <img src="{{ '/assets/images/practice.png' | url }}" alt="При мен" class="w-16 h-16 mt-1">
+                    <div>
+                        <h3 class="text-md font-bold text-primary-deepsea mb-2">При мен</h3>
+                        <p class="text-primary-dark-gray text-sm">Всичко е подготвено за вашия комфорт още от първата минута.</p>
+                    </div>
+                </div>
+                <!-- Feature 2 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg flex items-center gap-4">
+                    <img src="{{ '/assets/images/care.png' | url }}" alt="Отношение и внимание" class="w-16 h-16 mt-1">
+                    <div>
+                        <h3 class="text-md font-bold text-primary-deepsea mb-2">Отношение и внимание</h3>
+                        <p class="text-primary-dark-gray text-sm">Внимателно изслушвам нуждите и въпросите ви. Подходът ми е индивидуален, за да получите грижа, която наистина е за вас.</p>
+                    </div>
+                </div>
+                <!-- Feature 3 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg flex items-center gap-4">
+                    <img src="{{ '/assets/images/lab-machine.png' | url }}" alt="Професионална техника за диагностика" class="w-12 h-12 mt-1">
+                    <div>
+                        <h3 class="text-md font-bold text-primary-deepsea mb-2">Професионална техника за диагностика</h3>
+                        <p class="text-primary-dark-gray text-sm">Използвам точни и съвременни методи за оценка на здравето. Всичко е безопасно и прецизно, за да получите ясна картина на организма си.</p>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Right Side: Image -->
+            <div id="approach-media" class="order-1 sm:order-2 relative">
+                <div class="decorative-leaves">
+                    <img id="leaf-branch-top" src="{{ '/assets/images/leaves-branch-top.png' | url }}" alt="Подход листа декорация" class="w-40 h-40 absolute top-[-25px] left-[-50px] object-cover">
+                    <img id="leaf-branch-bottom" src="{{ '/assets/images/leaves-branch-bottom.png' | url }}" alt="Подход листа декорация" class="w-40 h-40 absolute bottom-[-25px] right-[-50px] object-cover">
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-xl">
+                    <img src="{{ '/assets/images/kabinet.webp' | url }}" alt="При мен в БиоВел" class=" border-primary-dune rounded-2xl w-full object-cover">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Why choose us Section -->
+<section class="py-12 bg-primary-sand/30 flex">
+    <div class="max-w-7xl w-full mx-auto px-4 flex flex-col justify-center items-center gap-8 md:gap-14">
+
+        <div class="w-full text-left">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-evergreen">
+                За мен
+            </h2>
+        </div>
+
+        <div class="about-me-container relative flex flex-col md:flex-row md:items-center gap-8 shadow-md rounded-3xl bg-[#fafafa] p-8 md:p-16 w-full overflow-hidden">
+
+            <!-- Background Image -->
+            <div class="absolute inset-0 opacity-10 z-0">
+                <img src="{{ '/assets/images/about-bg.png' | url }}" alt="" class="w-full h-full object-cover">
+            </div>
+
+            <div class="about-me-left relative z-10 flex flex-col items-center justify-center text-center rounded-3xl max-h-[300px]">
+
+                <img src="{{ '/assets/images/elena-hristova.png' | url }}" alt="Елена Христова - консултант Vega Test" class=" max-w-[250px] h-auto object-contain">
+                <h4 class="text-lg mt-2 font-bold text-primary-evergreen">Елена Христова</h4>
+
+            </div>
+
+            <div class="relative z-10 flex flex-col items-center justify-center text-center rounded-3xl max-h-[300px]">
+                <img src="{{ '/assets/images/arrow.png' | url }}" alt=" Стрелка към Елена Христова - консултант Vega Test" class="w-[180px] h-auto object-contain rotate-45 md:rotate-[-10deg]">
+            </div>
+
+            <!-- Certificates Cards -->
+            <div class="relative z-10 grid items-stretch gap-6 md:grid-cols-3 flex-1">
+            <!-- Certificate 1 -->
+            <div class="about-me-card bg-white/90 rounded-3xl shadow-md p-3 flex flex-col h-full">
+                    <div class="rounded-2xl border border-primary-cream/60 overflow-hidden bg-primary-sand/40 w-full flex items-center justify-center relative">
+                        <button
+                            type="button"
+                            class="w-full h-40 md:h-48 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-evergreen/80 focus-visible:ring-offset-2 focus-visible:ring-offset-primary-sand/30"
+                            data-certificate-full="{{ '/assets/images/certificate1.jpg' | url }}"
+                            data-certificate-alt="Сертификат 1"
+                        >
+                            <img src="{{ '/assets/images/certificate1.jpg' | url }}" alt="Сертификат 1" class="w-full h-full object-cover">
+                        </button>
+                        <div class="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 via-black/50 to-transparent text-white text-[11px] md:text-xs px-3 py-2 flex items-end justify-start">
+                            <span class="tracking-wide text-left">Виж</span>
+                        </div>
+                    </div>
+                    <div class="mt-2 flex flex-col gap-1 text-left w-full">
+                        <p class="text-xs md:text-[11px] text-primary-deepsea font-semibold">
+                            Здравословно хранене – консултант.
+                        </p>
+                        <p class="text-[11px] md:text-[10px] text-primary-deepsea/80">
+                            Сертификат за обучение като консултант по помощни средства и хранителни добавки.
+                        </p>
+                    </div>
+                </div>
+
+            <!-- Certificate 2 -->
+            <div class="about-me-card bg-white/90 rounded-3xl shadow-md p-3 flex flex-col h-full">
+                    <div class="rounded-2xl border border-primary-cream/60 overflow-hidden bg-primary-sand/40 w-full flex items-center justify-center relative">
+                        <button
+                            type="button"
+                            class="w-full h-40 md:h-48 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-evergreen/80 focus-visible:ring-offset-2 focus-visible:ring-offset-primary-sand/30"
+                            data-certificate-full="{{ '/assets/images/certificate2.jpg' | url }}"
+                            data-certificate-alt="Сертификат 2"
+                        >
+                            <img src="{{ '/assets/images/certificate2.jpg' | url }}" alt="Сертификат 2" class="w-full h-full object-cover">
+                        </button>
+                        <div class="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 via-black/50 to-transparent text-white text-[11px] md:text-xs px-3 py-2 flex items-end justify-start">
+                            <span class="tracking-wide text-left">Виж</span>
+                        </div>
+                    </div>
+                    <div class="mt-2 flex flex-col gap-1 text-left w-full">
+                        <p class="text-xs md:text-[11px] text-primary-deepsea font-semibold">
+                            Нутрициология – специалист.
+                        </p>
+                        <p class="text-[11px] md:text-[10px] text-primary-deepsea/80">
+                            Сертификат за завършен курс по нутрициология.
+                        </p>
+                    </div>
+                </div>
+
+            <!-- Certificate 3 -->
+            <div class="about-me-card bg-white/90 rounded-3xl shadow-md p-3 flex flex-col h-full">
+                    <div class="rounded-2xl border border-primary-cream/60 overflow-hidden bg-primary-sand/40 w-full flex items-start justify-center relative">
+                        <button
+                            type="button"
+                            class="w-full h-40 md:h-48 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-evergreen/80 focus-visible:ring-offset-2 focus-visible:ring-offset-primary-sand/30"
+                            data-certificate-full="{{ '/assets/images/certificate3.jpg' | url }}"
+                            data-certificate-alt="Сертификат 3"
+                        >
+                            <img src="{{ '/assets/images/certificate3.jpg' | url }}" alt="Сертификат 3" class="w-full h-full object-cover">
+                        </button>
+                        <div class="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 via-black/50 to-transparent text-white text-[11px] md:text-xs px-3 py-2 flex items-end justify-start">
+                            <span class="tracking-wide text-left">Виж</span>
+                        </div>
+                    </div>
+                    <div class="mt-2 flex flex-col gap-1 text-left w-full">
+                        <p class="text-xs md:text-[11px] text-primary-deepsea font-semibold">
+                            Флорални есенции – практик.
+                        </p>
+                        <p class="text-[11px] md:text-[10px] text-primary-deepsea/80">
+                            Сертификат за въвеждащ курс по австралийски флорални есенции.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+</section>
+
+                <!-- Services Section -->
+                <section class="py-12 bg-primary-sand/30">
+                    <div class="max-w-7xl w-full mx-auto px-4 flex flex-col justify-center items-center gap-12 md:gap-14">
+                        <!-- Header -->
+                        <div class="w-full text-left">
+
+                            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-evergreen mb-4">
+                Услуги
+            </h2>
+                            <p class="w-full text-medium md:text-lg	 text-primary-deepsea max-w-5xl leading-relaxed">
+                Цялостен подход към вашето здраве чрез модерни диагностични методи и персонализирани терапии.
+            </p>
+                        </div>
+
+                        {% for category in homepageServices.categories %}
+                            <div class="w-full flex flex-col justify-center items-center gap-2 ">
+                                <div class="inline-flex w-full items-left mb-6">
+
+                                    <span class="text-xl md:text-xl font-semibold text-primary-evergreen">{{ category.name }}</span>
+                                </div>
+
+                                <!-- Services Grid -->
+                                <div class="w-full overflow-hidden">
+                                    <div class="flex gap-8 overflow-x-auto pb-8 custom-scrollbar no-scrollbar drag-scroll">
+                                        {% if category.services %}
+                                            {% for service in category.services %}
+                                                <div class="home-service-card bg-white p-2 flex-shrink-0 flex flex-col gap-4 w-[260px] md:w-[300px] rounded-3xl group transition-all duration-300 shadow-md">
+                                                    <img src="{{ service.images[0] | url }}" alt="{{ service.name }}" class="w-full min-h-[200px] max-h-[200px] object-cover rounded-2xl"/>
+                                                    <div class="flex flex-col flex-grow">
+                                                        <h3 class="text-primary-deepsea font-bold text-lg">{{ service.name }}</h3>
+                                                        <p class="text-gray-600 mt-2 text-sm flex-grow">{{ service.description }}</p>
+                                                        <div class="mt-4 ">
+                                                            {% for s in services %}
+                                                                {% if s.name == service.name %}
+                                                                    <a href="{{ ('/uslugi/' ~ s.slug ~ '/') | url }}" class="block w-full text-center btn-primary text-white font-semibold rounded-3xl py-2 hover:bg-primary-forest transition-colors">Научи повече</a>
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </section>
+
+                <!-- Products Section -->
+
+                <section class="py-12 bg-primary-sand/30">
+                    <div class="max-w-7xl w-full mx-auto px-4 flex flex-col justify-center items-center gap-12 md:gap-14">
+                        <!-- Header -->
+                        <div class="w-full text-left">
+
+                            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-evergreen mb-4">
+                100% натурални хранителни добавки
+            </h2>
+                            <p class="w-full text-medium md:text-lg	 text-primary-deepsea max-w-5xl leading-relaxed">
+                Моите продукти са разработени с цел да подпомогнат вашето здраве и да поддържат оптималното ви състояние.
+            </p>
+                        </div>
+
+                        <!-- Products Grid -->
+                        <div class="w-full overflow-hidden">
+                            <div class="flex gap-8 overflow-x-auto pb-8 custom-scrollbar no-scrollbar drag-scroll">
+                                {% for product in products %}
+                                    <div class="group relative flex-shrink-0">
+                                        <div class="home-product-card h-full p-2 bg-white rounded-3xl relative flex flex-col w-[260px] md:w-[300px]  transition-all duration-300 shadow-md">
+
+                                            <div class="home-product-image flex items-center justify-center overflow-hidden">
+                                                <img src="{{ product.images[0] | url }}" alt="{{ product.title }}" class=""/>
+                                            </div>
+
+                                            <div class="pt-2 flex flex-col gap-4 flex-grow">
+                                                <div class="flex flex-col gap-2 justify-between ">
+                                                    <h3 class=" text-md font-bold">{{ product.title }}</h3>
+                                                    <p class=" text-sm ">{{ product.short_description }}</p>
+                                                </div>
+
+                                                <div class="product-card-benefits">
+
+                                                    <div class="benefit-icons flex flex-row gap-2">
+                                                        {% for benefit in product.benefits %}
+                                                            <div class="relative group benefit-icon-wrapper">
+                                                                <img src="{{ benefit.benefit_icon | url }}" alt="{{ benefit.benefit_name }}" class="bg-primary-ceramic rounded-full h-8 w-8 object-contain">
+                                                                <span class="benefit-tooltip absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max px-2 py-1 bg-primary-deepsea text-white text-xs rounded opacity-0 invisible transition-opacity duration-300 pointer-events-none">
+                                                                    {{ benefit.benefit_name }}
+                                                                </span>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+
+                                                </div>
+                                                <div class="mt-2 product-card-button flex flex-col flex-grow ">
+                                                    <a href="{{ ('/produkti/' ~ product.meta_title ~ '/') | url }}" class="block text-center btn-primary  font-semibold rounded-full py-2 mt-auto hover:bg-primary-evergreen/90 transition-colors">Виж продукта</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Faq -->
+                <section class="py-12 bg-primary-sand/30">
+                    <div class="max-w-7xl w-full mx-auto px-4 flex flex-col justify-center items-center gap-12 md:gap-14">
+                        <!-- Header -->
+                        <div class="w-full text-left">
+
+                            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-evergreen mb-4">
+                                {{ faq.title }}
+                            </h2>
+                        </div>
+
+                        <div class="faq-container grid md:grid-cols-2 gap-12 w-full items-start">
+                            <div class="faq-left-side flex flex-col justify-center gap-6 order-2 md:order-1">
+                                {% for item in faq.faqs %}
+                                    <details class="group bg-white p-6 rounded-3xl shadow-sm" {% if loop.first %}open{% endif %}>
+                                        <summary class="flex justify-between items-center cursor-pointer font-semibold text-primary-deepsea">
+                                            {{ item.question }}
+                                            <svg class="w-5 h-5 transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                            </svg>
+                                        </summary>
+                                        <div class="mt-4 text-primary-dark-gray">
+                                            {{ item.answer }}
+                                        </div>
+                                    </details>
+                                {% endfor %}
+                            </div>
+
+                            <div class="faq-right-side rounded-3xl overflow-hidden order-1 md:order-2 md:sticky md:top-24">
+                                <img src="{{ '/assets/images/faq.jpg' | url }}" alt="FAQ Image" class=" object-cover w-full h-auto">
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section class="py-12">
+                    <div class="max-w-7xl mx-auto px-4">
+                        <div class="relative h-[500px] md:h-[400px] w-full flex flex-col md:flex-row justify-evenly items-center gap-12 p-8 overflow-hidden rounded-3xl">
+
+                            <div class="-z-10 absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                                <img src="{{ '/assets/images/cta2.jpg' | url }}" alt="CTA Image" class="w-full h-full object-cover ">
+                            </div>
+
+                            <div class="cta-left-side w-full sm-w-[50%] flex flex-col justify-center items-center sm:items-center text-center md:text-left">
+
+                                <h2 class="text-white text-3xl md:text-4xl lg:text-5xl font-semibold">
+                                    Време е за теб!
+                                </h2>
+                                <p class="text-white text-sm font-light">
+                                    Подари си момент на внимание и грижа за тялото си.
+                                </p>
+
+                            </div>
+
+                            <div class="w-full sm-w-[50%] cta-right-side ">
+
+                                <div class="p-8 home-cta-buttons-ct cta-glassy-container flex flex-col gap-4 sm:flexcol">
+
+                                    <p class="text-primary-volcanic text-sm font-semibold">Запази час или разгледай моите продукти</p>
+                                    <div class="flex flex-col sm:flex-row gap-4">
+
+                                        <a href="viber://chat?number=%2B359885415300" class="text-primary-evergreen flex items-center justify-center gap-2 btn-primary w-full text-center rounded-3xl" target="_blank" rel="noopener">
+                                            <img src="{{ '/assets/images/booking.png' | url }}" alt="Clock" class="w-6 h-6 object-contain "> Запази час</a>
+
+                                        <a href="{{ '/produkti/' | url }}" class="flex items-center justify-center gap-2 btn-secondary hover:scale-105 transition-all duration-300 w-full text-center rounded-3xl  !hover:text-accent-evergreen">
+                                            <img src="{{ '/assets/images/products.png' | url }}" alt="Clock" class=" w-6 h-6 object-contain ">Продукти</a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Certificates Lightbox -->
+                <div
+                    id="certificate-lightbox"
+                    class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300"
+                    aria-hidden="true"
+                >
+                    <button
+                        type="button"
+                        id="certificate-lightbox-close"
+                        class="absolute top-4 right-4 rounded-full text-white text-3xl p-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-evergreen/80"
+                        aria-label="Затвори изображението"
+                    >
+                        ✕
+                    </button>
+                    <div class="max-w-[95vw] max-h-[80vh] flex items-center justify-center px-4">
+                        <img
+                            id="certificate-lightbox-img"
+                            src=""
+                            alt=""
+                            class="w-full h-full max-w-[95vw] max-h-[80vh] object-contain rounded-2xl shadow-2xl border border-primary-cream/60 bg-black/10"
+                        >
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const lightbox = document.getElementById('certificate-lightbox');
+                        const lightboxImg = document.getElementById('certificate-lightbox-img');
+                        const closeBtn = document.getElementById('certificate-lightbox-close');
+
+                        if (!lightbox || !lightboxImg) return;
+
+                        const openLightbox = (src, alt) => {
+                            lightboxImg.src = src;
+                            lightboxImg.alt = alt || '';
+                            lightbox.classList.remove('opacity-0', 'pointer-events-none');
+                            lightbox.classList.add('opacity-100');
+                            lightbox.setAttribute('aria-hidden', 'false');
+                        };
+
+                        const closeLightbox = () => {
+                            lightbox.classList.add('opacity-0', 'pointer-events-none');
+                            lightbox.classList.remove('opacity-100');
+                            lightbox.setAttribute('aria-hidden', 'true');
+                        };
+
+                        document.querySelectorAll('[data-certificate-full]').forEach((el) => {
+                            el.addEventListener('click', () => {
+                                const src = el.getAttribute('data-certificate-full');
+                                const alt = el.getAttribute('data-certificate-alt');
+                                if (src) {
+                                    openLightbox(src, alt);
+                                }
+                            });
+                        });
+
+                        if (closeBtn) {
+                            closeBtn.addEventListener('click', closeLightbox);
+                        }
+
+                        lightbox.addEventListener('click', (event) => {
+                            if (event.target === lightbox) {
+                                closeLightbox();
+                            }
+                        });
+
+                        document.addEventListener('keydown', (event) => {
+                            if (event.key === 'Escape') {
+                                closeLightbox();
+                            }
+                        });
+                    });
+                </script>
+
+                <!-- tailwind-safelist -->
+                <div class="text-primary-moss text-primary-sage text-primary-ceramic text-primary-forest text-primary-cream text-primary-olive text-primary-dark-gray bg-primary-moss bg-primary-sage bg-primary-ceramic bg-primary-forest bg-primary-cream bg-primary-olive bg-gradient-primary bg-gradient-hero border-primary-moss border-primary-sage border-primary-ceramic border-primary-forest border-primary-cream border-primary-olive hidden"></div>

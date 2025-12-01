@@ -1,0 +1,35 @@
+const dotenv = require('dotenv');
+dotenv.config();
+ 
+module.exports = function(eleventyConfig) {
+  // Copy static assets
+  eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
+  eleventyConfig.addPassthroughCopy("favicon.ico");
+ 
+  // Expose env vars if needed in templates (keep debug optional)
+  if (process.env.MAIL_KEY) {
+    console.log("Loaded API key:", process.env.MAIL_KEY);
+  }
+  eleventyConfig.addGlobalData("mailKey", process.env.MAIL_KEY || "");
+ 
+  // Determine pathPrefix: prefer explicit env; fallback to GH repo name if available
+  const explicitPrefix = process.env.PATH_PREFIX || process.env.ELEVENTY_PATH_PREFIX;
+  const repoPrefix = process.env.GITHUB_REPOSITORY
+    ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}`
+    : "/";
+  const pathPrefix = explicitPrefix || repoPrefix || "/";
+ 
+  return {
+    pathPrefix,
+    dir: {
+      input: "src",
+      output: "_site",
+      includes: "_includes",
+      layouts: "_layouts"
+    },
+    templateFormats: ["njk", "md", "html"],
+    markdownTemplateEngine: "njk",
+    htmlTemplateEngine: "njk",
+    dataTemplateEngine: "njk"
+  };
+};

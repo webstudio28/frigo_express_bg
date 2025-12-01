@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="bg">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            {% if title %}{{ title }} | {% endif %}БиоВел Диагностика и хранителни добавки
+        </title>
+        <meta name="description" content="{% if description %}{{ description }}{% else %}ВЕГА ТЕСТ - компютърна диагностика за здравословно хранене с най-подходящите храни за вашия организъм{% endif %}">
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/x-icon" href="{{ '/favicon.ico' | url }}">
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="{{ '/assets/css/styles.css' | url }}">
+        <link rel="stylesheet" href="{{ '/assets/css/custom-styles.css' | url }}">
+        <link rel="stylesheet" href="{{ '/assets/css/home.css' | url }}">
+
+        <!-- Open Graph meta tags -->
+        <meta property="og:title" content="{% if title %}{{ title }}{% else %}БиоВел Диагностика и хранителни добавки{% endif %}"/>
+        <meta property="og:description" content="{% if description %}{{ description }}{% else %}ВЕГА ТЕСТ - компютърна диагностика за здравословно хранене{% endif %}"/>
+        <meta property="og:type" content="website"/>
+
+        <script src="{{ '/assets/js/gsap.min.js' | url }}"></script>
+        <script src="{{ '/assets/js/ScrollTrigger.min.js' | url }}"></script>
+
+        <!-- External Scripts -->
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        <script>
+            if (window.gsap && window.ScrollTrigger) {
+                gsap.registerPlugin(ScrollTrigger);
+            }
+
+            // Mobile menu toggle
+            document.addEventListener('DOMContentLoaded', function () {
+                const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+                const mobileMenu = document.getElementById('mobile-menu');
+                const body = document.body;
+                const header = document.getElementById('header');
+                window.isMobileMenuOpen = false;
+
+                if (mobileMenuToggle && mobileMenu) {
+                    mobileMenuToggle.addEventListener('click', function () {
+                        // Toggle burger animation
+                        this
+                            .classList
+                            .toggle('active');
+
+                        // Toggle mobile menu
+                        if (mobileMenu.classList.contains('translate-x-full')) {
+                            mobileMenu
+                                .classList
+                                .remove('translate-x-full');
+                            mobileMenu
+                                .classList
+                                .add('translate-x-0');
+                            body.style.overflow = 'hidden'; // Prevent body scroll
+                        } else {
+                            mobileMenu
+                                .classList
+                                .add('translate-x-full');
+                            mobileMenu
+                                .classList
+                                .remove('translate-x-0');
+                            body.style.overflow = ''; // Restore body scroll
+                        }
+
+                        const isOpen = mobileMenu.classList.contains('translate-x-0');
+                        window.isMobileMenuOpen = isOpen;
+
+                        if (header) {
+                            if (isOpen) {
+                                header
+                                    .classList
+                                    .add('bg-white', 'border-primary-dune/20');
+                                header
+                                    .classList
+                                    .remove('bg-transparent', 'border-transparent', 'bg-primary-sand/95');
+                            } else {
+                                header
+                                    .classList
+                                    .remove('bg-white', 'border-primary-dune/20');
+                                if (window.updateHeaderState) {
+                                    window.updateHeaderState();
+                                }
+                            }
+                        }
+                    });
+                }
+
+                // Mobile accordion functionality
+                const accordionToggles = document.querySelectorAll('.mobile-accordion-toggle');
+                accordionToggles.forEach(toggle => {
+                    toggle.addEventListener('click', function () {
+                        const targetId = this.getAttribute('data-target');
+                        const targetElement = document.getElementById(targetId);
+                        const icon = this.querySelector('svg');
+
+                        if (targetElement) {
+                            const isExpanded = targetElement.style.maxHeight && targetElement.style.maxHeight !== '0px';
+
+                            // Close all other accordions first
+                            accordionToggles.forEach(otherToggle => {
+                                if (otherToggle !== toggle) {
+                                    const otherTargetId = otherToggle.getAttribute('data-target');
+                                    const otherTargetElement = document.getElementById(otherTargetId);
+                                    const otherIcon = otherToggle.querySelector('svg');
+                                    if (otherTargetElement) {
+                                        otherTargetElement.style.maxHeight = '0px';
+                                        otherIcon.style.transform = 'rotate(0deg)';
+                                    }
+                                }
+                            });
+
+                            if (isExpanded) {
+                                // Collapse current
+                                targetElement.style.maxHeight = '0px';
+                                icon.style.transform = 'rotate(0deg)';
+                            } else {
+                                // Expand current
+                                targetElement.style.maxHeight = targetElement.scrollHeight + 'px';
+                                icon.style.transform = 'rotate(180deg)';
+                            }
+                        }
+                    });
+                });
+            });
+        </script>
+
+        <!-- Home Animations -->
+        {% if page.url == "/" %}
+            <script src="{{ '/assets/js/home-animations.js' | url }}"></script>
+            <script src="{{ '/assets/js/approach-animations.js' | url }}"></script>
+        {% endif %}
+
+        <script src="{{ '/assets/js/animations.js' | url }}"></script>
+
+    </head>
+    <body class="text-primary-volcanic font-['Montserrat']">
+        <!-- Background Gradie font-oswaldnt Container -->
+        <div class="fixed inset-0 bg-gradient-to-br from-primary-ceramic  to-primary-ceramic -z-20"></div>
+
+        <!-- Background Image Container -->
+        <div class="fixed opacity-20 inset-0 bg-no-repeat bg-cover bg-center -z-10" style="background-image: url('{{ '/assets/images/base-bg.jpg' | url }}');"></div>
+
+        <!-- Header -->
+        <header class="fixed w-full z-50 bg-transparent backdrop-blur-sm border-b border-transparent transition-all duration-300" id="header">
+            <nav class="max-w-7xl mx-auto flex justify-between items-center h-20 px-4">
+                <div class="flex items-center gap-8">
+                    <a href="{{ '/' | url }}" class="flex items-center">
+                        <img src="{{ '/assets/images/logo.png' | url }}" alt="Вега Тест" class="h-12 w-auto">
+                    </a>
+                    <div class="desktop-nav items-center space-x-8">
+                        <a href="{{ '/' | url }}" class="hover:text-primary-evergreen transition-colors font-medium text-primary-volcanic">Начало</a>
+                        <div class="relative group">
+                            <a href="{{ '/uslugi/' | url }}" class="hover:text-primary-evergreen transition-colors font-medium text-primary-volcanic inline-flex items-center gap-1">Услуги
+                                <svg class="w-4 h-4 opacity-70" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd"/></svg>
+                            </a>
+                            <div class="absolute top-full left-0 w-64 rounded-xl bg-white shadow-xl border border-primary-dune/20 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition">
+                                <div class="py-2 mt-2">
+                                    {% for s in services %}
+                                        <a href="{{ ('/uslugi/' ~ s.slug ~ '/') | url }}" class="block px-4 py-2 text-sm text-primary-volcanic hover:bg-primary-sand/50">{{ s.name }}</a>
+                                    {% endfor %}
+                                    <div class="px-4 py-2 border-t border-primary-dune/20">
+                                        <a href="{{ '/uslugi/' | url }}" class="text-sm text-primary-evergreen font-medium">Виж всички услуги →</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative group">
+                            <a href="{{ '/produkti/' | url }}" class="hover:text-primary-evergreen transition-colors font-medium text-primary-volcanic inline-flex items-center gap-1">Продукти
+                                <svg class="w-4 h-4 opacity-70" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd"/></svg>
+                            </a>
+                            <div class="absolute top-full left-0 w-64 rounded-xl bg-white shadow-lg border border-primary-dune/20 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition">
+                                <div class="py-2 mt-2">
+                                    {% for product in products %}
+                                        {% if loop.index <= 6 %}
+                                            <a href="{{ ('/produkti/' ~ product.meta_title ~ '/') | url }}" class="block px-4 py-2 text-sm text-primary-volcanic hover:bg-primary-sand/50">{{ product.title }}</a>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <div class="px-4 py-2 border-t border-primary-dune/20">
+                                        <a href="{{ '/produkti/' | url }}" class="text-sm text-primary-evergreen font-medium">Виж всички продукти →</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{{ '/kontakti' | url }}" class="hover:text-primary-evergreen transition-colors font-medium text-primary-volcanic">Контакти</a>
+                    </div>
+                </div>
+
+                <a href="viber://chat?number=%2B359885415300" class="header-cta btn-primary" target="_blank" rel="noopener">
+                    Запази час
+                </a>
+
+                <button id="mobile-menu-toggle" class="mobile-burger flex-col justify-center items-center w-8 h-8 relative">
+                    <span class="burger-line w-6 h-0.5 bg-primary-volcanic transition-all duration-300 ease-in-out mb-1"></span>
+                    <span class="burger-line w-6 h-0.5 bg-primary-volcanic transition-all duration-300 ease-in-out mb-1"></span>
+                    <span class="burger-line w-6 h-0.5 bg-primary-volcanic transition-all duration-300 ease-in-out"></span>
+                </button>
+            </nav>
+        </header>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu fixed inset-0 top-20 bg-white z-40 transform translate-x-full transition-transform duration-300 ease-in-out overflow-hidden">
+            <div class="h-full flex flex-col">
+                <div class="flex-1 overflow-y-auto p-6">
+                    <nav class="flex flex-col space-y-4">
+                        <a href="{{ '/' | url }}" class="block text-lg font-semibold text-primary-volcanic hover:text-primary-evergreen transition-colors py-5 px-4 bg-primary-sand/20 rounded-2xl">Начало</a>
+
+                        <!-- Services section -->
+                        <div class="accordion-section">
+                            <button class="mobile-accordion-toggle w-full text-left flex items-center justify-between text-lg font-semibold text-primary-volcanic hover:text-primary-evergreen transition-colors py-5 px-4 bg-primary-sand/20 rounded-2xl mb-2" data-target="services-list">
+                                <span>Услуги</span>
+                                <svg class="w-6 h-6 transition-transform duration-300 ease-in-out" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd"/>
+                                </svg>
+                            </button>
+                            <div id="services-list" class="accordion-content max-h-0 overflow-hidden overflow-x-hidden transition-all duration-500 ease-in-out">
+                                <div class="p-4 bg-primary-sand/10 rounded-2xl space-y-3">
+                                    <a href="{{ '/uslugi/' | url }}" class="block text-lg text-primary-deepsea font-medium hover:text-primary-volcanic transition-colors">Виж всички услуги</a>
+                                    <div class="space-y-4">
+                                        {% for s in services %}
+                                            <a href="{{ ('/uslugi/' ~ s.slug ~ '/') | url }}" class="block text-lg text-primary-deepsea font-medium hover:text-primary-evergreen transition-colors py-1">{{ s.name }}</a>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Products section -->
+                        <div class="accordion-section">
+                            <button class="mobile-accordion-toggle w-full text-left flex items-center justify-between text-lg font-semibold text-primary-volcanic hover:text-primary-evergreen transition-colors py-5 px-4 bg-primary-sand/20 rounded-2xl mb-2" data-target="products-list">
+                                <span>Продукти</span>
+                                <svg class="w-6 h-6 transition-transform duration-300 ease-in-out" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd"/>
+                                </svg>
+                            </button>
+                            <div id="products-list" class="accordion-content max-h-0 overflow-hidden overflow-x-hidden transition-all duration-500 ease-in-out">
+                                <div class="p-4 bg-primary-sand/10 rounded-2xl space-y-3">
+                                    <a href="{{ '/produkti/' | url }}" class="block text-lg text-primary-deepsea font-medium hover:text-primary-volcanic transition-colors">Виж всички продукти</a>
+                                    <div class="space-y-4">
+                                        {% for product in products %}
+                                            <a href="{{ ('/produkti/' ~ product.meta_title ~ '/') | url }}" class="block text-lg text-primary-deepsea font-medium hover:text-primary-evergreen transition-colors py-1">{{ product.title }}</a>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="{{ '/kontakti' | url }}" class="block text-lg font-semibold text-primary-volcanic hover:text-primary-evergreen transition-colors py-5 px-4 bg-primary-sand/20 rounded-2xl">Контакти</a>
+                    </nav>
+                </div>
+
+                <!-- CTA Button - Fixed at bottom -->
+                <div class="p-6">
+                    <a href="viber://chat?number=%2B359885415300" class="btn-primary w-full text-center" target="_blank" rel="noopener">Запази час</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="pt-20">
+            {{ content | safe }}
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-primary-volcanic text-primary-sand mt-8">
+            <div class="max-w-7xl mx-auto py-16 px-4">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="col-span-1 md:col-span-2">
+                        <img src="{{ '/assets/images/logo.png' | url }}" alt="Вега Тест" class="h-16 w-auto mb-4">
+                        <p class="text-white/90 mb-4 max-w-md">
+                            Персонализирани решения, холистични терапии и продукти, които поддържат твоето естествено равновесие.
+                        </p>
+                        <div class="flex items-center gap-3 text-white/80">
+                            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M22 12.07C22 6.48 17.52 2 11.93 2S1.86 6.48 1.86 12.07c0 4.99 3.64 9.14 8.4 9.93v-7.03H7.92v-2.9h2.34V9.97c0-2.31 1.37-3.59 3.48-3.59.99 0 2.02.18 2.02.18v2.22h-1.14c-1.12 0-1.47.7-1.47 1.42v1.7h2.5l-.4 2.9h-2.1V22c4.76-.79 8.4-4.94 8.4-9.93Z" />
+                            </svg>
+                            <a href="https://www.facebook.com/biovell?locale=bg_BG" target="_blank" rel="noopener" class="hover:text-white transition-colors font-semibold">Био Вел</a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Контакти</h4>
+                        <div class="space-y-2 text-white/90">
+                            <p>гр. Пловдив</p>
+                            <p>Хотел SPS, ет.13, офис 1302</p>
+                            <p>тел: 0885 415 300</p>
+                            <p>e-mail: e_hrisi@abv.bg</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Работно време</h4>
+                        <p class="text-white/90">С предварително записан час</p>
+                    </div>
+                </div>
+
+                <div class="border-t border-white/20 mt-12 pt-8 text-center text-white/70">
+                    <p>&copy; {{ site.currentYear }} Bio Vel. Всички права запазени.</p>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            // Header scroll effect
+            function updateHeaderState() {
+                const header = document.getElementById('header');
+                if (!header || window.isMobileMenuOpen) {
+                    return;
+                }
+
+                if (window.scrollY > 50) {
+                    header
+                        .classList
+                        .add('bg-primary-sand/95', 'border-primary-dune/20');
+                    header
+                        .classList
+                        .remove('bg-transparent', 'border-transparent');
+                } else {
+                    header
+                        .classList
+                        .remove('bg-primary-sand/95', 'border-primary-dune/20');
+                    header
+                        .classList
+                        .add('bg-transparent', 'border-transparent');
+                }
+            }
+
+            window.updateHeaderState = updateHeaderState;
+            window.addEventListener('scroll', updateHeaderState);
+            updateHeaderState();
+
+            // Drag-to-scroll for horizontal lists
+            (function () {
+                const containers = document.querySelectorAll('.drag-scroll');
+                containers.forEach((el) => {
+                    let isDown = false;
+                    let startX = 0;
+                    let scrollLeftStart = 0;
+
+                    const onDown = (clientX) => {
+                        isDown = true;
+                        startX = clientX;
+                        scrollLeftStart = el.scrollLeft;
+                        el
+                            .classList
+                            .add('dragging');
+                    };
+                    const onMove = (clientX) => {
+                        if (!isDown) 
+                            return;
+                        const dx = clientX - startX;
+                        el.scrollLeft = scrollLeftStart - dx;
+                    };
+                    const onUp = () => {
+                        isDown = false;
+                        el
+                            .classList
+                            .remove('dragging');
+                    };
+
+                    // Mouse events
+                    el.addEventListener('mousedown', (e) => {
+                        // left button only
+                        if (e.button !== 0) 
+                            return;
+                        onDown(e.clientX);
+                        e.preventDefault();
+                    });
+                    window.addEventListener('mousemove', (e) => onMove(e.clientX));
+                    window.addEventListener('mouseup', onUp);
+
+                    // Touch events
+                    el.addEventListener('touchstart', (e) => onDown(e.touches[0].clientX), {passive: true});
+                    window.addEventListener('touchmove', (e) => onMove(e.touches[0].clientX), {passive: true});
+                    window.addEventListener('touchend', onUp);
+                });
+            })();
+
+             {# // Equalize description heights
+             (function(){
+               function equalizeDescriptions() {
+                 document.querySelectorAll('.drag-scroll').forEach(row => {
+                   const descriptions = row.querySelectorAll('.service-card-description');
+                   if (!descriptions.length) return;
+ 
+                   // Reset heights to get natural size
+                   descriptions.forEach(desc => { desc.style.height = 'auto'; });
+                   
+                   // Force reflow before measuring
+                   void descriptions[0].offsetHeight;
+ 
+                   let maxHeight = 0;
+                   descriptions.forEach(desc => {
+                     maxHeight = Math.max(maxHeight, desc.offsetHeight);
+                   });
+ 
+                   descriptions.forEach(desc => {
+                     desc.style.height = `${maxHeight}px`;
+                   });
+                 });
+               }
+               
+               window.addEventListener('load', equalizeDescriptions);
+               window.addEventListener('resize', equalizeDescriptions);
+               const ro = new ResizeObserver(equalizeDescriptions);
+               document.querySelectorAll('.drag-scroll').forEach(el => ro.observe(el));
+             })(); #}
+        </script>
+        <script src="{{ '/assets/js/tooltips.js' | url }}"></script>
+    </body>
+</html>
