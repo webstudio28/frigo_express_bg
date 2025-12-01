@@ -6,54 +6,33 @@ description: ВЕГА ТЕСТ - компютърна диагностика з�
 
 
 <!-- Hero Section Only -->
-<section class="relative min-h-[calc(100vh-5rem)] flex items-center">
-    <div class="absolute inset-0"></div>
-    <img src="{{ '/assets/images/cta.jpg' | url }}" alt="CTA Image" style="opacity: 0.3;" class="absolute top-[-5rem] left-0 w-full h-screen object-cover object-center md:object-center -z-10">
-    <div class="pb-16 max-w-7xl w-full mx-auto px-4 relative z-10 flex flex-col-reverse md:flex-row gap-4 md:gap-0 items-center justify-evenly md:justify-center min-h-[60vh]">
-        <!-- Left: Text -->
-        <div class="flex-1 flex flex-col justify-center gap-4 items-start text-left md:pr-12 z-20 relative mt-0 md:mt-0 w-full">
+<section class="relative h-screen flex items-center justify-center overflow-hidden text-white text-center px-4 text-shadow">
+    <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 150%);"></div>
+    <div id="hero-cars" class="absolute bottom-0 left-0 right-0 h-[40%] w-full overflow-hidden pointer-events-none">
+        <img src="{{ '/assets/images/hero-cars.png' | url }}" alt="Хладилен автопарк на Frigo Express BG" class="w-full h-full object-fill">
+    </div>
 
-
-            <h1 class="text-2xl  w-full text-center md:text-left text-primary-dark-gray md:text-4xl lg:text-5xl font-bold mb-4 relative z-10">
-                <span>Твоят личен баланс</span>
-                <span class="block text-primary-evergreen  relative text-xl lg:text-4xl ">
-          С моите продукти и услуги
-        </span>
-            </h1>
-
-            {# <p class="text-lg md:text-xl text-primary-deepsea mb-4 md:mb-8 max-w-lg relative z-10 leading-relaxed">
-        Персонализирани решения, холистични терапии и продукти, които поддържат твоето естествено равновесие.
-      </p> #}
-
-            <div class="flex flex-wrap justify-center md:justify-start gap-2 text-xs md:text-sm text-primary-evergreen mb-4 md:mb-6 relative z-10 text-center md:text-left">
-                {% for category in homepageServices.categories %}
-                    {% for service in category.services %}
-                        {% for s in services %}
-                            {% if s.name == service.name %}
-                                <a href="{{ ('/uslugi/' ~ s.slug ~ '/') | url }}" class="px-3 py-1 rounded-full border border-primary-evergreen/30 bg-white/70 shadow-sm hover:bg-primary-evergreen hover:text-white transition-colors">
-                                    {{ service.name }}
-                                </a>
-                            {% endif %}
-                        {% endfor %}
-                    {% endfor %}
-                {% endfor %}
-            </div>
-
-            <div class="hero-cta flex flex-row gap-2 md:gap-4 relative z-10 w-full justify-center md:justify-start">
-                <a href="{{ '/uslugi/' | url }}" class="btn-primary flex justify-center items-center">
-          Всички услуги
-        </a>
-                <a href="{{ '/transport/' | url }}" class="btn-secondary flex justify-center items-center">
-          Нашият автопарк
-        </a>
-            </div>
-        </div>
-        <!-- Right: Playful Blob Card with Lottie Animation -->
-        <div class="flex-1 flex justify-center items-center w-full h-full relative md:mt-0 max-w-full overflow-hidden">
-
-                <img src="{{ '/assets/images/hero1.webp' | url }}" alt="Вега Тест диагностика" class="shadow-md border border-primary-dune mb-4 w-4/5 sm:w-3/4 lg:w-full rounded-3xl max-w-lg lg:max-w-xl relative z-10 object-contain">
+    <div class="relative z-10 max-w-4xl w-full  flex flex-col items-center mb-[20vh] gap-6">
+        <div class="text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight space-y-4">
+            <div class="flex flex-col items-center gap-2 tracking-wide">
+                <div class="flex items-center justify-center gap-3">
+                    <span>Нашият бизнес</span>
+                    <img src="{{ '/assets/images/bus-icon-dark.png' | url }}" alt="Иконка хладилен бус" class="h-8 w-auto md:h-10 vertical-align-middle pt-2">
                 </div>
-        </div>
+                <div class="flex items-center justify-center gap-3">
+                    <span>движи</span>
+                    <span class="text-[#C8E6C9] text-4xl md:text-5xl lg:text-6xl font-semibold">вашият</span>
+                    <span>бизнес</span>
+                </div>
+            </div>
+
+        <p class="text-white/80 font-light md:text-lg lg:text-xl max-w-2xl">
+            Хладилен транспорт за храни, лекарства и мостри по европейските маршрути
+        </p>
+
+        <a href="{{ '/kontakti/' | url }}" class="inline-flex items-center justify-center rounded-full bg-white text-[#25425E] px-6 py-2 text-sm md:text-base font-semibold shadow-md hover:shadow-lg transition-all duration-200">
+            Обади ни се
+        </a>
     </div>
 </section>
 

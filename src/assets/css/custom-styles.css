@@ -7,6 +7,13 @@ body {
     overflow-x: hidden;
 }
 
+.text-shadow {
+    text-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+}
+
+/* Optional: Add a subtle background pattern */
+body::before {
+
 /* Background removed - white background */
 body {
     background-color: #ffffff;
