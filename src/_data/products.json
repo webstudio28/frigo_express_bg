@@ -1,253 +1,146 @@
 [
   {
-    "title": "Растителен силиций капки 30 мл",
-    "meta_title": "bio-vel-rastitelen-silitsiy",
-    "short_description": "Капки с растителен силиций за подкрепа на организма.",
-    "long_description": "Растителен Силиций е добавка, която допринася за здравето на костите, косата, кожата и ноктите.",
-    "images": ["/assets/images/products/sicily-plant34.png"],
-    "package": "30 мл",
-    "sustavki": [
-      "Водно-етанолов екстракт 1:3/40% етанол/ на Полски хвощ (Equisetum arvense) 12 мг",
-      "Коприва-лист (Urtica dioica) 12 мг"
+    "title": "Mercedes-Benz Sprinter L2H2",
+    "meta_title": "mercedes-benz-sprinter-l2h2",
+    "short_description": "Средноголям хладилен ван за градски и регионален дистрибуционен транспорт.",
+    "long_description": "Mercedes-Benz Sprinter L2H2 е универсален хладилен ван, оборудван с двузонов хладилен агрегат и усилена изолация. Подходящ е за доставки из цялата страна с постоянен температурен контрол, дори при чести отваряния на вратите.",
+    "images": [
+      "/assets/images/projects/mercedes.jpg",
+      "/assets/images/projects/mercedes-s.jpg"
     ],
-    "benefits": [
-      {
-        "benefit_name": "Артерии",
-        "benefit_icon": "/assets/images/products/icons/vessels.png"
-      },
-      {
-        "benefit_name": "Коса",
-        "benefit_icon": "/assets/images/products/icons/hair.png"
-      },
-      {
-        "benefit_name": "Кожа",
-        "benefit_icon": "/assets/images/products/icons/skin.png"
-      },
-      {
-        "benefit_name": "Нокти",
-        "benefit_icon": "/assets/images/products/icons/nails.png"
-      }
+    "temperature_range": "-25°C до +5°C",
+    "capacity": "12 м³ / до 6 европалета",
+    "payload": "1.2 t",
+    "stats": [
+      {"label": "Температурен диапазон", "value": "-25°C до +5°C"},
+      {"label": "Обем на каросерията", "value": "12 м³ / до 6 европалета"},
+      {"label": "Полезен товар", "value": "1.2 t"}
     ],
-    "pharmacies": [
-      {
-        "name": "Аптека Фрамар",
-        "logo": "/assets/images/pharmacies/default-pharmacy.png",
-        "link": "https://apteka.framar.bg/30091564/био-вел-растителен-силициев-капки-30-мл"
-      }
+    "features": [
+      "Двузонов температурен контрол с автоматични отчети",
+      "Изолация клас FRC за дълбоко замразени товари",
+      "Хладилен агрегат Thermo King T-1200R",
+      "Хигиенична алуминиева настилка с лесно почистване"
     ],
-    "used_for": "Полският хвощ и копривата са натурални източници на силиций и желязо. Допринася нормалното състояние на артериите, косата, кожата и ноктите.",
-    "how_to_use": "20 капки веднъж дневно в чаша вода.",
-    "dosage": "20 капки веднъж дневно.",
-    "contraindications": "Да не се превишава препоръчаната дневна доза. Не използвайте при индивидуална непоносимост, бременност, кърмене и малки деца.",
-    "storage": "На сухо и защитено от светлина място, при температура под 25°С. Да се съхранява на място, недостъпно за деца!"
+    "monitoring": [
+      "24/7 GPS и температурно проследяване през клиентски портал",
+      "Автоматични PDF отчети за температурни профили",
+      "Аларми при отклонения извън зададения диапазон"
+    ],
+    "ideal_loads": [
+      "Свежи и замразени храни",
+      "Млечни продукти",
+      "Фармацевтични доставки",
+      "Медицински консумативи"
+    ],
+    "availability": "Денонощна готовност и екип за експресни курсове"
   },
   {
-    "title": "Цинк капки 10 мл",
-    "meta_title": "zn-tsink",
-    "short_description": "Капки с цинков глюконат за поддържане на здравето.",
-    "long_description": "Цинков Глюконат концентрат. Допринася за поддържане на нормалното състояние на имунната и нервна система, на косата, кожата и ноктите.",
-    "images": ["/assets/images/products/cink1.png"],
-    "package": "10 мл",
-    "sustavki": [
-      "Разтвор в пречистена вода на цинков глюконат."
+    "title": "Iveco Daily Maxi Box",
+    "meta_title": "iveco-daily-maxi-box",
+    "short_description": "Висококапацитетен хладилен бус за комбинирани товари и по-дълги релации.",
+    "long_description": "Iveco Daily Maxi Box комбинира голям обем и надежден хладилен агрегат, подходящ за разпределителни курсове в страната и съседни държави. Осигурява стабилна температура и възможност за бързо прегрупиране на палетите.",
+    "images": [
+      "/assets/images/projects/bmw.jpg",
+      "/assets/images/projects/audi.jpg"
     ],
-    "benefits": [
-      {
-        "benefit_name": "Имунитет",
-        "benefit_icon": "/assets/images/products/icons/immune-system.png"
-      },
-      {
-        "benefit_name": "Коса",
-        "benefit_icon": "/assets/images/products/icons/hair.png"
-      },
-      {
-        "benefit_name": "Кожа",
-        "benefit_icon": "/assets/images/products/icons/skin.png"
-      },
-      {
-        "benefit_name": "Нокти",
-        "benefit_icon": "/assets/images/products/icons/nails.png"
-      }
+    "temperature_range": "-20°C до +6°C",
+    "capacity": "19 м³ / 8 европалета",
+    "payload": "1.6 t",
+    "stats": [
+      {"label": "Температурен диапазон", "value": "-20°C до +6°C"},
+      {"label": "Обем", "value": "19 м³ / 8 европалета"},
+      {"label": "Полезен товар", "value": "1.6 t"}
     ],
-    "pharmacies": [
-      {
-        "name": "Аптека Фрамар",
-        "logo": "/assets/images/pharmacies/default-pharmacy.png",
-        "link": "https://apteka.framar.bg/30091562/био-вел‑цинк‑капки‑10‑мл"
-      }
+    "features": [
+      "Вградени релси за обезопасяване на товара",
+      "Рампа за лесно палетно зареждане",
+      "Електрически плъг-ин режим за док товарене",
+      "Регистрирани HACCP и GDP процеси"
     ],
-    "used_for": "Поддържане на имунната и нервна система, косата, кожата и ноктите.",
-    "how_to_use": "От 6 до 10 капки дневно в чаша вода.",
-    "dosage": "10 капки",
-    "contraindications": "Да не се превишава препоръчаната дневна доза. Не използвайте при индивидуална непоносимост, бременност, кърмене и малки деца.",
-    "storage": "На сухо и защитено от светлина място, при температура под 18°С. Да се съхранява на място, недостъпно за деца!",
-    "production": "Произведено за: БИО ВЕЛ ООД, България"
+    "monitoring": [
+      "Двустранна комуникация с шофьора през бордов терминал",
+      "История на температурните данни за 12 месеца",
+      "Мобилни известия при отворени врати"
+    ],
+    "ideal_loads": [
+      "Замразени полуфабрикати",
+      "Рибни продукти",
+      "Фина сладкарска продукция",
+      "Чувствителни хранителни добавки"
+    ],
+    "availability": "Планирани линии и договорени прозорци за доставки"
   },
   {
-    "title": "Мед капки 10 мл",
-    "meta_title": "cu-med-copper-honey",
-    "short_description": "Разтвор в пречистена вода на меден глюконат.",
-    "long_description": "Мед капки са жизненоважен източник на мед, необходим за здравето на костите, съединителната тъкан и нервната система. Медта допринася за метаболизма на желязо и защитата на нервните влакна. Участва в производството на миелин, което подпомага неврологичната функция. Колагенът и еластинът, влияещи върху здравето и еластичността на кожата, също се облагодетелстват от мед. Приемът на мед може да предотврати деминерализация на костите и да поддържа нормална функция на сърцето и мозъка. Хората, които консумират големи количества цинк, желязо или витамин С, може да имат нужда от допълнителен прием на мед.",
-    "images": ["/assets/images/products/med1.png", "/assets/images/products/cu_med_2.jpg"],
-    "package": "10 мл",
-    "sustavki": ["Разтвор в пречистена вода на меден глюконат."],
-    "benefits": [
-      {
-        "benefit_name": "Здраве на нервите",
-        "benefit_icon": "/assets/images/products/icons/nerve-system.png"
-      },
-      {
-        "benefit_name": "Образуване на колаген",
-        "benefit_icon": "/assets/images/products/icons/colagen.png"
-      },
-      {
-        "benefit_name": "Поддържане на съединителната тъкан",
-        "benefit_icon": "/assets/images/products/icons/dna.png"
-      }
+    "title": "Mercedes Atego 18T Frigo",
+    "meta_title": "mercedes-atego-18t-frigo",
+    "short_description": "Тежкотоварен хладилен камион за национална и международна дистрибуция.",
+    "long_description": "Mercedes Atego 18T Frigo е оборудван с мощен агрегат Carrier Supra и дебела изолация за превоз на големи количества чувствителни товари. Подходящ за фармацевтични и хранителни пратки с многостопни маршрути.",
+    "images": [
+      "/assets/images/projects/bentley.jpg",
+      "/assets/images/projects/porche.jpg"
     ],
-    "pharmacies": [
-      {
-        "name": "Аптека Фрамар",
-        "logo": "/assets/images/pharmacies/default-pharmacy.png",
-        "link": "https://apteka.framar.bg/30091563/био‑вел‑мед‑капки‑10‑мл"
-      },
-      {
-        "name": "Аптека Holismedi",
-        "logo": "/assets/images/pharmacies/holismedi.png",
-        "link": "https://holismedi.com/produkt/medkapki/"
-      }
+    "temperature_range": "-30°C до +4°C",
+    "capacity": "45 м³ / 18 европалета",
+    "payload": "6.5 t",
+    "stats": [
+      {"label": "Температурен диапазон", "value": "-30°C до +4°C"},
+      {"label": "Обем", "value": "45 м³ / 18 европалета"},
+      {"label": "Полезен товар", "value": "6.5 t"}
     ],
-    "used_for": "Поддържане на съединителната тъкан, кости, сърце и нерви.",
-    "how_to_use": "От 5 до 10 капки дневно в чаша вода.",
-    "storage": "На сухо и защитено от светлина място, при температура под 18°C.",
-    "contraindications": "Да не се превишава препоръчаната дневна доза. Не използвайте при индивидуална непоносимост, бременност, кърмене и малки деца."
+    "features": [
+      "Мултитемпературна конфигурация с две независими зони",
+      "Вградени термографи с печат на място",
+      "Хидравлична задна платформа 1500 kg",
+      "Укрепващи алуминиеви релси по цялата дължина"
+    ],
+    "monitoring": [
+      "Сертифициран GDP температурен мониторинг",
+      "Онлайн достъп до маршрути и времеви прозорци",
+      "360° камери за сваляне на видео логове"
+    ],
+    "ideal_loads": [
+      "Фармацевтични пратки",
+      "Ваксини и биопродукти",
+      "Замразено месо и риба",
+      "Млечни продукти в големи обеми"
+    ],
+    "availability": "Посветени екипи и температурно валидирани маршрути"
   },
   {
-    "title": "Паракоктейл 100 мл",
-    "meta_title": "bio-vel-parakokteyl",
-    "short_description": "Микс от студено пресовани натурални масла.",
-    "long_description": "Паракоктейл съчетава синчено масло, тиквено масло и масло от семена на невен. Има мощно антибактериално, антигъбично и антипаразитно действие. Подпомага естествената детоксикация на организма и подкрепя имунната система. Подходящ за нормалното протичане на метаболизма и защита на клетките от оксидативен стрес.",
-    "images": ["/assets/images/products/parakokteil.png", "/assets/images/products/parakokteyl_2.jpg"],
-    "package": "100 мл",
-    "sustavki": [
-      "Синапено масло (медицински) - 45%",
-      "Тиквено масло",
-      "Масло от семена на Невен"
+    "title": "City Cooler N1",
+    "meta_title": "city-cooler-n1",
+    "short_description": "Компактен изотермичен ван за доставки в централни градски зони и труднодостъпни локации.",
+    "long_description": "City Cooler N1 е маневрен и ефективен за последна миля, с възможност за чести спирания и бързо зареждане. Поддържа стабилна температура при кратки курсове и обслужва ресторанти, болници и малки магазини.",
+    "images": [
+      "/assets/images/projects/audi.jpg",
+      "/assets/images/projects/mercedes.jpg"
     ],
-    "benefits": [
-      {
-        "benefit_name": "Имунна система",
-        "benefit_icon": "/assets/images/products/icons/immune-system.png"
-      },
-      {
-        "benefit_name": "Метаболизъм",
-        "benefit_icon": "/assets/images/products/icons/metabolism.png"
-      }
+    "temperature_range": "-5°C до +8°C",
+    "capacity": "5 м³ / 2 европалета",
+    "payload": "750 kg",
+    "stats": [
+      {"label": "Температурен диапазон", "value": "-5°C до +8°C"},
+      {"label": "Обем", "value": "5 м³ / 2 европалета"},
+      {"label": "Полезен товар", "value": "750 kg"}
     ],
-    "pharmacies": [
-      {
-        "name": "Аптека Фрамар",
-        "logo": "/assets/images/pharmacies/default-pharmacy.png",
-        "link": "https://apteka.framar.bg/30116604/био‑вел‑паракоктейл‑100‑мл"
-      },
-      {
-        "name": "Аптека Holismedi",
-        "logo": "/assets/images/pharmacies/holismedi.png",
-        "link": "https://holismedi.com/produkt/parakoktel/"
-      },
-      {
-        "name": "Аптека Drugstore.bg",
-        "logo": "/assets/images/pharmacies/drugstore.png",
-        "link": "https://drugstore.bg/био‑вел‑паракоктейл‑100‑мл‑bio‑vel‑paracoctail‑56402"
-      }
+    "features": [
+      "Тих електрически агрегат за нощни доставки",
+      "Изолация клас IR за свежи продукти",
+      "Нисък праг за ръчно товарене",
+      "Компактен радиус на завой под 5.5 m"
     ],
-    "used_for": "Поддържане на имунната система и естествена детоксикация.",
-    "how_to_use": "1 ч. л. (5 мл.) 2 пъти/ден на гладно.",
-    "storage": "Съхранявайте на сухо място без пряка слънчева светлина, при температура до +18°C.",
-    "contraindications": "Индивидуална непоносимост към съставките. Да не се използва като заместител на разнообразното хранене."
-  },
-  {
-    "title": "Масло от карамфил 100 мл",
-    "meta_title": "bio-vel-maslo-ot-karamfila-100-ml",
-    "short_description": "Студено пресован маслен извлек от подправката.",
-    "long_description": "БИО ВЕЛ Масло от карамфил е хранителна добавка съдържаща студено пресован маслен извлек от подправката. 20% етерично масло в базово масло от кайсиево. Подпомага нормалното функциониране на стомашно-чревния тракт, укрепва имунната система, тонизира при умора и сънливост.",
-    "images": ["/assets/images/products/carnation3.png", "/assets/images/products/carnation4.jpg"],
-    "package": "100 мл",
-    "sustavki": [
-      "Кайсиево масло - 4,97 мл",
-      "Карамфилово масло - 0,030 мл"
+    "monitoring": [
+      "Bluetooth логери за температурни отчети",
+      "Автоматично изпращане на данни към диспечер",
+      "Опция за електрически режим при док зареждане"
     ],
-    "benefits": [
-      {
-        "benefit_name": "Храносмилателна система",
-        "benefit_icon": "/assets/images/products/icons/stomach.png"
-      },
-      {
-        "benefit_name": "Имунна система",
-        "benefit_icon": "/assets/images/products/icons/immune-system.png"
-      }
+    "ideal_loads": [
+      "Пресни плодове и зеленчуци",
+      "Готови за консумация блюда",
+      "Пекарни и сладкарници",
+      "Спешни медицински доставки"
     ],
-    "pharmacies": [
-      {
-        "name": "Аптека Фрамар",
-        "logo": "/assets/images/pharmacies/default-pharmacy.png",
-        "link": "https://apteka.framar.bg/30116603/био‑вел‑масло‑от‑карамфил‑100‑мл"
-      },
-      {
-        "name": "Аптека Drugstore.bg",
-        "logo": "/assets/images/pharmacies/drugstore.png",
-        "link": "https://drugstore.bg/био‑вел‑масло‑от‑карамфил‑100‑мл‑bio‑vel‑clove‑oil‑56401"
-      }
-    ],
-    "used_for": "Подпомага храносмилането и укрепва имунната система.",
-    "how_to_use": "2 пъти по 1 чаена лъжица на гладно.",
-    "storage": "Съхранявайте на сухо място без пряка слънчева светлина, при температура до +18°C. След отваряне съхранявайте на сухо и прохладно място.",
-    "contraindications": "Не се препоръчва за бременни и при индивидуална непоносимост."
-  },
-  {
-    "title": "Бял трън масло",
-    "meta_title": "bial-tran-maslo",
-    "short_description": "100% натурално масло от Бял Трън без добавени консерванти.",
-    "long_description": "Маслото от Бял Трън (Silybum Marianum) е натурално студено пресовано масло, извлечено от плодосемките на Бял Трън. Благодарение на богатото съдържание на витамини A, D, F и минерали, като мед, цинк, селен, йод и бор, продуктът подкрепя нормалната функция на черния дроб и имунната система. Освен това, маслото индуцира детоксикация на организма и помага за прочистването на жлъчката и кръвоносните съдове. Особено се препоръчва за хора с диабет тип 2 с цироза, тъй като намалява инсулиновата резистентност и ограничава растежа на туморните клетки при рак. Повишава съпротивителната сила срещу инфекции след хирургически операции. Използването на масло от Бял Трън може да намали страничните ефекти на лекарствата и е подходящо за ежедневна употреба. Този продукт не е лекарствено средство и не трябва да бъде използван като заместител на разнообразното хранене.",
-    "images": ["/assets/images/products/bql-trun1.png", "/assets/images/products/bial_tran_2.jpg", "/assets/images/products/bql-trun1.png"],
-    "package": "250 ml",
-    "sustavki": [
-      "Масло от бял трън"
-    ],
-    "benefits": [
-      {
-        "benefit_name": "Имунна система",
-        "benefit_icon": "/assets/images/products/icons/immune-system.png"
-      },
-      {
-        "benefit_name": "Кръвоносни съдове",
-        "benefit_icon": "/assets/images/products/icons/vessels.png"
-      },
-      {
-        "benefit_name": "Храносмилане",
-        "benefit_icon": "/assets/images/products/icons/stomach.png"
-      }
-    ],
-    "pharmacies": [
-      {
-        "name": "аптека Фрамар",
-        "logo": "/assets/images/pharmacies/default-pharmacy.png",
-        "link": "https://apteka.framar.bg/30091564/био-вел-раstitелен-силиций-капки-30-мл"
-      },
-      {
-        "name": "аптека Holismedi",
-        "logo": "/assets/images/pharmacies/holismedi.png",
-        "link": "https://holismedi.com/produkt/bialtrunbiovel/"
-      },
-      {
-        "name": "Drugstore.bg",
-        "logo": "/assets/images/pharmacies/drugstore.png",
-        "link": "https://drugstore.bg/био-вел-масло-от-бял-трън-250-мл-bio-vel-silybum-marianum-oil-56428"
-      }
-    ],
-    "used_for": "При симптоми на чернодробни проблеми и за укрепване на организма.",
-    "how_to_use": "20 капки веднъж дневно в чаша вода.",
-    "contraindications": "Не използвайте при индивидуална непоносимост и за бременни и кърмачки.",
-    "storage": "Съхранявайте на сухо място без пряка слънчева светлина, при температура до +18°C. Да се съхранява на място, недостъпно за малки деца!"
+    "availability": "Гъвкави слотове и обслужване в централни градски зони"
   }
 ]

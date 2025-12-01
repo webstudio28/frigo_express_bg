@@ -11,7 +11,7 @@ eleventyComputed:
 ---
 
 <!-- Hero Section with Image Carousel -->
-<section class="relative pb-18 pt-6 md:pt-10 bg-primary-sand/30">
+<section class="relative pb-18 pt-6 md:pt-10 bg-white">
 	<div class="max-w-7xl w-full mx-auto px-4">
 		<div class="flex flex-col gap-2 md:gap-4">
 			<!-- Title -->
@@ -70,7 +70,7 @@ eleventyComputed:
 
 <!-- Описание Section -->
 {% if service.longDescription %}
-<section class="py-12 bg-primary-sand/30">
+<section class="py-12 bg-white">
 	<div class="max-w-7xl w-full mx-auto px-4">
 		<h2 class="text-2xl md:text-3xl font-bold text-primary-evergreen mb-6">Описание</h2>
 		<div class="bg-white/60 rounded-2xl p-6 md:p-8">
@@ -92,7 +92,7 @@ eleventyComputed:
 		<h2 class="text-2xl md:text-3xl font-bold text-primary-evergreen mb-8">Ползи</h2>
 		<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 			{% for benefit in service.benefits %}
-				<div class="bg-primary-sand/30 rounded-2xl p-6 flex items-start gap-4">
+				<div class="bg-white rounded-2xl p-6 flex items-start gap-4">
 					<svg class="w-6 h-6 text-primary-evergreen flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 					</svg>
@@ -106,7 +106,7 @@ eleventyComputed:
 
 <!-- Процес Section -->
 {% if service.howItWorks and service.howItWorks.length > 0 %}
-<section class="py-12 bg-primary-sand/30">
+<section class="py-12 bg-white">
 	<div class="max-w-7xl w-full mx-auto px-4">
 		<h2 class="text-2xl md:text-3xl font-bold text-primary-evergreen mb-8">Процес</h2>
 		<div class="space-y-6">
@@ -173,8 +173,9 @@ eleventyComputed:
                                         <a href="viber://chat?number=%2B359885415300" class="text-primary-evergreen flex items-center justify-center gap-2 btn-primary w-full text-center rounded-3xl" target="_blank" rel="noopener">
                                             <img src="{{ '/assets/images/booking.png' | url }}" alt="Clock" class="w-6 h-6 object-contain "> Запази час</a>
 
-                                        <a href="{{ '/produkti/' | url }}" class="flex items-center justify-center gap-2 btn-secondary hover:scale-105 transition-all duration-300 w-full text-center rounded-3xl  !hover:text-accent-evergreen">
-                                            <img src="{{ '/assets/images/products.png' | url }}" alt="Clock" class=" w-6 h-6 object-contain ">Продукти</a>
+                                        <a href="{{ '/transport/' | url }}" class="flex items-center justify-center gap-2 btn-secondary hover:scale-105 transition-all duration-300 w-full text-center rounded-3xl  !hover:text-accent-evergreen">
+                                            <img src="{{ '/assets/images/products.png' | url }}" alt="Fleet" class=" w-6 h-6 object-contain "> Автопарк
+                                        </a>
                                     </div>
 
                                 </div>

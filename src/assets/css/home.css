@@ -75,9 +75,9 @@
     border-radius: 12px;
 }
 
-/* Hero section enhancements */
+/* Hero section enhancements - background removed */
 .hero-gradient {
-    background: linear-gradient(135deg, #EAE5E1 0%, #CFC5B8 50%, #3F4D59 100%);
+    background: transparent;
 }
 
 /* Floating animation for decorative elements */
