@@ -48,52 +48,97 @@ description: ВЕГА ТЕСТ - компютърна диагностика з�
         <div class="w-full text-left z-[100]">
 
             <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-blue mb-4">
-                Защо да изберете Frigo Express BG
+                <div class="flex items-center gap-3">
+                    <span>Защо да изберете Frigo Express BG</span>
+                    <img src="{{ '/assets/images/trust.png' | url }}" alt="Trust icon" class="h-8 w-auto md:h-8 lg:h-10">
+                </div>
             </h2>
-            <p class="w-full text-medium md:text-lg	 text-primary-deepsea max-w-5xl leading-relaxed">
-Работим из цяла Европа и осигуряваме надежден хладилен транспорт за храни, лекарства и мостри. Постоянна температура, прецизна логистика и пълна сигурност за вашата пратка — от началната точка до България и обратно.
-            </p>
         </div>
 
-        <div class="approach-container grid lg:grid-cols-2 gap-12 items-center">
+        <div class="approach-container grid lg:grid-cols-2 items-stretch gap-12">
 
             <!-- Left Side: Image -->
             <div id="approach-media" class="order-1 sm:order-1 relative">
-                <div class="rounded-2xl overflow-hidden shadow-xl">
-                    <img src="{{ '/assets/images/kabinet.webp' | url }}" alt="При мен в БиоВел" class=" border-primary-dune rounded-2xl w-full object-cover">
+                <div class="rounded-2xl overflow-hidden shadow-xl relative h-full">
+                    <img src="{{ '/assets/images/why-choose.jpg' | url }}" alt="При мен в БиоВел" class=" border-primary-dune rounded-2xl w-full h-full object-cover">
+                    
+                    <!-- Statistics Cards -->
+                    <div class="absolute left-0 top-0 bottom-0 md:bottom-0 md:top-auto md:left-0 md:right-0 flex flex-col md:flex-row gap-1 md:gap-4 p-1.5 md:p-4 h-full md:h-auto">
+                        {% for stat in statistics %}
+                        <div class="bg-white/70 backdrop-blur-sm rounded-lg md:rounded-xl shadow-lg p-1.5 md:p-2 flex-1 flex flex-col items-center justify-center text-center max-w-[150px]">
+                            <div class="text-sm md:text-lg lg:text-xl font-bold text-primary-blue mb-0 md:mb-1 leading-tight">{{ stat.number }}</div>
+                            <div class="text-[8px] md:text-[10px] lg:text-xs text-primary-dark-gray leading-tight">{{ stat.description }}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
 
-            <!-- Right Side: Features -->
+            <!-- Right Side: Text Content and Features -->
             <div class="order-2 sm:order-2 flex flex-col gap-6">
-                <!-- Feature 1 -->
-                <div class="bg-white p-6 rounded-2xl shadow-lg flex items-center gap-4">
-                    <img src="{{ '/assets/images/practice.png' | url }}" alt="При мен" class="w-16 h-16 mt-1">
-                    <div>
-                        <h3 class="text-md font-bold text-[#25425E] mb-2">При мен</h3>
-                        <p class="text-primary-dark-gray text-sm">Всичко е подготвено за вашия комфорт още от първата минута.</p>
-                    </div>
+                <!-- Text Content -->
+                <div class="flex flex-col gap-4 md:gap-6">
+                    <p class="text-medium md:text-lg text-primary-deepsea leading-relaxed">
+                        Ако търсите сигурността на контролирана температура, точност до минута и гарантирано качество при доставката, вие сте на правилното място.
+                    </p>
+                    <p class="text-medium md:text-lg text-primary-deepsea leading-relaxed">
+                        Ние предлагаме премиум хладилен транспорт от България до всяка точка в Европа и обратно – с модерни, надеждни и сертифицирани хладилни бусове, които поддържат идеалните условия за вашите продукти през целия път.
+                    </p>
                 </div>
-                <!-- Feature 2 -->
-                <div class="bg-white p-6 rounded-2xl shadow-lg flex items-center gap-4">
-                    <img src="{{ '/assets/images/care.png' | url }}" alt="Отношение и внимание" class="w-16 h-16 mt-1">
-                    <div>
-                        <h3 class="text-md font-bold text-[#25425E] mb-2">Отношение и внимание</h3>
-                        <p class="text-primary-dark-gray text-sm">Внимателно изслушвам нуждите и въпросите ви. Подходът ми е индивидуален, за да получите грижа, която наистина е за вас.</p>
-                    </div>
-                </div>
-                <!-- Feature 3 -->
-                <div class="bg-white p-6 rounded-2xl shadow-lg flex items-center gap-4">
-                    <img src="{{ '/assets/images/lab-machine.png' | url }}" alt="Професионална техника за диагностика" class="w-12 h-12 mt-1">
-                    <div>
-                        <h3 class="text-md font-bold text-[#25425E] mb-2">Професионална техника за диагностика</h3>
-                        <p class="text-primary-dark-gray text-sm">Използвам точни и съвременни методи за оценка на здравето. Всичко е безопасно и прецизно, за да получите ясна картина на организма си.</p>
-                    </div>
-                </div>
-
             </div>
         </div>
 
+    </div>
+</section>
+
+<!-- Specialization Section -->
+<section class="py-12 bg-white">
+    <div class="max-w-7xl w-full mx-auto px-4 flex flex-col justify-center items-center gap-8 md:gap-12">
+        <!-- Header -->
+        <div class="w-full text-left">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-blue mb-4">
+                Нашата специализация
+            </h2>
+            <p class="text-medium md:text-lg text-primary-deepsea max-w-5xl leading-relaxed">
+                Превозваме свежи, замразени и чувствителни стоки – от хранителни продукти и фармацевтични товари до деликатни материали.
+            </p>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
+            <!-- Feature 1 -->
+            <div class="bg-white rounded-xl shadow-md p-4 flex flex-col items-start gap-3">
+                <img src="{{ '/assets/images/temperature-feature.png' | url }}" alt="Температурен контрол" class="h-8 flex-shrink-0">
+                <div>
+                    <h3 class="text-md font-bold text-secondary-blue mb-1">Постоянен температурен контрол</h3>
+                    <p class="text-primary-dark-gray text-sm">Гарантирана стабилност от -20°C до +20°C</p>
+                </div>
+            </div>
+            <!-- Feature 2 -->
+            <div class="bg-white rounded-xl shadow-md p-4 flex flex-col items-start gap-3">
+                <img src="{{ '/assets/images/earth.png' | url }}" alt="Международни курсове" class="h-8 flex-shrink-0">
+                <div>
+                    <h3 class="text-md font-bold text-secondary-blue mb-1">Международни курсове всеки ден</h3>
+                    <p class="text-primary-dark-gray text-sm">Регулярни рейсове по цяла Европа</p>
+                </div>
+            </div>
+            <!-- Feature 3 -->
+            <div class="bg-white rounded-xl shadow-md p-4 flex flex-col items-start gap-3">
+                <img src="{{ '/assets/images/deadline.png' | url }}" alt="Бърза реакция" class="h-8 flex-shrink-0">
+                <div>
+                    <h3 class="text-md font-bold text-secondary-blue mb-1">Бърза реакция и индивидуални решения</h3>
+                    <p class="text-primary-dark-gray text-sm">Адаптиране към вашите специфични нужди</p>
+                </div>
+            </div>
+            <!-- Feature 4 -->
+            <div class="bg-white rounded-xl shadow-md p-4 flex flex-col items-start gap-3">
+                <img src="{{ '/assets/images/track.png' | url }}" alt="Проследяване" class="h-8 flex-shrink-0">
+                <div>
+                    <h3 class="text-md font-bold text-secondary-blue mb-1">Проследяване в реално време</h3>
+                    <p class="text-primary-dark-gray text-sm">Винаги знаете къде е вашият товар</p>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 

@@ -26,6 +26,9 @@ module.exports = {
     'text-primary-blue',
     'bg-primary-blue',
     'border-primary-blue',
+    'text-secondary-blue',
+    'bg-secondary-blue',
+    'border-secondary-blue',
     'text-accent-green',
     'bg-accent-green',
     'border-accent-green'
@@ -55,6 +58,7 @@ module.exports = {
         'primary-cream': '#F5F5DC',
         'primary-olive': '#6B7C65',
         'primary-blue': '#25425E',      // Primary Blue
+        'secondary-blue': '#4A6B8A',    // Secondary Blue (lighter)
         'accent-green': '#C8E6C9'       // Accent Green
       },
       maxWidth: {
