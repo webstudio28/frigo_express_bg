@@ -18,7 +18,7 @@ description: ВЕГА ТЕСТ - компютърна диагностика з�
     </div>
 
     <div class="relative z-10 max-w-4xl w-full  flex flex-col items-center mb-[20vh] gap-6">
-        <div class="text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight space-y-4">
+        <div class="text-3xl md:text-4xl lg:text-6xl font-semibold leading-tight space-y-4">
             <div class="flex flex-col items-center gap-2 tracking-wide">
                 <div class="flex items-center justify-center gap-3">
                     <span>Нашият бизнес</span>
@@ -47,23 +47,30 @@ description: ВЕГА ТЕСТ - компютърна диагностика з�
         <!-- Header -->
         <div class="w-full text-left z-[100]">
 
-            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-evergreen mb-4">
-                Подход
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-blue mb-4">
+                Защо да изберете Frigo Express BG
             </h2>
             <p class="w-full text-medium md:text-lg	 text-primary-deepsea max-w-5xl leading-relaxed">
-Ще бъдете посрещнати с внимание още при пристигането. На всяка стъпка – при мен и по време на диагностиката – вниманието и грижата са водещи.
+Работим из цяла Европа и осигуряваме надежден хладилен транспорт за храни, лекарства и мостри. Постоянна температура, прецизна логистика и пълна сигурност за вашата пратка — от началната точка до България и обратно.
             </p>
         </div>
 
         <div class="approach-container grid lg:grid-cols-2 gap-12 items-center">
 
-            <!-- Left Side: Features -->
-            <div class="order-2 sm:order-1 flex flex-col gap-6">
+            <!-- Left Side: Image -->
+            <div id="approach-media" class="order-1 sm:order-1 relative">
+                <div class="rounded-2xl overflow-hidden shadow-xl">
+                    <img src="{{ '/assets/images/kabinet.webp' | url }}" alt="При мен в БиоВел" class=" border-primary-dune rounded-2xl w-full object-cover">
+                </div>
+            </div>
+
+            <!-- Right Side: Features -->
+            <div class="order-2 sm:order-2 flex flex-col gap-6">
                 <!-- Feature 1 -->
                 <div class="bg-white p-6 rounded-2xl shadow-lg flex items-center gap-4">
                     <img src="{{ '/assets/images/practice.png' | url }}" alt="При мен" class="w-16 h-16 mt-1">
                     <div>
-                        <h3 class="text-md font-bold text-primary-deepsea mb-2">При мен</h3>
+                        <h3 class="text-md font-bold text-[#25425E] mb-2">При мен</h3>
                         <p class="text-primary-dark-gray text-sm">Всичко е подготвено за вашия комфорт още от първата минута.</p>
                     </div>
                 </div>
@@ -71,7 +78,7 @@ description: ВЕГА ТЕСТ - компютърна диагностика з�
                 <div class="bg-white p-6 rounded-2xl shadow-lg flex items-center gap-4">
                     <img src="{{ '/assets/images/care.png' | url }}" alt="Отношение и внимание" class="w-16 h-16 mt-1">
                     <div>
-                        <h3 class="text-md font-bold text-primary-deepsea mb-2">Отношение и внимание</h3>
+                        <h3 class="text-md font-bold text-[#25425E] mb-2">Отношение и внимание</h3>
                         <p class="text-primary-dark-gray text-sm">Внимателно изслушвам нуждите и въпросите ви. Подходът ми е индивидуален, за да получите грижа, която наистина е за вас.</p>
                     </div>
                 </div>
@@ -79,21 +86,11 @@ description: ВЕГА ТЕСТ - компютърна диагностика з�
                 <div class="bg-white p-6 rounded-2xl shadow-lg flex items-center gap-4">
                     <img src="{{ '/assets/images/lab-machine.png' | url }}" alt="Професионална техника за диагностика" class="w-12 h-12 mt-1">
                     <div>
-                        <h3 class="text-md font-bold text-primary-deepsea mb-2">Професионална техника за диагностика</h3>
+                        <h3 class="text-md font-bold text-[#25425E] mb-2">Професионална техника за диагностика</h3>
                         <p class="text-primary-dark-gray text-sm">Използвам точни и съвременни методи за оценка на здравето. Всичко е безопасно и прецизно, за да получите ясна картина на организма си.</p>
                     </div>
                 </div>
 
-            </div>
-            <!-- Right Side: Image -->
-            <div id="approach-media" class="order-1 sm:order-2 relative">
-                <div class="decorative-leaves">
-                    <img id="leaf-branch-top" src="{{ '/assets/images/leaves-branch-top.png' | url }}" alt="Подход листа декорация" class="w-40 h-40 absolute top-[-25px] left-[-50px] object-cover">
-                    <img id="leaf-branch-bottom" src="{{ '/assets/images/leaves-branch-bottom.png' | url }}" alt="Подход листа декорация" class="w-40 h-40 absolute bottom-[-25px] right-[-50px] object-cover">
-                </div>
-                <div class="rounded-2xl overflow-hidden shadow-xl">
-                    <img src="{{ '/assets/images/kabinet.webp' | url }}" alt="При мен в БиоВел" class=" border-primary-dune rounded-2xl w-full object-cover">
-                </div>
             </div>
         </div>
 
@@ -111,17 +108,6 @@ description: ВЕГА ТЕСТ - компютърна диагностика з�
         </div>
 
         <div class="about-me-container relative flex flex-col md:flex-row md:items-center gap-8 shadow-md rounded-3xl bg-white p-8 md:p-16 w-full overflow-hidden">
-
-            <div class="about-me-left relative z-10 flex flex-col items-center justify-center text-center rounded-3xl max-h-[300px]">
-
-                <img src="{{ '/assets/images/elena-hristova.png' | url }}" alt="Елена Христова - консултант Vega Test" class=" max-w-[250px] h-auto object-contain">
-                <h4 class="text-lg mt-2 font-bold text-primary-evergreen">Елена Христова</h4>
-
-            </div>
-
-            <div class="relative z-10 flex flex-col items-center justify-center text-center rounded-3xl max-h-[300px]">
-                <img src="{{ '/assets/images/arrow.png' | url }}" alt=" Стрелка към Елена Христова - консултант Vega Test" class="w-[180px] h-auto object-contain rotate-45 md:rotate-[-10deg]">
-            </div>
 
             <!-- Certificates Cards -->
             <div class="relative z-10 grid items-stretch gap-6 md:grid-cols-3 flex-1">
@@ -199,6 +185,17 @@ description: ВЕГА ТЕСТ - компютърна диагностика з�
                         </p>
                     </div>
                 </div>
+            </div>
+
+            <div class="relative z-10 flex flex-col items-center justify-center text-center rounded-3xl max-h-[300px]">
+                <img src="{{ '/assets/images/arrow.png' | url }}" alt=" Стрелка към Елена Христова - консултант Vega Test" class="w-[180px] h-auto object-contain scale-x-[-1] rotate-45 md:scale-x-[-1] md:rotate-[10deg]">
+            </div>
+
+            <div class="about-me-left relative z-10 flex flex-col items-center justify-center text-center rounded-3xl max-h-[300px]">
+
+                <img src="{{ '/assets/images/elena-hristova.png' | url }}" alt="Елена Христова - консултант Vega Test" class=" max-w-[250px] h-auto object-contain">
+                <h4 class="text-lg mt-2 font-bold text-primary-evergreen">Елена Христова</h4>
+
             </div>
 
 </section>

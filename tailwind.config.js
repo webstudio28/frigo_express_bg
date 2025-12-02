@@ -22,7 +22,13 @@ module.exports = {
     'border-primary-sage',
     'border-primary-forest',
     'border-primary-cream',
-    'border-primary-olive'
+    'border-primary-olive',
+    'text-primary-blue',
+    'bg-primary-blue',
+    'border-primary-blue',
+    'text-accent-green',
+    'bg-accent-green',
+    'border-accent-green'
   ],
   theme: {
     extend: {
@@ -47,7 +53,9 @@ module.exports = {
         'primary-mint': '#B8D4C8',
         'primary-forest': '#7A918D',
         'primary-cream': '#F5F5DC',
-        'primary-olive': '#6B7C65'
+        'primary-olive': '#6B7C65',
+        'primary-blue': '#25425E',      // Primary Blue
+        'accent-green': '#C8E6C9'       // Accent Green
       },
       maxWidth: {
         '90': '90%',
