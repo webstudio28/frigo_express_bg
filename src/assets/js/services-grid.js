@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const deltaY = Math.abs(touchEndY - touchStartY);
         
         // Re-enable transition
-        track.style.transition = 'transform 0.5s ease-in-out';
+        track.style.transition = 'transform 0.3s ease-in-out';
         
         // Check if it's a valid horizontal swipe
         if (Math.abs(deltaX) > swipeThreshold && Math.abs(deltaX) > deltaY && deltaY < swipeVerticalThreshold) {
@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Initialize
-    track.style.transition = 'transform 0.5s ease-in-out';
+    track.style.transition = 'transform 0.3s ease-in-out';
     updateCarousel();
 
     // Wait for images
