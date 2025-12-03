@@ -1,143 +1,150 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const roots = document.querySelectorAll('[data-services-carousel]');
-    if (!roots.length) {
-        return;
-    }
+    const carousel = document.querySelector('[data-services-carousel]');
+    if (!carousel) return;
+
+    const track = carousel.querySelector('[data-services-track]');
+    const cards = Array.from(carousel.querySelectorAll('[data-service-card]'));
+    const prevButton = carousel.querySelector('.services-carousel-prev');
+    const nextButton = carousel.querySelector('.services-carousel-next');
+
+    if (!track || !cards.length) return;
+
+    let currentIndex = 0;
+    const gap = 24; // gap-6 = 1.5rem = 24px
 
     function getVisibleCount() {
         const width = window.innerWidth;
-        if (width >= 1024) {
-            return 3;
-        }
-        if (width >= 768) {
-            return 2;
-        }
+        if (width >= 1024) return 3;
+        if (width >= 768) return 2;
         return 1;
     }
 
-    roots.forEach((root) => {
-        const cardsContainer = root.querySelector('[data-services-cards]');
-        if (!cardsContainer) {
-            return;
+    function setCardWidths() {
+        const container = track.parentElement; // overflow-hidden container with padding
+        const visibleCount = getVisibleCount();
+        
+        // Get the actual inner width available for content
+        // Use getBoundingClientRect for accurate measurement
+        const containerRect = container.getBoundingClientRect();
+        const computedStyle = window.getComputedStyle(container);
+        const paddingLeft = parseFloat(computedStyle.paddingLeft) || 0;
+        const paddingRight = parseFloat(computedStyle.paddingRight) || 0;
+        
+        // Available width = container width minus padding
+        const availableWidth = containerRect.width - paddingLeft - paddingRight;
+        
+        // Calculate card width: (available width - gaps between visible cards) / visible count
+        const cardWidth = (availableWidth - (gap * (visibleCount - 1))) / visibleCount;
+        
+        // Ensure card width doesn't exceed available space
+        const finalCardWidth = Math.max(0, Math.floor(cardWidth));
+        
+        // Verify total width doesn't exceed available space
+        const totalCardsWidth = (finalCardWidth * visibleCount) + (gap * (visibleCount - 1));
+        if (totalCardsWidth > availableWidth) {
+            // Adjust if there's a rounding issue
+            const adjustedCardWidth = Math.floor((availableWidth - (gap * (visibleCount - 1))) / visibleCount);
+            cards.forEach(card => {
+                card.style.width = `${adjustedCardWidth}px`;
+                card.style.flexShrink = '0';
+                card.style.maxWidth = `${adjustedCardWidth}px`;
+                card.style.minWidth = `${adjustedCardWidth}px`;
+            });
+        } else {
+            cards.forEach(card => {
+                card.style.width = `${finalCardWidth}px`;
+                card.style.flexShrink = '0';
+                card.style.maxWidth = `${finalCardWidth}px`;
+                card.style.minWidth = `${finalCardWidth}px`;
+            });
         }
+    }
 
-        const cards = Array.from(cardsContainer.querySelectorAll('[data-service-card]'));
-        if (!cards.length) {
-            return;
-        }
+    function getCardStep() {
+        if (cards.length === 0) return 0;
+        const firstCard = cards[0];
+        if (!firstCard) return 0;
+        
+        const cardRect = firstCard.getBoundingClientRect();
+        return cardRect.width + gap;
+    }
 
-        const prevButton = root.querySelector('[data-services-prev]');
-        const nextButton = root.querySelector('[data-services-next]');
+    function getMaxIndex() {
+        const visibleCount = getVisibleCount();
+        return Math.max(0, cards.length - visibleCount);
+    }
 
-        let startIndex = 0;
+    function updateCarousel() {
+        // First set card widths
+        setCardWidths();
+        
+        // Then calculate scroll position
+        requestAnimationFrame(() => {
+            const step = getCardStep();
+            const translateX = -currentIndex * step;
+            
+            track.style.transform = `translateX(${translateX}px)`;
 
-        cards.forEach((card) => {
-            card.classList.add('transition-opacity', 'duration-300', 'ease-in-out');
-        });
-
-        function clampStartIndex(visible) {
-            const maxStart = Math.max(0, cards.length - visible);
-            if (startIndex > maxStart) {
-                startIndex = maxStart;
-            }
-            if (startIndex < 0) {
-                startIndex = 0;
-            }
-
+            // Update button states
+            const maxIndex = getMaxIndex();
+            
             if (prevButton) {
-                prevButton.disabled = startIndex === 0;
-                prevButton.classList.toggle('opacity-40', startIndex === 0);
-                prevButton.classList.toggle('cursor-not-allowed', startIndex === 0);
+                prevButton.disabled = currentIndex === 0;
+                prevButton.classList.toggle('opacity-40', currentIndex === 0);
+                prevButton.classList.toggle('cursor-not-allowed', currentIndex === 0);
             }
 
             if (nextButton) {
-                nextButton.disabled = startIndex === maxStart;
-                nextButton.classList.toggle('opacity-40', startIndex === maxStart);
-                nextButton.classList.toggle('cursor-not-allowed', startIndex === maxStart);
+                nextButton.disabled = currentIndex >= maxIndex;
+                nextButton.classList.toggle('opacity-40', currentIndex >= maxIndex);
+                nextButton.classList.toggle('cursor-not-allowed', currentIndex >= maxIndex);
             }
-        }
-
-        function showCard(card, animate) {
-            if (card._servicesGridHandler) {
-                card.removeEventListener('transitionend', card._servicesGridHandler);
-                card._servicesGridHandler = undefined;
-            }
-
-            const wasHidden = card.classList.contains('hidden');
-            card.classList.remove('hidden');
-            card.classList.remove('pointer-events-none');
-
-            if (!animate || !wasHidden) {
-                card.classList.remove('opacity-0');
-                return;
-            }
-
-            card.classList.add('opacity-0');
-            requestAnimationFrame(() => {
-                card.classList.remove('opacity-0');
-            });
-        }
-
-        function hideCard(card, animate) {
-            if (card.classList.contains('hidden')) {
-                return;
-            }
-
-            if (!animate) {
-                card.classList.add('hidden');
-                card.classList.remove('pointer-events-none');
-                card.classList.add('opacity-0');
-                return;
-            }
-
-            const handler = (event) => {
-                if (event.propertyName !== 'opacity') {
-                    return;
-                }
-                card.classList.add('hidden');
-                card.classList.remove('pointer-events-none');
-                card.removeEventListener('transitionend', handler);
-                card._servicesGridHandler = undefined;
-            };
-
-            card.classList.add('pointer-events-none');
-            card.classList.add('opacity-0');
-            card.addEventListener('transitionend', handler);
-            card._servicesGridHandler = handler;
-        }
-
-        function updateVisibility(animate = true) {
-            const visibleCount = getVisibleCount();
-            clampStartIndex(visibleCount);
-
-            cards.forEach((card, index) => {
-                if (index >= startIndex && index < startIndex + visibleCount) {
-                    showCard(card, animate);
-                } else {
-                    hideCard(card, animate);
-                }
-            });
-        }
-
-        if (prevButton) {
-            prevButton.addEventListener('click', () => {
-                startIndex -= getVisibleCount();
-                updateVisibility();
-            });
-        }
-
-        if (nextButton) {
-            nextButton.addEventListener('click', () => {
-                startIndex += getVisibleCount();
-                updateVisibility();
-            });
-        }
-
-        window.addEventListener('resize', () => {
-            updateVisibility(false);
         });
+    }
 
-        updateVisibility(false);
+    function goToNext() {
+        const maxIndex = getMaxIndex();
+        if (currentIndex < maxIndex) {
+            currentIndex++;
+            updateCarousel();
+        }
+    }
+
+    function goToPrev() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateCarousel();
+        }
+    }
+
+    // Event listeners
+    if (nextButton) {
+        nextButton.addEventListener('click', goToNext);
+    }
+
+    if (prevButton) {
+        prevButton.addEventListener('click', goToPrev);
+    }
+
+    // Handle resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            const maxIndex = getMaxIndex();
+            if (currentIndex > maxIndex) {
+                currentIndex = maxIndex;
+            }
+            updateCarousel();
+        }, 150);
+    });
+
+    // Initialize
+    track.style.transition = 'transform 0.5s ease-in-out';
+    updateCarousel();
+
+    // Wait for images and layout
+    window.addEventListener('load', () => {
+        updateCarousel();
     });
 });
-

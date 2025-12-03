@@ -386,3 +386,8 @@ html {
         display: inline-block;
     }
 }
+
+/* Services Carousel - Horizontal scrolling */
+.services-carousel-track {
+    width: max-content;
+}
