@@ -2,28 +2,6 @@
 
 /* Home page specific styles for Vega Test */
 
-/* 3D Hero Container */
-#hero-3d-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none;
-}
-
-#hero-3d-container canvas {
-    display: block;
-    width: 100% !important;
-    height: 100% !important;
-}
-
-/* Ensure 3D object doesn't interfere with text */
-.hero-content {
-    position: relative;
-    z-index: 10;
-}
 
 .gallery-indicator {
     transition: all 0.3s ease;

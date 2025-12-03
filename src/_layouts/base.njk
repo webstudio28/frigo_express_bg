@@ -30,15 +30,7 @@
         <meta property="og:description" content="{% if metaDescription %}{{ metaDescription }}{% elif description %}{{ description }}{% else %}ВЕГА ТЕСТ - компютърна диагностика за здравословно хранене{% endif %}"/>
         <meta property="og:type" content="website"/>
 
-        <script src="{{ '/assets/js/gsap.min.js' | url }}"></script>
-        <script src="{{ '/assets/js/ScrollTrigger.min.js' | url }}"></script>
-
-        <!-- External Scripts -->
-        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
         <script>
-            if (window.gsap && window.ScrollTrigger) {
-                gsap.registerPlugin(ScrollTrigger);
-            }
 
             // Mobile menu toggle
             document.addEventListener('DOMContentLoaded', function () {
@@ -78,7 +70,6 @@
             });
         </script>
 
-        <script src="{{ '/assets/js/animations.js' | url }}"></script>
 
     </head>
     <body class="text-primary-volcanic font-['Montserrat'] relative">
