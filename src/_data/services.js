@@ -1,5 +1,5 @@
 module.exports = () => {
-	const data = require('./homepageServices.json');
+	const data = require('./servicesContent.json');
 
 	function normalizePath(path) {
 		if (!path) return path;
@@ -62,28 +62,38 @@ module.exports = () => {
 	}
 
 	const services = [];
-	if (data && Array.isArray(data.categories)) {
-		for (const category of data.categories) {
-			if (Array.isArray(category.services)) {
-				for (const svc of category.services) {
-					const rawImages = svc.images || (svc.image ? [svc.image] : []);
-					const normalizedImages = rawImages.map(normalizePath);
-					const primaryImage = normalizePath(svc.image || normalizedImages[0]);
+	if (Array.isArray(data)) {
+		for (const svc of data) {
+			if (!svc) continue;
 
-					services.push({
-						name: svc.name,
-						description: svc.description,
-						longDescription: svc.longDescription || '',
-						price: svc.price || null,
-						image: primaryImage || '',
-						images: normalizedImages, // Use images array or create one from single image
-						time: svc.time || '',
-						howItWorks: svc.howItWorks || [],
-						benefits: svc.benefits || [],
-						slug: ensureUniqueSlug(svc.name)
-					});
-				}
-			}
+			const normalizedIcon = normalizePath(svc.serviceIcon);
+
+			const rawImages = [];
+			if (svc.serviceImage) rawImages.push(svc.serviceImage);
+			if (Array.isArray(svc.images)) rawImages.push(...svc.images);
+
+			const normalizedImages = rawImages.map(normalizePath).filter(Boolean);
+			const primaryImage = normalizedImages[0] || '';
+
+			const baseSlugValue = svc.slug ? baseSlug(svc.slug) : baseSlug(svc.title || svc.name);
+			const uniqueSlug = ensureUniqueSlug(baseSlugValue || svc.title || svc.name);
+
+			services.push({
+				name: svc.title || svc.name,
+				description: svc.shortDescription || svc.description || '',
+				longDescription: svc.longDescription || '',
+				metaTitle: svc.metaTitle || '',
+				metaDescription: svc.metaDescription || '',
+				serviceIcon: normalizedIcon || '',
+				serviceCardColor: svc.serviceCardColor || '#FFFFFF',
+				image: normalizePath(svc.serviceImage) || primaryImage,
+				images: normalizedImages.length > 0 ? normalizedImages : (normalizePath(svc.serviceImage) ? [normalizePath(svc.serviceImage)] : []),
+				price: svc.price || null,
+				time: svc.time || '',
+				howItWorks: svc.howItWorks || [],
+				benefits: svc.benefits || [],
+				slug: uniqueSlug
+			});
 		}
 	}
 	return services;

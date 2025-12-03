@@ -4,9 +4,13 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>
-            {% if title %}{{ title }} | {% endif %}БиоВел Диагностика и хранителни добавки
+            {% if metaTitle %}
+                {{ metaTitle }}
+            {% else %}
+                {% if title %}{{ title }} | {% endif %}БиоВел Диагностика и хранителни добавки
+            {% endif %}
         </title>
-        <meta name="description" content="{% if description %}{{ description }}{% else %}ВЕГА ТЕСТ - компютърна диагностика за здравословно хранене с най-подходящите храни за вашия организъм{% endif %}">
+        <meta name="description" content="{% if metaDescription %}{{ metaDescription }}{% elif description %}{{ description }}{% else %}ВЕГА ТЕСТ - компютърна диагностика за здравословно хранене с най-подходящите храни за вашия организъм{% endif %}">
 
         <!-- Favicon -->
         <link rel="icon" type="image/x-icon" href="{{ '/favicon.ico' | url }}">
@@ -22,8 +26,8 @@
         <link rel="stylesheet" href="{{ '/assets/css/home.css' | url }}">
 
         <!-- Open Graph meta tags -->
-        <meta property="og:title" content="{% if title %}{{ title }}{% else %}БиоВел Диагностика и хранителни добавки{% endif %}"/>
-        <meta property="og:description" content="{% if description %}{{ description }}{% else %}ВЕГА ТЕСТ - компютърна диагностика за здравословно хранене{% endif %}"/>
+        <meta property="og:title" content="{% if metaTitle %}{{ metaTitle }}{% elif title %}{{ title }}{% else %}БиоВел Диагностика и хранителни добавки{% endif %}"/>
+        <meta property="og:description" content="{% if metaDescription %}{{ metaDescription }}{% elif description %}{{ description }}{% else %}ВЕГА ТЕСТ - компютърна диагностика за здравословно хранене{% endif %}"/>
         <meta property="og:type" content="website"/>
 
         <script src="{{ '/assets/js/gsap.min.js' | url }}"></script>

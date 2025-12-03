@@ -7,7 +7,9 @@ pagination:
 permalink: "/uslugi/{{ service.slug }}/"
 eleventyComputed:
   title: "{{ service.name }}"
-  description: "{{ service.description }}"
+  description: "{{ service.metaDescription or service.description }}"
+  metaTitle: "{{ service.metaTitle or service.name }}"
+  metaDescription: "{{ service.metaDescription or service.description }}"
 ---
 
 <!-- Hero Section with Image Carousel -->
