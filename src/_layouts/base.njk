@@ -81,7 +81,13 @@
         <script src="{{ '/assets/js/animations.js' | url }}"></script>
 
     </head>
-    <body class="text-primary-volcanic font-['Montserrat'] bg-white">
+    <body class="text-primary-volcanic font-['Montserrat'] relative">
+        <!-- Background Image -->
+        <div class="fixed top-0 left-0 w-full h-screen z-0" style=" opacity: 0.9;  ">
+            <img src="{{ '/assets/images/body-bg.jpg' | url }}" alt="" class="w-full h-full object-cover">
+        </div>
+
+        <div class="fixed top-0 left-0 w-full h-screen z-0" style=" opacity: 0; background-color: #393E46; "></div>
 
         <!-- Header -->
         <header id="header" class="{% if page.url == '/' %}absolute top-0 left-0 right-0{% else %}relative{% endif %} z-50 flex justify-center px-4 pt-8">
@@ -127,12 +133,12 @@
         </div>
 
         <!-- Main Content -->
-        <main class="{% if page.url == '/' %}pt-0{% else %}pt-6{% endif %}">
+        <main class="{% if page.url == '/' %}pt-0{% else %}pt-6{% endif %} relative z-10 ">
             {{ content | safe }}
         </main>
 
         <!-- Footer -->
-        <footer class="bg-primary-volcanic text-primary-sand mt-8">
+        <footer class="bg-primary-volcanic text-primary-sand mt-8 relative z-10">
             <div class="max-w-7xl mx-auto py-16 px-4">
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                     <div class="col-span-1 md:col-span-2">

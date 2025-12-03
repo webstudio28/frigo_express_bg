@@ -10,7 +10,7 @@ eleventyComputed:
     description: "{{ vehicle.short_description }}"
 ---
 
-<section class="py-6 bg-white">
+<section class="py-6">
     <div class="max-w-7xl w-full mx-auto px-4">
         <div class="mb-6 md:hidden">
             <h1 class="text-2xl text-center font-bold text-[#25425E]">{{ vehicle.title }}</h1>
@@ -76,7 +76,7 @@ eleventyComputed:
 </section>
 
 {% if vehicle.long_description %}
-<section class="py-10 bg-white">
+<section class="py-10">
     <div class="max-w-7xl w-full mx-auto px-4">
         <div class="rounded-3xl bg-white shadow-md border border-[#25425E]/10 p-6 md:p-10">
             <h2 class="text-2xl md:text-3xl font-bold text-[#25425E] mb-4">Описание и предназначение</h2>
@@ -87,7 +87,7 @@ eleventyComputed:
 {% endif %}
 
 {% if vehicle.features and vehicle.features.length > 0 %}
-<section class="py-10 bg-white">
+<section class="py-10">
     <div class="max-w-7xl w-full mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="rounded-3xl bg-[#25425E] text-white p-6 md:p-8 shadow-lg">
@@ -121,7 +121,7 @@ eleventyComputed:
 {% endif %}
 
 {% if vehicle.ideal_loads and vehicle.ideal_loads.length > 0 %}
-<section class="py-10 bg-white">
+<section class="py-10">
     <div class="max-w-7xl w-full mx-auto px-4">
         <div class="rounded-3xl bg-white border border-[#25425E]/10 p-6 md:p-8 shadow-md">
             <h2 class="text-2xl md:text-3xl font-bold text-[#25425E] mb-4">Подходящо за</h2>
@@ -136,7 +136,7 @@ eleventyComputed:
 {% endif %}
 
 {% if relatedProducts and relatedProducts.length > 0 %}
-<section class="py-10 bg-white">
+<section class="py-10">
     <div class="max-w-7xl w-full mx-auto px-4">
         <div class="flex items-center gap-3 mb-6">
             <h2 class="text-2xl md:text-3xl font-bold text-[#25425E]">Други превозни средства</h2>
