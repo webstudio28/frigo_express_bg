@@ -104,7 +104,7 @@ description: ВЕГА ТЕСТ - компютърна диагностика з�
 
 
 <!-- Services Section -->
-<section class="py-12  flex">
+<section class="py-12 flex bg-white/60">
     <div class="max-w-7xl w-full mx-auto px-4 flex flex-col justify-center items-center gap-12 md:gap-14">
         <!-- Header -->
         <div class="w-full text-left z-[100]">
@@ -202,7 +202,7 @@ description: ВЕГА ТЕСТ - компютърна диагностика з�
                                 </div>
                             </h2>
                             <p class="text-medium md:text-lg text-primary-deepsea leading-relaxed">
-                                Автопаркът на Frigo Express BG покрива целия спектър на хладилния транспорт – от компактни градски ванове до тежкотоварни камиони с две температурни зони. Всяко превозно средство е оборудвано с валидирани хладилни агрегати и системи за 24/7 мониторинг.
+                                Сертифицирани хладилни превозни средства с валидирани агрегати и 24/7 температурен мониторинг за доставки из цяла Европа.
                             </p>
                         </div>
 
@@ -310,44 +310,37 @@ description: ВЕГА ТЕСТ - компютърна диагностика з�
                 </section>
 
                 <!-- Faq -->
-                <section class="py-12 ">
+                <section class="py-12 bg-white/60">
                     <div class="max-w-7xl w-full mx-auto px-4 flex flex-col justify-center items-center gap-12 md:gap-14">
                         <!-- Header -->
                         <div class="w-full text-left">
-
-                            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-evergreen mb-4">
+                            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-blue mb-4">
                                 {{ faq.title }}
                             </h2>
                         </div>
 
-                        <div class="faq-container grid md:grid-cols-2 gap-12 w-full items-start">
-                            <div class="faq-left-side flex flex-col justify-center gap-6 order-2 md:order-1">
-                                {% for item in faq.faqs %}
-                                    <details class="group bg-white p-6 rounded-3xl shadow-sm" {% if loop.first %}open{% endif %}>
-                                        <summary class="flex justify-between items-center cursor-pointer font-semibold text-primary-deepsea">
-                                            {{ item.question }}
-                                            <svg class="w-5 h-5 transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                            </svg>
-                                        </summary>
-                                        <div class="mt-4 text-primary-dark-gray">
-                                            {{ item.answer }}
-                                        </div>
-                                    </details>
-                                {% endfor %}
-                            </div>
-
-                            <div class="faq-right-side rounded-3xl overflow-hidden order-1 md:order-2 md:sticky md:top-24">
-                                <img src="{{ '/assets/images/faq.jpg' | url }}" alt="FAQ Image" class=" object-cover w-full h-auto">
-                            </div>
+                        <!-- FAQ Items - Full Width -->
+                        <div class="w-full flex flex-col gap-6">
+                            {% for item in faq.faqs %}
+                                <details class="group bg-white p-6 rounded-3xl shadow-sm" {% if loop.first %}open{% endif %}>
+                                    <summary class="flex justify-between items-center cursor-pointer font-semibold text-primary-deepsea">
+                                        {{ item.question }}
+                                        <svg class="w-5 h-5 transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </summary>
+                                    <div class="mt-4 text-primary-dark-gray">
+                                        {{ item.answer }}
+                                    </div>
+                                </details>
+                            {% endfor %}
                         </div>
-
                     </div>
                 </section>
 
                 <section class="py-12">
                     <div class="max-w-7xl mx-auto px-4">
-                        <div class="relative h-[500px] md:h-[400px] w-full flex flex-col md:flex-row justify-evenly items-center gap-12 p-8 overflow-hidden rounded-3xl">
+                        <div class="relative h-[600px] md:h-[400px] w-full flex flex-col md:flex-row justify-evenly items-center gap-12 p-8 overflow-hidden rounded-3xl">
 
                             <div class="-z-10 absolute top-0 left-0 w-full h-full flex items-center justify-center">
                                 <img src="{{ '/assets/images/home-cta.png' | url }}" alt="CTA Image" class="w-full h-full object-cover" style="filter: brightness(0.3);">
@@ -357,26 +350,29 @@ description: ВЕГА ТЕСТ - компютърна диагностика з�
                             <div class="cta-left-side w-full sm-w-[50%] flex flex-col justify-center items-center sm:items-center text-center md:text-left">
 
                                 <h2 class="text-white text-3xl md:text-4xl lg:text-5xl font-semibold">
-                                    Време е за теб!
+                                    Хладилен транспорт?
                                 </h2>
                                 <p class="text-white text-sm font-light">
-                                    Подари си момент на внимание и грижа за тялото си.
+                                    Свържете се с нас и получите индивидуално предложение за вашата пратка. Работим 24/7 и гарантираме пълна сигурност.
                                 </p>
 
                             </div>
 
                             <div class="w-full sm-w-[50%] cta-right-side ">
 
-                                <div class="p-8 home-cta-buttons-ct cta-glassy-container flex flex-col gap-4 sm:flexcol">
+                                <div class="p-8 home-cta-buttons-ct bg-white/80 rounded-3xl flex flex-col gap-4 sm:flexcol">
 
-                                    <p class="text-primary-volcanic text-sm font-semibold">Свържете се с нас или заявете хладилен превоз</p>
+                                    <p class="text-primary-volcanic text-sm font-semibold">Запазете час или получете предложение</p>
                                     <div class="flex flex-col sm:flex-row gap-4">
 
-                                        <a href="viber://chat?number=%2B359885415300" class="text-primary-evergreen flex items-center justify-center gap-2 btn-primary w-full text-center rounded-3xl" target="_blank" rel="noopener">
-                                            <img src="{{ '/assets/images/booking.png' | url }}" alt="Clock" class="w-6 h-6 object-contain "> Свържи се</a>
+                                        <a href="{{ '/kontakti/' | url }}" class="text-white flex items-center justify-center gap-2 btn-primary w-full text-center rounded-3xl">
+                                            Обадете ни се
+                                        </a>
 
-                                        <a href="{{ '/transport/' | url }}" class="flex items-center justify-center gap-2 btn-secondary hover:scale-105 transition-all duration-300 w-full text-center rounded-3xl  !hover:text-accent-evergreen">
-                                            <img src="{{ '/assets/images/products.png' | url }}" alt="Fleet" class=" w-6 h-6 object-contain "> Автопарк</a>
+                                        <a href="{{ '/kontakti/' | url }}" class="flex items-center justify-center gap-2 btn-secondary hover:scale-105 transition-all duration-300 w-full text-center rounded-3xl">
+                                            Контакти
+                                        </a>
+
                                     </div>
                                 </div>
 
