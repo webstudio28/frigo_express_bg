@@ -387,7 +387,7 @@ html {
     }
 }
 
-/* Services Carousel - Horizontal scrolling */
+/* Services Carousel - Horizontal scrolling with flexbox */
 .services-carousel-track {
     width: max-content;
 }

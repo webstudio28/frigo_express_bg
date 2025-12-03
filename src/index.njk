@@ -125,66 +125,68 @@ description: ВЕГА ТЕСТ - компютърна диагностика з�
             {% set homeServices = collections.services %}
         {% endif %}
 
-        <div class="w-full relative" data-services-carousel>
-            <!-- Left Arrow -->
-            <button
-                type="button"
-                class="services-carousel-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 inline-flex items-center justify-center rounded-full bg-white text-primary-blue shadow-md hover:shadow-lg border border-primary-blue/10 w-12 h-12 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-blue/60"
-                aria-label="Предишна услуга"
-            >
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
-            </button>
+        <div class="w-full" data-services-carousel>
+            <div class="relative flex items-center gap-2">
+                <!-- Left Arrow -->
+                <button
+                    type="button"
+                    class="services-carousel-prev flex-shrink-0 inline-flex items-center justify-center rounded-full bg-white text-primary-blue shadow-md hover:shadow-lg border border-primary-blue/10 w-7 h-7 md:w-10 md:h-10 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-blue/60"
+                    aria-label="Предишна услуга"
+                >
+                    <svg class="w-3.5 h-3.5 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
 
-            <!-- Cards Container -->
-            <div class="overflow-hidden pl-14 pr-14">
-                <div class="services-carousel-track flex gap-6 transition-transform duration-500 ease-in-out" data-services-track>
-                    {% for service in homeServices %}
-                        <div class="services-carousel-card flex-shrink-0 flex flex-col gap-5 bg-white rounded-3xl shadow-md p-6" data-service-card>
-                            <div
-                                class="h-40 w-full rounded-2xl flex items-center justify-center"
-                                style="background-color: {{ service.serviceCardColor }};"
-                            >
-                                {% if service.serviceIcon %}
-                                    <img
-                                        src="{{ service.serviceIcon | url }}"
-                                        alt="{{ service.name }}"
-                                        class="h-16 w-auto object-contain"
-                                    >
-                                {% endif %}
-                            </div>
-                            <div class="flex flex-col gap-3 flex-1">
-                                <h3 class="text-lg font-semibold text-primary-blue leading-snug">
-                                    {{ service.name }}
-                                </h3>
-                                <p class="text-sm text-primary-deepsea leading-relaxed">
-                                    {{ service.description }}
-                                </p>
-                            </div>
-                            <div class="w-full flex justify-end">
-                                <a
-                                    href="{{ ('/uslugi/' ~ service.slug ~ '/') | url }}"
-                                    class="inline-flex items-center gap-2 rounded-full bg-primary-blue text-white px-5 py-2 text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+                <!-- Cards Container -->
+                <div class="flex-1 overflow-hidden px-2 py-2">
+                    <div class="services-carousel-track flex gap-6 transition-transform duration-500 ease-in-out" data-services-track>
+                        {% for service in homeServices %}
+                            <div class="services-carousel-card border  flex-shrink-0 flex flex-col gap-5 bg-white rounded-3xl shadow-md p-2 md:p-6" data-service-card>
+                                <div
+                                    class="h-40 w-full rounded-2xl flex items-center justify-center"
+                                    style="background-color: {{ service.serviceCardColor }};"
                                 >
-                                    Вижте услугата
-                                </a>
+                                    {% if service.serviceIcon %}
+                                        <img
+                                            src="{{ service.serviceIcon | url }}"
+                                            alt="{{ service.name }}"
+                                            class="h-16 w-auto object-contain"
+                                        >
+                                    {% endif %}
+                                </div>
+                                <div class="flex flex-col gap-3 flex-1">
+                                    <h3 class="text-lg font-semibold text-primary-blue leading-snug">
+                                        {{ service.name }}
+                                    </h3>
+                                    <p class="text-sm text-primary-deepsea leading-relaxed">
+                                        {{ service.description }}
+                                    </p>
+                                </div>
+                                <div class="w-full flex justify-end">
+                                    <a
+                                        href="{{ ('/uslugi/' ~ service.slug ~ '/') | url }}"
+                                        class="inline-flex items-center gap-2 rounded-full bg-primary-blue text-white px-5 py-2 text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+                                    >
+                                        Вижте услугата
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
 
-            <!-- Right Arrow -->
-            <button
-                type="button"
-                class="services-carousel-next absolute right-0 top-1/2 -translate-y-1/2 z-10 inline-flex items-center justify-center rounded-full bg-white text-primary-blue shadow-md hover:shadow-lg border border-primary-blue/10 w-12 h-12 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-blue/60"
-                aria-label="Следваща услуга"
-            >
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-            </button>
+                <!-- Right Arrow -->
+                <button
+                    type="button"
+                    class="services-carousel-next flex-shrink-0 inline-flex items-center justify-center rounded-full bg-white text-primary-blue shadow-md hover:shadow-lg border border-primary-blue/10 w-7 h-7 md:w-10 md:h-10 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-blue/60"
+                    aria-label="Следваща услуга"
+                >
+                    <svg class="w-3.5 h-3.5 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
         </div>
     </div>
 </section>
