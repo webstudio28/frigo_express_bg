@@ -7,12 +7,6 @@ description: ВЕГА ТЕСТ - компютърна диагностика з�
 
 <!-- Hero Section Only -->
 <section class="relative h-screen flex items-center justify-center overflow-hidden text-white text-center px-4 text-shadow">
-    <!-- Background Image -->
-    <div class="absolute inset-0 w-full h-full z-[-1]">
-        <img src="{{ '/assets/images/body-bg.jpg' | url }}" alt="" class="w-full h-full object-cover">
-    </div>
-    
-    <!-- Overlay -->
     <div class="absolute inset-0 pointer-events-none z-0" style="background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 150%);"></div>
     
     <!-- Background decorative images -->
@@ -197,56 +191,119 @@ description: ВЕГА ТЕСТ - компютърна диагностика з�
     </div>
 </section>
 
-                <!-- Транспорт Section -->
-
-                <section class="py-12">
+                <!-- Transport Section -->
+                <section class="py-12 flex">
                     <div class="max-w-7xl w-full mx-auto px-4 flex flex-col justify-center items-center gap-12 md:gap-14">
-                        <div class="w-full text-left">
-                            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-[#25425E] mb-4">
-                                Температурно-контролирани превозни средства
+                        <!-- Header -->
+                        <div class="w-full text-left z-[100]">
+                            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-blue mb-4">
+                                <div class="flex items-center gap-3">
+                                    <span>Нашият транспорт</span>
+                                </div>
                             </h2>
-                            <p class="w-full text-medium md:text-lg text-primary-deepsea max-w-5xl leading-relaxed">
+                            <p class="text-medium md:text-lg text-primary-deepsea leading-relaxed">
                                 Автопаркът на Frigo Express BG покрива целия спектър на хладилния транспорт – от компактни градски ванове до тежкотоварни камиони с две температурни зони. Всяко превозно средство е оборудвано с валидирани хладилни агрегати и системи за 24/7 мониторинг.
                             </p>
                         </div>
 
-                        <div class="w-full overflow-hidden">
-                            <div class="flex gap-8 overflow-x-auto pb-8 custom-scrollbar no-scrollbar drag-scroll">
-                                {% for vehicle in products %}
-                                    <div class="group relative flex-shrink-0">
-                                        <div class="home-product-card h-full p-2 bg-white rounded-3xl relative flex flex-col w-[260px] md:w-[300px] transition-all duration-300 shadow-md">
-                                            <div class="home-product-image flex items-center justify-center overflow-hidden">
-                                                <img src="{{ vehicle.images[0] | url }}" alt="{{ vehicle.title }}" class=""/>
-                                            </div>
+                        <!-- Transport Carousel -->
+                        {% set homeTransport = transport | default([]) %}
+                        {% if (homeTransport | length) == 0 and collections and collections.transport %}
+                            {% set homeTransport = collections.transport %}
+                        {% endif %}
 
-                                            <div class="pt-3 flex flex-col gap-4 flex-grow">
-                                                <div class="flex flex-col gap-2 justify-between">
-                                                    <h3 class="text-md font-bold text-[#25425E]">{{ vehicle.title }}</h3>
-                                                    <p class="text-sm text-primary-deepsea leading-relaxed">{{ vehicle.short_description }}</p>
-                                                </div>
+                        <div class="w-full" data-transport-carousel>
+                            <div class="relative flex items-center gap-2 md:gap-4">
+                                <!-- Left Arrow -->
+                                <button
+                                    type="button"
+                                    class="transport-carousel-prev flex-shrink-0 inline-flex items-center justify-center rounded-full bg-white text-primary-blue shadow-md hover:shadow-lg border border-primary-blue/10 w-7 h-7 md:w-10 md:h-10 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-blue/60"
+                                    aria-label="Предишен транспорт"
+                                >
+                                    <svg class="w-3.5 h-3.5 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                                    </svg>
+                                </button>
 
-                                                <div class="flex flex-col gap-2 text-sm text-primary-volcanic/80">
-                                                    {% if vehicle.temperature_range %}
-                                                        <div class="flex items-center justify-between gap-2 bg-[#25425E]/5 rounded-2xl px-3 py-2">
-                                                            <span class="font-semibold text-[#25425E]">Температура</span>
-                                                            <span>{{ vehicle.temperature_range }}</span>
+                                <!-- Cards Container -->
+                                <div class="flex-1 overflow-hidden px-2 py-2">
+                                    <div class="transport-carousel-track flex gap-6 transition-transform duration-300 ease-in-out" data-transport-track>
+                                        {% for vehicle in homeTransport %}
+                                            <div class="transport-carousel-card relative flex-shrink-0 flex flex-col bg-white rounded-3xl shadow-md overflow-hidden" data-transport-card>
+                                                <!-- Diagonal Color Block - Absolute to card -->
+
+                                                <div
+                                                    class="absolute top-0 left-0 w-full"
+                                                    style="background-color: {{ vehicle.serviceCardColor }}; clip-path: polygon(0 0, 100% 0, 100% 45%, 0 85%); height: 200px;"
+                                                ></div>
+                                                
+                                                <div
+                                                    class="absolute top-0 left-0 w-full"
+                                                    style="background-color: #4F4F6C; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 0); height: 200px;"
+                                                ></div>
+                                                
+                                                <!-- Image Container - Full Width, Fixed Height -->
+                                                <div class="relative h-48 w-full overflow-hidden">
+                                                    <!-- Vehicle Image -->
+                                                    {% if vehicle.images and vehicle.images[0] %}
+                                                        <div class="relative z-10 h-full flex items-center justify-center pt-4">
+                                                            <img
+                                                                src="{{ vehicle.images[0] | url }}"
+                                                                alt="{{ vehicle.title }}"
+                                                                class="w-[80%] max-h-[140px] object-contain"
+                                                            >
                                                         </div>
                                                     {% endif %}
-                                                    {% if vehicle.capacity %}
-                                                        <div class="flex items-center justify-between gap-2 bg-[#25425E]/5 rounded-2xl px-3 py-2">
-                                                            <span class="font-semibold text-[#25425E]">Капацитет</span>
-                                                            <span>{{ vehicle.capacity }}</span>
-                                                        </div>
-                                                    {% endif %}
                                                 </div>
-
-                                                <div class="mt-2 flex flex-col flex-grow">
-                                                    <a href="{{ ('/transport/' ~ vehicle.meta_title ~ '/') | url }}" class="block text-center rounded-full border border-[#25425E] text-[#25425E] font-semibold py-2 mt-auto transition-colors duration-200 hover:bg-[#25425E] hover:text-white">Виж детайли</a>
+                                                
+                                                <!-- Text Content Container - With Padding -->
+                                                <div class="px-2 py-3 md:px-6 md:py-4 flex flex-col gap-3 flex-1">
+                                                    <h3 class="text-lg font-semibold text-primary-blue leading-snug">
+                                                        {{ vehicle.title }}
+                                                    </h3>
+                                                    <p class="text-sm text-primary-deepsea leading-relaxed">
+                                                        {{ vehicle.shortDescription }}
+                                                    </p>
+                                                    
+                                                    <div class="flex flex-col gap-2 text-sm">
+                                                        {% if vehicle.temperature_range %}
+                                                            <div class="flex items-center justify-between gap-2 bg-[#25425E]/5 rounded-2xl px-3 py-2">
+                                                                <span class="font-semibold text-[#25425E]">Температура</span>
+                                                                <span>{{ vehicle.temperature_range }}</span>
+                                                            </div>
+                                                        {% endif %}
+                                                        {% if vehicle.capacity %}
+                                                            <div class="flex items-center justify-between gap-2 bg-[#25425E]/5 rounded-2xl px-3 py-2">
+                                                                <span class="font-semibold text-[#25425E]">Капацитет</span>
+                                                                <span>{{ vehicle.capacity }}</span>
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+                                                    
+                                                    <div class="w-full flex justify-end mt-2">
+                                                        <a
+                                                            href="{{ ('/transport/' ~ vehicle.meta_title ~ '/') | url }}"
+                                                            class="inline-flex items-center gap-2 rounded-full bg-primary-blue text-white px-5 py-2 text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+                                                        >
+                                                            Вижте повече
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        {% endfor %}
                                     </div>
-                                {% endfor %}
+                                </div>
+
+                                <!-- Right Arrow -->
+                                <button
+                                    type="button"
+                                    class="transport-carousel-next flex-shrink-0 inline-flex items-center justify-center rounded-full bg-white text-primary-blue shadow-md hover:shadow-lg border border-primary-blue/10 w-7 h-7 md:w-10 md:h-10 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-blue/60"
+                                    aria-label="Следващ транспорт"
+                                >
+                                    <svg class="w-3.5 h-3.5 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -293,9 +350,10 @@ description: ВЕГА ТЕСТ - компютърна диагностика з�
                         <div class="relative h-[500px] md:h-[400px] w-full flex flex-col md:flex-row justify-evenly items-center gap-12 p-8 overflow-hidden rounded-3xl">
 
                             <div class="-z-10 absolute top-0 left-0 w-full h-full flex items-center justify-center">
-                                <img src="{{ '/assets/images/cta2.jpg' | url }}" alt="CTA Image" class="w-full h-full object-cover ">
+                                <img src="{{ '/assets/images/home-cta.png' | url }}" alt="CTA Image" class="w-full h-full object-cover" style="filter: brightness(0.3);">
                             </div>
 
+                            
                             <div class="cta-left-side w-full sm-w-[50%] flex flex-col justify-center items-center sm:items-center text-center md:text-left">
 
                                 <h2 class="text-white text-3xl md:text-4xl lg:text-5xl font-semibold">
@@ -403,6 +461,7 @@ description: ВЕГА ТЕСТ - компютърна диагностика з�
                 </script>
 
                 <script src="{{ '/assets/js/services-grid.js' | url }}" defer></script>
+                <script src="{{ '/assets/js/transport-carousel.js' | url }}" defer></script>
 
                 <!-- tailwind-safelist -->
                 <div class="text-primary-moss text-primary-sage text-primary-ceramic text-primary-forest text-primary-cream text-primary-olive text-primary-dark-gray bg-primary-moss bg-primary-sage bg-primary-ceramic bg-primary-forest bg-primary-cream bg-primary-olive bg-gradient-primary bg-gradient-hero border-primary-moss border-primary-sage border-primary-ceramic border-primary-forest border-primary-cream border-primary-olive hidden"></div>
