@@ -10,28 +10,28 @@ description: ВЕГА ТЕСТ - компютърна диагностика з�
     <div class="absolute inset-0 pointer-events-none z-0" style="background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 150%);"></div>
     
     <!-- Background decorative images -->
-    <img src="{{ '/assets/images/europe-map.png' | url }}" alt="Карта на Европа" class="absolute top-1/2 -translate-y-1/2 h-[95vh] w-auto object-contain pointer-events-none z-[1]" style=" left: -40%; opacity: 0.2; rotate: ;">
-    <img src="{{ '/assets/images/thermometer.png' | url }}" alt="Термометър" class="absolute top-1/2 -translate-y-1/2 h-[55vh] w-auto object-contain pointer-events-none [1]" style="right: 0; right: -5%; opacity: 0.5;">
+    <img id="europe-map" src="{{ '/assets/images/europe-map.png' | url }}" alt="Карта на Европа">
+    <img id="thermometer" src="{{ '/assets/images/thermometer.png' | url }}" alt="Термометър">
     
-    <div id="hero-cars" class="absolute bottom-0 left-0 right-0 h-[25%] md:h-[35%] lg:h-[40%] w-full overflow-hidden pointer-events-none z-[2]">
-        <img src="{{ '/assets/images/hero-cars.png' | url }}" alt="Хладилен автопарк на Frigo Express BG" class="w-full h-full object-fill">
+    <div id="hero-cars" class="absolute bottom-0 left-0 right-0 h-[35%] md:h-[35%] lg:h-[45%] w-auto min-w-full pointer-events-none z-[2]">
+        <img src="{{ '/assets/images/hero-cars.png' | url }}" alt="Хладилен автопарк на Frigo Express BG" class="w-auto h-full min-w-full object-cover sm:object-cover">
     </div>
 
     <div class="relative z-10 max-w-4xl w-full  flex flex-col items-center mb-[20vh] gap-6">
-        <div class="text-xl md:text-4xl lg:text-6xl font-semibold leading-tight space-y-4">
-            <div class="flex flex-col items-center gap-2 tracking-wide">
+        <div class="text-2xl sm:text-4xl md:text-4xl lg:text-6xl font-semibold  space-y-4">
+            <div class="flex flex-col items-center gap- tracking-wide">
                 <div class="flex items-center justify-center gap-3">
                     <span>Нашият бизнес</span>
                     <img src="{{ '/assets/images/bus-icon-dark.png' | url }}" alt="Иконка хладилен бус" class="h-8 w-auto md:h-10 vertical-align-middle pt-2">
                 </div>
-                <div class="flex items-center justify-center gap-3">
+                <div class="flex items-center justify-center gap-1">
                     <span>движи</span>
-                    <span class="text-[#C8E6C9] text-2xl md:text-5xl lg:text-6xl font-semibold">вашият</span>
+                    <span class="text-[#C8E6C9] text-3xl md:text-5xl lg:text-6xl font-semibold">вашият</span>
                     <span>бизнес</span>
                 </div>
             </div>
 
-        <p class="text-white/80 font-light md:text-lg lg:text-xl max-w-2xl">
+        <p class="text-white/80 font-light text-sm md:text-lg lg:text-xl max-w-2xl">
             Хладилен транспорт за храни, лекарства и мостри по европейските маршрути
         </p>
 
@@ -199,6 +199,7 @@ description: ВЕГА ТЕСТ - компютърна диагностика з�
                             <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-blue mb-4">
                                 <div class="flex items-center gap-3">
                                     <span>Нашият транспорт</span>
+                                    <img src="{{ '/assets/images/bus-icon-light.png' | url }}" alt="Bus icon" class="h-8 w-auto md:h-8 lg:h-10">
                                 </div>
                             </h2>
                             <p class="text-medium md:text-lg text-primary-deepsea leading-relaxed">

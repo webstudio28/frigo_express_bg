@@ -329,3 +329,64 @@ html {
 .services-carousel-track {
     width: max-content;
 }
+
+/* Hero section decorative images */
+#europe-map {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    object-fit: contain;
+    pointer-events: none;
+    z-index: 1;
+    left: -40%;
+    opacity: 0.2;
+}
+
+
+
+#thermometer {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 55vh;
+    width: auto;
+    object-fit: contain;
+    pointer-events: none;
+    z-index: 1;
+    right: -50%;
+    opacity: 0.2;
+    will-change: auto;
+    transition: none;
+    animation: none;
+}
+
+#hero-cars {
+    will-change: auto;
+    transition: none;
+    animation: none;
+}
+
+#hero-cars img {
+    will-change: auto;
+    transition: none;
+    animation: none;
+}
+
+
+
+@media (max-width: 640px) {
+    #europe-map {
+        border: 3px solid red;
+        height: 500vh !important;
+        width: 100vw !important;
+        left: -50%;
+        top: 65%;
+    }
+
+    #thermometer {
+        height: 30vh;
+        right: -18%;
+        top: 60%;
+    }
+}
