@@ -336,7 +336,7 @@ html {
     top: 50%;
     transform: translateY(-50%);
     width: auto;
-    object-fit: contain;
+    object-fit: fill;
     pointer-events: none;
     z-index: 1;
     left: -40%;
@@ -377,16 +377,14 @@ html {
 
 @media (max-width: 640px) {
     #europe-map {
-        border: 3px solid red;
-        height: 500vh !important;
-        width: 100vw !important;
         left: -50%;
         top: 65%;
+        object-fit: contain;
     }
 
     #thermometer {
-        height: 30vh;
-        right: -18%;
-        top: 60%;
+        height: 20vh;
+        right: -9%;
+        top: 63%;
     }
 }
