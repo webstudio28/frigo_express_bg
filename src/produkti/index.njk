@@ -4,7 +4,7 @@ title: Транспорт
 description: Хладилен автопарк за контролирани доставки
 permalink: /transport/
 pagination:
-    data: products
+    data: transport
     size: 1000
     alias: fleet
 ---
@@ -16,21 +16,45 @@ pagination:
             <p class="mt-3 text-primary-deepsea max-w-3xl">Изберете подходящото превозно средство според товара, температурния диапазон и дестинацията. Всички камиони и бусове са оборудвани със системи за мониторинг и документиране на студената верига.</p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 pt-8">
-            {% for vehicle in fleet %}
-            <div class="group relative">
-                <div class="home-product-card h-full p-2 bg-white rounded-3xl relative flex flex-col w-full transition-all duration-300 shadow-md">
-                    <div class="home-product-image flex items-center justify-center overflow-hidden">
-                        <img src="{{ vehicle.images[0] | url }}" alt="{{ vehicle.title }}" class=""/>
+        <div class="rounded-3xl bg-[#25425E]/5 shadow-lg p-4 sm:p-0 sm:bg-transparent sm:shadow-none sm:rounded-none pt-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-items-center">
+                {% for vehicle in fleet %}
+                <div class="relative flex-shrink-0 flex flex-col bg-white rounded-3xl shadow-md overflow-hidden w-full max-w-[280px]">
+                    <!-- Diagonal Color Block - Absolute to card -->
+                    <div
+                        class="absolute top-0 left-0 w-full"
+                        style="background-color: {{ vehicle.serviceCardColor or '#D8E8DB' }}; clip-path: polygon(0 0, 100% 0, 100% 45%, 0 85%); height: 200px;"
+                    ></div>
+                    
+                    <div
+                        class="absolute top-0 left-0 w-full"
+                        style="background-color: #4F4F6C; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 0); height: 200px;"
+                    ></div>
+                    
+                    <!-- Image Container - Full Width, Fixed Height -->
+                    <div class="relative h-48 w-full overflow-hidden">
+                        <!-- Vehicle Image -->
+                        {% if vehicle.images and vehicle.images[0] %}
+                            <div class="relative z-10 h-full flex items-center justify-center pt-4">
+                                <img
+                                    src="{{ vehicle.images[0] | url }}"
+                                    alt="{{ vehicle.title }}"
+                                    class="w-[80%] max-h-[140px] object-contain"
+                                >
+                            </div>
+                        {% endif %}
                     </div>
-
-                    <div class="py-3 flex flex-col gap-4 flex-grow">
-                        <div class="flex flex-col gap-2 justify-between">
-                            <h3 class="text-md font-bold text-[#25425E]">{{ vehicle.title }}</h3>
-                            <p class="text-sm text-primary-deepsea leading-relaxed">{{ vehicle.short_description }}</p>
-                        </div>
-
-                        <div class="flex flex-col gap-2 text-sm text-primary-volcanic/80">
+                    
+                    <!-- Text Content Container - With Padding -->
+                    <div class="px-4 py-4 flex flex-col gap-3 flex-1">
+                        <h3 class="text-lg font-semibold text-primary-blue leading-snug">
+                            {{ vehicle.title }}
+                        </h3>
+                        <p class="text-sm text-primary-deepsea leading-relaxed">
+                            {{ vehicle.shortDescription or vehicle.short_description }}
+                        </p>
+                        
+                        <div class="flex flex-col gap-2 text-sm">
                             {% if vehicle.temperature_range %}
                                 <div class="flex items-center justify-between gap-2 bg-[#25425E]/5 rounded-2xl px-3 py-2">
                                     <span class="font-semibold text-[#25425E]">Температура</span>
@@ -44,14 +68,19 @@ pagination:
                                 </div>
                             {% endif %}
                         </div>
-
-                        <div class="mt-2 flex flex-col flex-grow">
-                            <a href="{{ ('/transport/' ~ vehicle.meta_title ~ '/') | url }}" class="block text-center rounded-full border border-[#25425E] text-[#25425E] font-semibold py-2 mt-auto transition-colors duration-200 hover:bg-[#25425E] hover:text-white">Виж детайли</a>
+                        
+                        <div class="w-full flex justify-end mt-2">
+                            <a
+                                href="{{ ('/transport/' ~ vehicle.meta_title ~ '/') | url }}"
+                                class="inline-flex items-center gap-2 rounded-full bg-primary-blue text-white px-5 py-2 text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+                            >
+                                Вижте повече
+                            </a>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
     </div>
 </section>
