@@ -66,7 +66,42 @@
                     });
                 }
 
-                // Mobile menu no longer uses accordion sections
+                // Mobile menu accordion functionality
+                const accordionToggles = document.querySelectorAll('.mobile-accordion-toggle');
+                accordionToggles.forEach(toggle => {
+                    toggle.addEventListener('click', function() {
+                        const targetId = this.getAttribute('data-target');
+                        const targetElement = document.getElementById(targetId);
+                        const icon = this.querySelector('svg');
+
+                        if (targetElement) {
+                            const isExpanded = targetElement.style.maxHeight && targetElement.style.maxHeight !== '0px';
+
+                            // Close all other accordions first
+                            accordionToggles.forEach(otherToggle => {
+                                if (otherToggle !== toggle) {
+                                    const otherTargetId = otherToggle.getAttribute('data-target');
+                                    const otherTargetElement = document.getElementById(otherTargetId);
+                                    const otherIcon = otherToggle.querySelector('svg');
+                                    if (otherTargetElement) {
+                                        otherTargetElement.style.maxHeight = '0px';
+                                        otherIcon.style.transform = 'rotate(0deg)';
+                                    }
+                                }
+                            });
+
+                            if (isExpanded) {
+                                // Collapse current
+                                targetElement.style.maxHeight = '0px';
+                                icon.style.transform = 'rotate(0deg)';
+                            } else {
+                                // Expand current
+                                targetElement.style.maxHeight = targetElement.scrollHeight + 'px';
+                                icon.style.transform = 'rotate(180deg)';
+                            }
+                        }
+                    });
+                });
             });
         </script>
 
@@ -113,12 +148,51 @@
 
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="mobile-menu fixed inset-0 top-0 z-40 transform translate-x-full transition-transform duration-300 ease-in-out overflow-hidden bg-[#25425E]/95 backdrop-blur">
-            <div class="h-full flex flex-col pt-28 pb-10 px-6 gap-8 text-white">
+            <div class="h-full flex flex-col pt-28 pb-10 px-6 gap-8 text-white overflow-y-auto">
                 <nav class="flex-1 flex flex-col space-y-4 text-xl font-medium">
                     <a href="{{ '/' | url }}" class="rounded-2xl border border-white/10 px-5 py-4 hover:bg-white/10 transition-colors">Начало</a>
                     <a href="{{ '/za-nas/' | url }}" class="rounded-2xl border border-white/10 px-5 py-4 hover:bg-white/10 transition-colors">За нас</a>
-                    <a href="{{ '/uslugi/' | url }}" class="rounded-2xl border border-white/10 px-5 py-4 hover:bg-white/10 transition-colors">Услуги</a>
-                    <a href="{{ '/transport/' | url }}" class="rounded-2xl border border-white/10 px-5 py-4 hover:bg-white/10 transition-colors">Транспорт</a>
+                    
+                    <!-- Services Dropdown -->
+                    <div class="mobile-accordion">
+                        <button class="mobile-accordion-toggle w-full rounded-2xl border border-white/10 px-5 py-4 hover:bg-white/10 transition-colors flex items-center justify-between text-left" data-target="services-list">
+                            <span>Услуги</span>
+                            <svg class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="services-list" class="mobile-accordion-content max-h-0 overflow-hidden transition-all duration-300">
+                            <div class="pt-2 space-y-2">
+                                <a href="{{ '/uslugi/' | url }}" class="block rounded-xl border border-white/10 px-5 py-3 hover:bg-white/10 transition-colors text-base">Всички услуги</a>
+                                {% if services %}
+                                    {% for service in services %}
+                                        <a href="{{ ('/uslugi/' ~ service.slug ~ '/') | url }}" class="block rounded-xl border border-white/10 px-5 py-3 hover:bg-white/10 transition-colors text-base">{{ service.name }}</a>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Transport Dropdown -->
+                    <div class="mobile-accordion">
+                        <button class="mobile-accordion-toggle w-full rounded-2xl border border-white/10 px-5 py-4 hover:bg-white/10 transition-colors flex items-center justify-between text-left" data-target="transport-list">
+                            <span>Транспорт</span>
+                            <svg class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="transport-list" class="mobile-accordion-content max-h-0 overflow-hidden transition-all duration-300">
+                            <div class="pt-2 space-y-2">
+                                <a href="{{ '/transport/' | url }}" class="block rounded-xl border border-white/10 px-5 py-3 hover:bg-white/10 transition-colors text-base">Всички превозни средства</a>
+                                {% if transport %}
+                                    {% for vehicle in transport %}
+                                        <a href="{{ ('/transport/' ~ vehicle.meta_title ~ '/') | url }}" class="block rounded-xl border border-white/10 px-5 py-3 hover:bg-white/10 transition-colors text-base">{{ vehicle.title }}</a>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
                     <a href="{{ '/kontakti/' | url }}" class="rounded-2xl border border-white/10 px-5 py-4 hover:bg-white/10 transition-colors">Контакти</a>
                 </nav>
 
