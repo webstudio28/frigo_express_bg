@@ -15,22 +15,41 @@ pagination:
             <p class="mt-3 text-primary-deepsea max-w-3xl">Разгледайте всички услуги.</p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8  pt-8">
-            {% for service in allServices %}
-            {% set serviceImage = service.image or (service.images and service.images[0]) %}
-            <div class="home-service-card flex bg-white p-2 flex-col gap-4 w-full rounded-3xl group transition-all duration-300 shadow-md">
-                {% if serviceImage %}
-                    <img src="{{ serviceImage | url }}" alt="{{ service.name }}" class="w-full min-h-[200px] max-h-[200px] object-cover rounded-2xl shadow-md"/>
-                {% endif %}
-                <div class="flex flex-col flex-grow">
-                    <h3 class="text-primary-deepsea font-bold text-lg">{{ service.name }}</h3>
-                    <p class="text-gray-600 mt-2 text-sm flex-grow">{{ service.description }}</p>
-                    <div class="mt-4">
-                        <a href="{{ ('/uslugi/' ~ service.slug ~ '/') | url }}" class="block w-full text-center btn-primary text-white font-semibold rounded-full py-2 hover:bg-primary-forest transition-colors">Научи повече</a>
+        <div class=" p-4 sm:p-0 sm:bg-transparent sm:shadow-none sm:rounded-none pt-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-items-center">
+                {% for service in allServices %}
+                <div class="flex flex-col gap-5 bg-white rounded-3xl shadow-md p-4 md:p-6 w-full max-w-[280px]">
+                    <div
+                        class="h-40 w-full rounded-2xl flex items-center justify-center"
+                        style="background-color: {{ service.serviceCardColor or '#F5F5F5' }};"
+                    >
+                        {% if service.serviceIcon %}
+                            <img
+                                src="{{ service.serviceIcon | url }}"
+                                alt="{{ service.name }}"
+                                class="h-16 w-auto object-contain"
+                            >
+                        {% endif %}
+                    </div>
+                    <div class="flex flex-col gap-3 flex-1">
+                        <h3 class="text-lg font-semibold text-primary-blue leading-snug">
+                            {{ service.name }}
+                        </h3>
+                        <p class="text-sm text-primary-deepsea leading-relaxed">
+                            {{ service.description }}
+                        </p>
+                    </div>
+                    <div class="w-full flex justify-end">
+                        <a
+                            href="{{ ('/uslugi/' ~ service.slug ~ '/') | url }}"
+                            class="inline-flex items-center gap-2 rounded-full bg-primary-blue text-white px-5 py-2 text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+                        >
+                            Вижте услугата
+                        </a>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
     </div>
 </section>
