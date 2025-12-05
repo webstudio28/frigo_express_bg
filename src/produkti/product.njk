@@ -1,13 +1,13 @@
 ---
 layout: base.njk
 pagination:
-    data: products
+    data: transport
     size: 1
     alias: vehicle
 permalink: "/transport/{{ vehicle.meta_title }}/"
 eleventyComputed:
     title: "{{ vehicle.title }}"
-    description: "{{ vehicle.short_description }}"
+    description: "{{ vehicle.shortDescription or vehicle.short_description }}"
 ---
 
 <section class="py-6">
@@ -46,17 +46,6 @@ eleventyComputed:
 
                 <p class="text-primary-deepsea text-base leading-relaxed">{{ vehicle.short_description }}</p>
 
-                {% if vehicle.stats and vehicle.stats.length > 0 %}
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        {% for stat in vehicle.stats %}
-                            <div class="rounded-3xl border border-[#25425E]/15 bg-[#25425E]/5 px-5 py-4">
-                                <p class="text-xs uppercase tracking-wide text-[#25425E]/80 font-semibold">{{ stat.label }}</p>
-                                <p class="text-lg font-semibold text-[#25425E] mt-1">{{ stat.value }}</p>
-                            </div>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-
                 {% if vehicle.availability %}
                     <div class="rounded-3xl bg-[#25425E] text-white px-6 py-4 shadow-md">
                         <p class="text-sm uppercase tracking-wide font-semibold">Наличност и поддръжка</p>
@@ -64,12 +53,28 @@ eleventyComputed:
                     </div>
                 {% endif %}
 
-                <div class="flex flex-col sm:flex-row gap-3">
-                    <a href="{{ '/kontakti/' | url }}" class="inline-flex items-center justify-center rounded-full bg-[#25425E] text-white px-8 py-3 text-sm font-semibold uppercase tracking-wide shadow hover:shadow-lg transition-all duration-200">Заяви транспорт</a>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {% if vehicle.temperature_range %}
-                        <span class="inline-flex items-center justify-center rounded-full border border-[#25425E]/40 px-6 py-3 text-sm font-semibold text-[#25425E] bg-[#25425E]/5">Температура: {{ vehicle.temperature_range }}</span>
+                        <div class="rounded-xl border border-[#25425E]/15 bg-[#25425E]/5 px-4 py-3">
+                            <p class="text-xs uppercase tracking-wide text-[#25425E]/80 font-semibold">Температура</p>
+                            <p class="text-base font-semibold text-[#25425E] mt-1">{{ vehicle.temperature_range }}</p>
+                        </div>
+                    {% endif %}
+                    {% if vehicle.capacity %}
+                        <div class="rounded-xl border border-[#25425E]/15 bg-[#25425E]/5 px-4 py-3">
+                            <p class="text-xs uppercase tracking-wide text-[#25425E]/80 font-semibold">Капацитет</p>
+                            <p class="text-base font-semibold text-[#25425E] mt-1">{{ vehicle.capacity }}</p>
+                        </div>
+                    {% endif %}
+                    {% if vehicle.payload %}
+                        <div class="rounded-xl border border-[#25425E]/15 bg-[#25425E]/5 px-4 py-3">
+                            <p class="text-xs uppercase tracking-wide text-[#25425E]/80 font-semibold">Товароподемност</p>
+                            <p class="text-base font-semibold text-[#25425E] mt-1">{{ vehicle.payload }}</p>
+                        </div>
                     {% endif %}
                 </div>
+
+                <a href="{{ '/kontakti/' | url }}" class="w-full inline-flex items-center justify-center rounded-full bg-[#25425E] text-white px-8 py-3 text-sm font-semibold uppercase tracking-wide shadow hover:shadow-lg transition-all duration-200">Заяви транспорт</a>
             </div>
         </div>
     </div>
@@ -86,35 +91,19 @@ eleventyComputed:
 </section>
 {% endif %}
 
-{% if vehicle.features and vehicle.features.length > 0 %}
+{% if vehicle.monitoring and vehicle.monitoring.length > 0 %}
 <section class="py-10">
     <div class="max-w-7xl w-full mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="rounded-3xl bg-[#25425E] text-white p-6 md:p-8 shadow-lg">
-                <h2 class="text-2xl font-bold mb-4">Оборудване и технологии</h2>
-                <ul class="space-y-3 text-base leading-relaxed">
-                    {% for feature in vehicle.features %}
-                        <li class="flex items-start gap-3">
-                            <span class="w-2.5 h-2.5 mt-2 rounded-full bg-white/80"></span>
-                            <span>{{ feature }}</span>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-
-            {% if vehicle.monitoring and vehicle.monitoring.length > 0 %}
-            <div class="rounded-3xl bg-white border border-[#25425E]/10 p-6 md:p-8 shadow-md">
-                <h2 class="text-2xl font-bold text-[#25425E] mb-4">Мониторинг и проследяване</h2>
-                <ul class="space-y-3 text-base text-primary-deepsea leading-relaxed">
-                    {% for item in vehicle.monitoring %}
-                        <li class="flex items-start gap-3">
-                            <span class="w-2 h-2 mt-2 rounded-full bg-[#25425E]"></span>
-                            <span>{{ item }}</span>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            {% endif %}
+        <div class="rounded-3xl bg-white border border-[#25425E]/10 p-6 md:p-8 shadow-md">
+            <h2 class="text-2xl font-bold text-[#25425E] mb-4">Мониторинг и проследяване</h2>
+            <ul class="space-y-3 text-base text-primary-deepsea leading-relaxed">
+                {% for item in vehicle.monitoring %}
+                    <li class="flex items-start gap-3">
+                        <span class="w-2 h-2 mt-2 rounded-full bg-[#25425E]"></span>
+                        <span>{{ item }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 </section>
@@ -136,32 +125,72 @@ eleventyComputed:
 {% endif %}
 
 {% if relatedProducts and relatedProducts.length > 0 %}
-<section class="py-10">
+<section class="py-4 md:py-12">
     <div class="max-w-7xl w-full mx-auto px-4">
-        <div class="flex items-center gap-3 mb-6">
-            <h2 class="text-2xl md:text-3xl font-bold text-[#25425E]">Други превозни средства</h2>
-        </div>
-        <div class="-mx-4 overflow-x-auto pb-8 md:mx-0 xl:overflow-visible xl:pb-0 custom-scrollbar no-scrollbar">
-            <div class="flex gap-6 px-4 xl:px-0 xl:grid xl:grid-cols-4 xl:gap-6 drag-scroll">
-                {% for item in relatedProducts %}
-                    <div class="group relative flex-shrink-0">
-                        <div class="home-product-card h-full p-2 bg-white rounded-3xl relative flex flex-col w-[240px] xl:w-full transition-all duration-300 shadow-md">
-                            {% if item.images and item.images.length > 0 %}
-                                <div class="home-product-image flex items-center justify-center overflow-hidden">
-                                    <img src="{{ item.images[0] | url }}" alt="{{ item.title }}">
+        <h2 class="text-2xl md:text-3xl font-bold text-primary-blue mb-8">Други превозни средства</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-items-center">
+            {% for item in relatedProducts %}
+                <div class="relative flex-shrink-0 flex flex-col bg-white rounded-3xl shadow-md overflow-hidden w-full max-w-[280px] sm:max-w-[300px]">
+                    <!-- Diagonal Color Block - Absolute to card -->
+                    <div
+                        class="absolute top-0 left-0 w-full"
+                        style="background-color: {{ item.serviceCardColor or '#D8E8DB' }}; clip-path: polygon(0 0, 100% 0, 100% 45%, 0 85%); height: 200px;"
+                    ></div>
+                    
+                    <div
+                        class="absolute top-0 left-0 w-full"
+                        style="background-color: #4F4F6C; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 0); height: 200px;"
+                    ></div>
+                    
+                    <!-- Image Container - Full Width, Fixed Height -->
+                    <div class="relative h-48 w-full overflow-hidden">
+                        <!-- Vehicle Image -->
+                        {% if item.images and item.images[0] %}
+                            <div class="relative z-10 h-full flex items-center justify-center pt-4">
+                                <img
+                                    src="{{ item.images[0] | url }}"
+                                    alt="{{ item.title }}"
+                                    class="w-[80%] max-h-[140px] object-contain"
+                                >
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Text Content Container - With Padding -->
+                    <div class="px-4 py-4 flex flex-col gap-3 flex-1">
+                        <h3 class="text-lg font-semibold text-primary-blue leading-snug">
+                            {{ item.title }}
+                        </h3>
+                        <p class="text-sm text-primary-deepsea leading-relaxed">
+                            {{ item.shortDescription or item.short_description }}
+                        </p>
+                        
+                        <div class="flex flex-col gap-2 text-sm">
+                            {% if item.temperature_range %}
+                                <div class="flex items-center justify-between gap-2 bg-[#25425E]/5 rounded-2xl px-3 py-2">
+                                    <span class="font-semibold text-[#25425E]">Температура</span>
+                                    <span>{{ item.temperature_range }}</span>
                                 </div>
                             {% endif %}
-                            <div class="pt-3 flex flex-col gap-3 flex-grow">
-                                <h3 class="text-md font-bold text-[#25425E]">{{ item.title }}</h3>
-                                {% if item.short_description %}
-                                    <p class="text-sm text-primary-deepsea leading-relaxed">{{ item.short_description }}</p>
-                                {% endif %}
-                                <a href="{{ ('/transport/' ~ item.meta_title ~ '/') | url }}" class="block text-center rounded-full border border-[#25425E] text-[#25425E] font-semibold py-2 mt-auto transition-colors duration-200 hover:bg-[#25425E] hover:text-white">Виж детайли</a>
-                            </div>
+                            {% if item.capacity %}
+                                <div class="flex items-center justify-between gap-2 bg-[#25425E]/5 rounded-2xl px-3 py-2">
+                                    <span class="font-semibold text-[#25425E]">Капацитет</span>
+                                    <span>{{ item.capacity }}</span>
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="w-full flex justify-end mt-2">
+                            <a
+                                href="{{ ('/transport/' ~ item.meta_title ~ '/') | url }}"
+                                class="inline-flex items-center gap-2 rounded-full bg-primary-blue text-white px-5 py-2 text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+                            >
+                                Вижте повече
+                            </a>
                         </div>
                     </div>
-                {% endfor %}
-            </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
 </section>

@@ -1,7 +1,7 @@
 module.exports = {
     eleventyComputed: {
         relatedProducts: (data) => {
-            const vehicles = data.products || [];
+            const vehicles = data.transport || [];
             const currentVehicle = data.vehicle;
 
             if (!vehicles.length || !currentVehicle) {
