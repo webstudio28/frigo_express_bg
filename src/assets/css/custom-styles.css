@@ -333,14 +333,15 @@ html {
 /* Hero section decorative images */
 #europe-map {
     position: absolute;
-    top: 50%;
+    top: 65%;
     transform: translateY(-50%);
     width: auto;
     object-fit: fill;
     pointer-events: none;
     z-index: 1;
-    left: -40%;
+    left: -20%;
     opacity: 0.2;
+    height: 50%;
 }
 
 
@@ -349,7 +350,7 @@ html {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    height: 55vh;
+    height: 55%;
     width: auto;
     object-fit: contain;
     pointer-events: none;
@@ -373,18 +374,61 @@ html {
     animation: none;
 }
 
+@media (max-width: 800px) {
+    #europe-map {
+        left: -25%;
+        top: 70%;
+        object-fit: contain;
+        opacity: 0.3;
+        rotate: 10deg;
+        height: 50%;
+        object-fit: cover;
+    }
+
+    #thermometer {
+        height: 35%;
+        right: -10%;
+        top: 58%;
+        opacity: 0.3;
+    }
+}
+
+@media (max-width: 800px) {
+    #europe-map {
+        left: -25%;
+        top: 70%;
+        object-fit: contain;
+        opacity: 0.3;
+        rotate: 10deg;
+        height: 50%;
+        object-fit: cover;
+    }
+
+    #thermometer {
+        height: 35%;
+        right: -10%;
+        top: 58%;
+        opacity: 0.3;
+    }
+}
+
 
 
 @media (max-width: 640px) {
     #europe-map {
-        left: -50%;
+        left: -65%;
         top: 65%;
         object-fit: contain;
+        opacity: 0.3;
+        rotate: 40deg;
+        height: 40vh;
+        object-fit: cover;
     }
 
     #thermometer {
-        height: 20vh;
-        right: -9%;
+        height: 25vh;
+        right: -12%;
         top: 63%;
+        opacity: 0.1;
     }
 }
