@@ -7,10 +7,10 @@
             {% if metaTitle %}
                 {{ metaTitle }}
             {% else %}
-                {% if title %}{{ title }} | {% endif %}БиоВел Диагностика и хранителни добавки
+                {% if title %}{{ title }} | {% endif %}Frigo Express BG - Хладилен транспорт в Европа
             {% endif %}
         </title>
-        <meta name="description" content="{% if metaDescription %}{{ metaDescription }}{% elif description %}{{ description }}{% else %}ВЕГА ТЕСТ - компютърна диагностика за здравословно хранене с най-подходящите храни за вашия организъм{% endif %}">
+        <meta name="description" content="{% if metaDescription %}{{ metaDescription }}{% elif description %}{{ description }}{% else %}Frigo Express BG - професионален хладилен транспорт от България до цяла Европа. Контролирана температура, GPS проследяване и гарантирано качество.{% endif %}">
 
         <!-- Favicon -->
         <link rel="icon" type="image/x-icon" href="{{ '/favicon.ico' | url }}">
@@ -26,8 +26,8 @@
         <link rel="stylesheet" href="{{ '/assets/css/home.css' | url }}">
 
         <!-- Open Graph meta tags -->
-        <meta property="og:title" content="{% if metaTitle %}{{ metaTitle }}{% elif title %}{{ title }}{% else %}БиоВел Диагностика и хранителни добавки{% endif %}"/>
-        <meta property="og:description" content="{% if metaDescription %}{{ metaDescription }}{% elif description %}{{ description }}{% else %}ВЕГА ТЕСТ - компютърна диагностика за здравословно хранене{% endif %}"/>
+        <meta property="og:title" content="{% if metaTitle %}{{ metaTitle }}{% elif title %}{{ title }}{% else %}Frigo Express BG - Хладилен транспорт в Европа{% endif %}"/>
+        <meta property="og:description" content="{% if metaDescription %}{{ metaDescription }}{% elif description %}{{ description }}{% else %}Frigo Express BG - професионален хладилен транспорт от България до цяла Европа{% endif %}"/>
         <meta property="og:type" content="website"/>
 
         <script>
@@ -223,36 +223,36 @@
             <div class="max-w-7xl mx-auto py-16 px-4">
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                     <div class="col-span-1 md:col-span-2">
-                        <img src="{{ '/assets/images/logo.png' | url }}" alt="Вега Тест" class="h-16 w-auto mb-4">
+                        <img src="{{ '/assets/images/logo-dark.png' | url }}" alt="Frigo Express BG" class="h-12 w-auto mb-4">
                         <p class="text-white/90 mb-4 max-w-md">
-                            Персонализирани решения, холистични терапии и продукти, които поддържат твоето естествено равновесие.
+                            Професионален хладилен транспорт от България до цяла Европа. Контролирана температура, GPS проследяване и гарантирано качество за вашите стоки.
                         </p>
-                        <div class="flex items-center gap-3 text-white/80">
-                            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M22 12.07C22 6.48 17.52 2 11.93 2S1.86 6.48 1.86 12.07c0 4.99 3.64 9.14 8.4 9.93v-7.03H7.92v-2.9h2.34V9.97c0-2.31 1.37-3.59 3.48-3.59.99 0 2.02.18 2.02.18v2.22h-1.14c-1.12 0-1.47.7-1.47 1.42v1.7h2.5l-.4 2.9h-2.1V22c4.76-.79 8.4-4.94 8.4-9.93Z" />
-                            </svg>
-                            <a href="https://www.facebook.com/biovell?locale=bg_BG" target="_blank" rel="noopener" class="hover:text-white transition-colors font-semibold">Био Вел</a>
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Бърза навигация</h4>
+                        <div class="space-y-2 text-white/90">
+                            <a href="{{ '/' | url }}" class="block hover:text-white transition-colors">Начало</a>
+                            <a href="{{ '/za-nas/' | url }}" class="block hover:text-white transition-colors">За нас</a>
+                            <a href="{{ '/uslugi/' | url }}" class="block hover:text-white transition-colors">Услуги</a>
+                            <a href="{{ '/transport/' | url }}" class="block hover:text-white transition-colors">Транспорт</a>
+                            <a href="{{ '/kontakti/' | url }}" class="block hover:text-white transition-colors">Контакти</a>
                         </div>
                     </div>
 
                     <div>
                         <h4 class="text-lg font-semibold mb-4">Контакти</h4>
                         <div class="space-y-2 text-white/90">
-                            <p>гр. Пловдив</p>
-                            <p>Хотел SPS, ет.13, офис 1302</p>
-                            <p>тел: 0885 415 300</p>
-                            <p>e-mail: e_hrisi@abv.bg</p>
+                            <p>бул. Цариградско шосе 123</p>
+                            <p>София 1000, България</p>
+                            <p>тел: 0888 765 432</p>
+                            <p>e-mail: info@frigoexpress.bg</p>
                         </div>
-                    </div>
-
-                    <div>
-                        <h4 class="text-lg font-semibold mb-4">Работно време</h4>
-                        <p class="text-white/90">С предварително записан час</p>
                     </div>
                 </div>
 
                 <div class="border-t border-white/20 mt-12 pt-8 text-center text-white/70">
-                    <p>&copy; {{ site.currentYear }} Bio Vel. Всички права запазени.</p>
+                    <p>&copy; {{ site.currentYear }} Frigo Express BG. Всички права запазени.</p>
                 </div>
             </div>
         </footer>
