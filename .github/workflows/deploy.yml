@@ -18,7 +18,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      PATH_PREFIX: '/frigobg'
+      PATH_PREFIX: '/frigo_express_bg'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
