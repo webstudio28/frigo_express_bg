@@ -17,9 +17,9 @@ eleventyComputed:
 	<div class="max-w-7xl w-full mx-auto px-4">
 		<div class="flex flex-col gap-2 md:gap-4">
 			<!-- Title -->
-			<h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-evergreen">{{ service.name }}</h1>
+			<h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-blue">{{ service.name }}</h1>
 			
-			<!-- Description -->
+			<!-- Short Description -->
 			<p class="text-md pb-4 md:max-w-[60%] text-primary-deepsea leading-relaxed">
 				{{ service.description }}
 			</p>
@@ -43,75 +43,39 @@ eleventyComputed:
 	</div>
 </section>
 
-<!-- Описание Section -->
+<!-- Long Description Section -->
 {% if service.longDescription %}
 <section class="py-12">
 	<div class="max-w-7xl w-full mx-auto px-4">
-		<h2 class="text-2xl md:text-3xl font-bold text-primary-evergreen mb-6">Описание</h2>
-		<div class="bg-white/60 rounded-2xl p-6 md:p-8">
-			<div class="prose prose-lg max-w-none">
-				<p class="text-primary-deepsea leading-relaxed text-base md:text-lg">
-					{{ service.longDescription | safe }}
-				</p>
-				<p class="text-md font-semibold text-primary-evergreen mt-2">Цена: {{ service.price.lv }} лв / {{ service.price.eur }} €</p>
-			</div>
-		</div>
-	</div>
-</section>
-{% endif %}
-
-<!-- Ползи Section -->
-{% if service.benefits and service.benefits.length > 0 %}
-<section class="py-12">
-	<div class="max-w-7xl w-full mx-auto px-4">
-		<h2 class="text-2xl md:text-3xl font-bold text-primary-evergreen mb-8">Ползи</h2>
-		<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-			{% for benefit in service.benefits %}
-				<div class="bg-white rounded-2xl p-6 flex items-start gap-4">
-					<svg class="w-6 h-6 text-primary-evergreen flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-					</svg>
-					<p class="text-primary-deepsea text-sm md:text-base">{{ benefit }}</p>
-				</div>
-			{% endfor %}
-		</div>
-	</div>
-</section>
-{% endif %}
-
-<!-- Процес Section -->
-{% if service.howItWorks and service.howItWorks.length > 0 %}
-<section class="py-12">
-	<div class="max-w-7xl w-full mx-auto px-4">
-		<h2 class="text-2xl md:text-3xl font-bold text-primary-evergreen mb-8">Процес</h2>
 		<div class="space-y-6">
-			<!-- Time as First Step -->
-			{% if service.time %}
-				<div class="bg-white rounded-2xl p-6 shadow-md flex items-start gap-4">
-					<div class="w-10 h-10 rounded-full bg-primary-sand/80 text-primary-evergreen flex items-center justify-center font-bold flex-shrink-0">1</div>
-					<div class="flex-1">
-						<div class="flex items-center gap-3 mb-2">
-							
-							<h3 class="text-primary-deepsea ">Времетраене</h3>
-						</div>
-						<p class="text-primary-dark-gray">{{ service.time }}</p>
+			{% if service.longDescription is string %}
+				<div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm">
+					<div class="prose prose-lg max-w-none">
+						{{ service.longDescription | safe }}
 					</div>
 				</div>
+			{% else %}
+				{% for paragraph in service.longDescription %}
+					<div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm">
+						<p class="text-primary-deepsea leading-relaxed text-base md:text-lg">
+							{{ paragraph | safe }}
+						</p>
+					</div>
+				{% endfor %}
 			{% endif %}
-			
-			<!-- Other Steps -->
-			{% for step in service.howItWorks %}
-				<div class="bg-white rounded-2xl p-6 shadow-md flex items-start gap-4">
-					<div class="w-10 h-10 rounded-full bg-primary-sand/80 text-primary-evergreen flex items-center justify-center font-bold flex-shrink-0">
-						{% if service.time %}
-							{{ loop.index + 1 }}
-						{% else %}
-							{{ loop.index }}
-						{% endif %}
-					</div>
-					<div class="flex-1">
-						<p class="text-primary-dark-gray text-base">{{ step.name }}</p>
-					</div>
+		</div>
+	</div>
+</section>
+{% endif %}
+
+<!-- Key Points Section -->
+{% if service.keyPoints and service.keyPoints.length > 0 %}
+<section class="py-12">
+	<div class="max-w-7xl w-full mx-auto px-4">
+		<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+			{% for point in service.keyPoints %}
+				<div class="bg-white rounded-xl p-4 md:p-5 shadow-sm border border-[#25425E]/10">
+					<p class="text-primary-deepsea text-sm leading-relaxed">{{ point }}</p>
 				</div>
 			{% endfor %}
 		</div>
@@ -119,48 +83,74 @@ eleventyComputed:
 </section>
 {% endif %}
 
+<!-- FAQ Section -->
+{% if service.faq and service.faq.length > 0 %}
 <section class="py-12">
-                    <div class="max-w-7xl mx-auto px-4">
-                        <div class="relative h-[500px] md:h-[400px] w-full flex flex-col md:flex-row justify-evenly items-center gap-12 p-8 overflow-hidden rounded-3xl">
+	<div class="max-w-7xl w-full mx-auto px-4">
+		<h2 class="text-2xl md:text-3xl font-bold text-primary-blue mb-8">Често задавани въпроси</h2>
+		<div class="flex flex-col gap-6">
+			{% for item in service.faq %}
+				<details class="group bg-white p-6 rounded-3xl shadow-sm" {% if loop.first %}open{% endif %}>
+					<summary class="flex justify-between items-center cursor-pointer font-semibold text-primary-deepsea">
+						{{ item.question }}
+						<svg class="w-5 h-5 transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+						</svg>
+					</summary>
+					<div class="mt-4 text-primary-dark-gray">
+						{{ item.answer }}
+					</div>
+				</details>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+{% endif %}
 
-                            <div class="-z-10 absolute top-0 left-0 w-full h-full flex items-center justify-center">
-                            <img src="{{ '/assets/images/cta2.jpg' | url }}" alt="CTA Image" class="w-full h-full object-cover ">
-                            </div>
+<!-- CTA Section -->
+<section class="py-12">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="relative h-[600px] md:h-[400px] w-full flex flex-col md:flex-row justify-evenly items-center gap-12 p-8 overflow-hidden rounded-3xl">
 
-                            <div class="cta-left-side w-full sm-w-[50%] flex flex-col justify-center items-center sm:items-center text-center md:text-left">
+            <div class="-z-10 absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                <img src="{{ '/assets/images/home-cta.png' | url }}" alt="CTA Image" class="w-full h-full object-cover" style="filter: brightness(0.3);">
+            </div>
 
-                                <h2 class="text-white text-3xl md:text-4xl lg:text-5xl font-semibold">
-                                    Време е за теб!
-                                </h2>
-                                <p class="text-white text-sm font-light">
-                                    Подари си момент на внимание и грижа за тялото си.
-                                </p>
+            
+            <div class="cta-left-side w-full sm-w-[50%] flex flex-col justify-center items-center sm:items-center text-center md:text-left">
 
-                            </div>
+                <h2 class="text-white text-3xl md:text-4xl lg:text-5xl font-semibold">
+                    Хладилен транспорт?
+                </h2>
+                <p class="text-white text-sm font-light">
+                    Свържете се с нас и получите индивидуално предложение за вашата пратка. Работим 24/7 и гарантираме пълна сигурност.
+                </p>
 
-                            <div class="w-full sm-w-[50%] cta-right-side ">
+            </div>
 
-                                <div class="p-8 home-cta-buttons-ct cta-glassy-container flex flex-col gap-4 sm:flexcol">
+            <div class="w-full sm-w-[50%] cta-right-side ">
 
-                                    <p class="text-primary-volcanic text-sm font-semibold">Запази час или разгледай моите продукти</p>
-                                    <div class="flex flex-col sm:flex-row gap-4">
+                <div class="p-8 home-cta-buttons-ct bg-white/80 rounded-3xl flex flex-col gap-4 sm:flexcol">
 
-                                        <a href="viber://chat?number=%2B359885415300" class="text-primary-evergreen flex items-center justify-center gap-2 btn-primary w-full text-center rounded-3xl" target="_blank" rel="noopener">
-                                            <img src="{{ '/assets/images/booking.png' | url }}" alt="Clock" class="w-6 h-6 object-contain "> Запази час</a>
+                    <p class="text-primary-volcanic text-sm font-semibold">Запазете час или получете предложение</p>
+                    <div class="flex flex-col sm:flex-row gap-4">
 
-                                        <a href="{{ '/transport/' | url }}" class="flex items-center justify-center gap-2 btn-secondary hover:scale-105 transition-all duration-300 w-full text-center rounded-3xl  !hover:text-accent-evergreen">
-                                            <img src="{{ '/assets/images/products.png' | url }}" alt="Fleet" class=" w-6 h-6 object-contain "> Автопарк
-                                        </a>
-                                    </div>
+                        <a href="{{ '/kontakti/' | url }}" class="text-white flex items-center justify-center gap-2 btn-primary w-full text-center rounded-3xl">
+                            Обадете ни се
+                        </a>
 
-                                </div>
+                        <a href="{{ '/kontakti/' | url }}" class="flex items-center justify-center gap-2 btn-secondary hover:scale-105 transition-all duration-300 w-full text-center rounded-3xl">
+                            Контакти
+                        </a>
 
-                            </div>
-
-                        </div>
                     </div>
-                </section>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
 
 
-<script src="{{ '/assets/js/service-carousel.js' | url }}"></script>
 

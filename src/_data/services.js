@@ -92,6 +92,8 @@ module.exports = () => {
 				time: svc.time || '',
 				howItWorks: svc.howItWorks || [],
 				benefits: svc.benefits || [],
+				keyPoints: svc.keyPoints || [],
+				faq: svc.faq || [],
 				slug: uniqueSlug
 			});
 		}
