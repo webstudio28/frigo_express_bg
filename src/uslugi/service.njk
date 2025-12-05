@@ -24,47 +24,20 @@ eleventyComputed:
 				{{ service.description }}
 			</p>
 
-			<!-- Image Carousel - Full Width -->
+			<!-- Service Icon Container with Background Color -->
 			<div class="relative rounded-3xl overflow-hidden shadow-xl w-full">
-				<div id="service-hero-carousel" class="relative w-full h-80 md:h-[500px]">
-					{% if service.images and service.images.length > 0 %}
-						{% for image in service.images %}
-							<div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out {% if loop.first %}opacity-100{% endif %}">
-								<img src="{{ image | url }}" alt="{{ service.name }}" class="w-full h-full object-cover">
-							</div>
-						{% endfor %}
-					{% elif service.image %}
-						<div class="carousel-slide opacity-100">
-							<img src="{{ service.image | url }}" alt="{{ service.name }}" class="w-full h-full object-cover">
-						</div>
-					{% endif %}
-					
-					<!-- Bottom Gradient Overlay -->
-					<div class="absolute bottom-0 left-0 right-0 h-[20%] bg-gradient-to-t from-black/80 to-transparent pointer-events-none z-[5]"></div>
-					
-					<!-- Navigation Arrows -->
-					{% if service.images and service.images.length > 1 %}
-						<button class="carousel-arrow carousel-arrow-prev absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/80 hover:bg-white backdrop-blur-sm rounded-full p-2 transition-all duration-300 shadow-lg hover:shadow-xl" aria-label="Previous image">
-							<svg class="w-6 h-6 text-primary-deepsea" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-							</svg>
-						</button>
-						<button class="carousel-arrow carousel-arrow-next absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/80 hover:bg-white backdrop-blur-sm rounded-full p-2 transition-all duration-300 shadow-lg hover:shadow-xl" aria-label="Next image">
-							<svg class="w-6 h-6 text-primary-deepsea" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-							</svg>
-						</button>
+				<div 
+					class="relative w-full h-80 md:h-[500px] flex items-center justify-center"
+					style="background-color: {{ service.serviceCardColor or '#F5F5F5' }};"
+				>
+					{% if service.serviceIcon %}
+						<img
+							src="{{ service.serviceIcon | url }}"
+							alt="{{ service.name }}"
+							class="h-32 w-auto md:h-40 object-contain"
+						>
 					{% endif %}
 				</div>
-				
-				<!-- Carousel Dots -->
-				{% if service.images and service.images.length > 1 %}
-					<div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
-						{% for image in service.images %}
-							<button class="carousel-dot w-2 h-2 rounded-full bg-white/50 transition-all duration-300 {% if loop.first %}bg-white w-6{% endif %}" data-index="{{ loop.index0 }}" aria-label="Go to slide {{ loop.index }}"></button>
-						{% endfor %}
-					</div>
-				{% endif %}
 			</div>
 		</div>
 	</div>
