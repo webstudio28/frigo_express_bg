@@ -1,7 +1,7 @@
 {
-  "name": "base-11ty",
+  "name": "frigobg",
   "version": "1.0.0",
-  "description": "A clean, modern base template for 11ty projects with Tailwind CSS",
+  "description": "Frigo Express BG - Хладилен транспорт в Европа",
   "scripts": {
     "start": "eleventy --serve",
     "build": "eleventy",

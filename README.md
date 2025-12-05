@@ -1,6 +1,6 @@
-# Base 11ty Template
+# Frigo Express BG
 
-A clean, modern base template for 11ty projects with Tailwind CSS, designed to be fast, responsive, and easy to customize.
+Website for Frigo Express BG - професионален хладилен транспорт от България до цяла Европа. Built with 11ty and Tailwind CSS.
 
 ## 🚀 Features
 
