@@ -290,6 +290,15 @@ html {
     display: none; /* Safari and Chrome */
 }
 
+#mobile-menu > div {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+#mobile-menu > div::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+}
+
 /* Custom 800px breakpoint for menu */
 .desktop-nav {
     display: none;
