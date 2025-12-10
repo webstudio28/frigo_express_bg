@@ -54,8 +54,18 @@ description: Frigo Express BG - професионален хладилен тр
                 </div>
             </h2>
             <p class="text-medium md:text-lg text-primary-deepsea leading-relaxed">
-                Работим из цяла Европа и осигуряваме надежден хладилен транспорт за храни, лекарства и мостри. Постоянна температура, прецизна логистика и пълна сигурност за вашата пратка — от началната точка до България и обратно.
+                Frigo Express BG е специализирана фирма за хладилен транспорт между България и Европа, предлагаща бързи, надеждни и напълно контролирани превози на стоки, изискващи поддържане на точна температура от -20°C до +20°C.
             </p>
+            
+            <!-- Mobile Statistics Cards - 2x2 Grid -->
+            <div class="grid grid-cols-2 gap-3 mt-6 md:hidden">
+                {% for stat in statistics %}
+                <div class="bg-white rounded-xl shadow-md p-3 flex flex-col items-center justify-center text-center">
+                    <div class="text-lg font-bold text-primary-blue mb-1 leading-tight">{{ stat.number }}</div>
+                    <div class="text-xs text-primary-dark-gray leading-tight">{{ stat.description }}</div>
+                </div>
+                {% endfor %}
+            </div>
         </div>
 
         <div class="approach-container grid lg:grid-cols-2 items-stretch gap-12">
@@ -65,12 +75,12 @@ description: Frigo Express BG - професионален хладилен тр
                 <div class="rounded-2xl overflow-hidden shadow-xl relative h-full">
                     <img src="{{ '/assets/images/why-choose.jpg' | url }}" alt="При мен в БиоВел" class=" border-primary-dune rounded-2xl w-full h-full object-cover">
                     
-                    <!-- Statistics Cards -->
-                    <div class="absolute left-0 top-0 bottom-0 md:bottom-0 md:top-auto md:left-0 md:right-0 flex flex-col md:flex-row gap-1 md:gap-4 p-1.5 md:p-4 h-full md:h-auto">
+                    <!-- Statistics Cards - Desktop Only -->
+                    <div class="hidden md:flex absolute left-0 bottom-0 md:left-0 md:right-0 flex-row gap-4 p-4">
                         {% for stat in statistics %}
-                        <div class="bg-white/70 backdrop-blur-sm rounded-lg md:rounded-xl shadow-lg p-1.5 md:p-2 flex-1 flex flex-col items-center justify-center text-center max-w-[150px]">
-                            <div class="text-sm md:text-lg lg:text-xl font-bold text-primary-blue mb-0 md:mb-1 leading-tight">{{ stat.number }}</div>
-                            <div class="text-[8px] md:text-[10px] lg:text-xs text-primary-dark-gray leading-tight">{{ stat.description }}</div>
+                        <div class="bg-white/70 backdrop-blur-sm rounded-xl shadow-lg p-2 flex-1 flex flex-col items-center justify-center text-center max-w-[150px]">
+                            <div class="text-lg lg:text-xl font-bold text-primary-blue mb-1 leading-tight">{{ stat.number }}</div>
+                            <div class="text-xs text-primary-dark-gray leading-tight">{{ stat.description }}</div>
                         </div>
                         {% endfor %}
                     </div>
@@ -85,7 +95,7 @@ description: Frigo Express BG - професионален хладилен тр
                         Ако търсите сигурността на контролирана температура, точност до минута и гарантирано качество при доставката, вие сте на правилното място.
                     </p>
                     <p class="text-medium md:text-md text-primary-deepsea leading-relaxed">
-                        Ние предлагаме премиум хладилен транспорт от България до всяка точка в Европа и обратно – с модерни, надеждни и сертифицирани хладилни бусове, които поддържат идеалните условия за вашите продукти през целия път.
+                        Ние предлагаме хладилен транспорт от България до всяка точка в Европа и обратно – с модерни, надеждни и сертифицирани хладилни бусове, които поддържат идеалните условия за вашите продукти през целия път.
                     </p>
                 </div>
                 
