@@ -143,8 +143,16 @@ eleventyComputed:
                     
                     <!-- Image Container - Full Width, Fixed Height -->
                     <div class="relative h-48 w-full overflow-hidden">
-                        <!-- Vehicle Image -->
-                        {% if item.images and item.images[0] %}
+                        <!-- Vehicle Graphic -->
+                        {% if item.transportCardGraphic %}
+                            <div class="relative z-10 h-full flex items-center justify-center pt-4">
+                                <img
+                                    src="{{ item.transportCardGraphic | url }}"
+                                    alt="{{ item.title }}"
+                                    class="w-[80%] max-h-[140px] object-contain"
+                                >
+                            </div>
+                        {% elif item.images and item.images[0] %}
                             <div class="relative z-10 h-full flex items-center justify-center pt-4">
                                 <img
                                     src="{{ item.images[0] | url }}"

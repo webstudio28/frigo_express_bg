@@ -255,8 +255,16 @@ description: Frigo Express BG - професионален хладилен тр
                                                 
                                                 <!-- Image Container - Full Width, Fixed Height -->
                                                 <div class="relative h-48 w-full overflow-hidden">
-                                                    <!-- Vehicle Image -->
-                                                    {% if vehicle.images and vehicle.images[0] %}
+                                                    <!-- Vehicle Graphic -->
+                                                    {% if vehicle.transportCardGraphic %}
+                                                        <div class="relative z-10 h-full flex items-center justify-center pt-4">
+                                                            <img
+                                                                src="{{ vehicle.transportCardGraphic | url }}"
+                                                                alt="{{ vehicle.title }}"
+                                                                class="w-[80%] max-h-[140px] object-contain"
+                                                            >
+                                                        </div>
+                                                    {% elif vehicle.images and vehicle.images[0] %}
                                                         <div class="relative z-10 h-full flex items-center justify-center pt-4">
                                                             <img
                                                                 src="{{ vehicle.images[0] | url }}"

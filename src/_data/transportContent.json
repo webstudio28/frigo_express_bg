@@ -1,139 +1,100 @@
 [
   {
-    "slug": "mercedes-benz-sprinter-l2h2",
-    "title": "Mercedes-Benz Sprinter L2H2",
-    "meta_title": "mercedes-benz-sprinter-l2h2",
+    "slug": "mercedes-sprinter",
+    "title": "Mercedes Sprinter",
+    "meta_title": "mercedes-sprinter",
     "shortDescription": "Средноголям хладилен ван за градски и регионален дистрибуционен транспорт.",
-    "longDescription": "Mercedes-Benz Sprinter L2H2 е универсален хладилен ван, оборудван с двузонов хладилен агрегат и усилена изолация. Подходящ е за доставки из цялата страна с постоянен температурен контрол, дори при чести отваряния на вратите.",
+    "longDescription": "Mercedes Sprinter е универсален хладилен ван, подходящ за доставки из цялата страна с постоянен температурен контрол.",
     "images": [
-      "/assets/images/default-bus.png",
-      "/assets/images/projects/mercedes.jpg",
-      "/assets/images/projects/mercedes-s.jpg"
+      "/assets/images/transport/mercedes-sprinter1.jpg",
+      "/assets/images/transport/mercedes-sprinter2.jpg"
     ],
     "serviceCardColor": "#D8E8DB",
-    "temperature_range": "-25°C до +5°C",
-    "capacity": "12 м³ / до 6 европалета",
-    "payload": "1.2 t",
-    "features": [
-      "Двузонов температурен контрол с автоматични отчети",
-      "Изолация клас FRC за дълбоко замразени товари",
-      "Хладилен агрегат Thermo King T-1200R",
-      "Хигиенична алуминиева настилка с лесно почистване"
-    ],
-    "monitoring": [
-      "24/7 GPS и температурно проследяване през клиентски портал",
-      "Автоматични PDF отчети за температурни профили",
-      "Аларми при отклонения извън зададения диапазон"
-    ],
-    "ideal_loads": [
-      "Свежи и замразени храни",
-      "Млечни продукти",
-      "Фармацевтични доставки",
-      "Медицински консумативи"
-    ],
-    "availability": "Денонощна готовност и екип за експресни курсове"
+    "temperature_range": "-25°C до +25°C",
+    "capacity": "3 евро палета",
+    "payload": "1000 кг",
+    "features": [],
+    "monitoring": [],
+    "ideal_loads": [],
+    "availability": "Денонощна готовност и екип за експресни курсове",
+    "transportCardGraphic": "/assets/images/transport/gr-mercedes-sprinter1.png"
   },
   {
-    "slug": "iveco-daily-maxi-box",
-    "title": "Iveco Daily Maxi Box",
-    "meta_title": "iveco-daily-maxi-box",
-    "shortDescription": "Висококапацитетен хладилен бус за комбинирани товари и по-дълги релации.",
-    "longDescription": "Iveco Daily Maxi Box комбинира голям обем и надежден хладилен агрегат, подходящ за разпределителни курсове в страната и съседни държави. Осигурява стабилна температура и възможност за бързо прегрупиране на палетите.",
+    "slug": "renault-express",
+    "title": "Renault Express",
+    "meta_title": "renault-express",
+    "shortDescription": "Компактен хладилен ван за доставки в градски зони и труднодостъпни локации.",
+    "longDescription": "Renault Express е маневрен и ефективен за кратки курсове и доставки в градски условия.",
     "images": [
-      "/assets/images/default-bus3.png",
-      "/assets/images/projects/bmw.jpg",
-      "/assets/images/projects/audi.jpg"
+      "/assets/images/transport/reno-expess1.jpg"
     ],
     "serviceCardColor": "#FFE5CC",
-    "temperature_range": "-20°C до +6°C",
-    "capacity": "19 м³ / 8 европалета",
-    "payload": "1.6 t",
-    "features": [
-      "Вградени релси за обезопасяване на товара",
-      "Рампа за лесно палетно зареждане",
-      "Електрически плъг-ин режим за док товарене",
-      "Регистрирани HACCP и GDP процеси"
-    ],
-    "monitoring": [
-      "Двустранна комуникация с шофьора през бордов терминал",
-      "История на температурните данни за 12 месеца",
-      "Мобилни известия при отворени врати"
-    ],
-    "ideal_loads": [
-      "Замразени полуфабрикати",
-      "Рибни продукти",
-      "Фина сладкарска продукция",
-      "Чувствителни хранителни добавки"
-    ],
-    "availability": "Планирани линии и договорени прозорци за доставки"
+    "temperature_range": "+20°C до -30°C",
+    "capacity": "1 евро пале",
+    "payload": "500 кг",
+    "features": [],
+    "monitoring": [],
+    "ideal_loads": [],
+    "availability": "Денонощна готовност и екип за експресни курсове",
+    "transportCardGraphic": "/assets/images/transport/gr-reno-express1.png"
   },
   {
-    "slug": "mercedes-atego-18t-frigo",
-    "title": "Mercedes Atego 18T Frigo",
-    "meta_title": "mercedes-atego-18t-frigo",
-    "shortDescription": "Тежкотоварен хладилен камион за национална и международна дистрибуция.",
-    "longDescription": "Mercedes Atego 18T Frigo е оборудван с мощен агрегат Carrier Supra и дебела изолация за превоз на големи количества чувствителни товари. Подходящ за фармацевтични и хранителни пратки с многостопни маршрути.",
+    "slug": "renault-master-4-paleta",
+    "title": "Renault Master (4 палета)",
+    "meta_title": "renault-master-4-paleta",
+    "shortDescription": "Хладилен ван за средни товари с капацитет за 4 евро палета.",
+    "longDescription": "Renault Master с капацитет за 4 евро палета е подходящ за средни обеми товари с надежден температурен контрол.",
     "images": [
-      "/assets/images/default-bus2.png",
-      "/assets/images/projects/bentley.jpg",
-      "/assets/images/projects/porche.jpg"
+      "/assets/images/transport/reno-master1.jpg"
     ],
     "serviceCardColor": "#CCE5FF",
-    "temperature_range": "-30°C до +4°C",
-    "capacity": "45 м³ / 18 европалета",
-    "payload": "6.5 t",
-    "features": [
-      "Мултитемпературна конфигурация с две независими зони",
-      "Вградени термографи с печат на място",
-      "Хидравлична задна платформа 1500 kg",
-      "Укрепващи алуминиеви релси по цялата дължина"
-    ],
-    "monitoring": [
-      "Сертифициран GDP температурен мониторинг",
-      "Онлайн достъп до маршрути и времеви прозорци",
-      "360° камери за сваляне на видео логове"
-    ],
-    "ideal_loads": [
-      "Фармацевтични пратки",
-      "Ваксини и биопродукти",
-      "Замразено месо и риба",
-      "Млечни продукти в големи обеми"
-    ],
-    "availability": "Посветени екипи и температурно валидирани маршрути"
+    "temperature_range": "-20°C до +25°C",
+    "capacity": "4 евро палета",
+    "payload": "1000 кг",
+    "features": [],
+    "monitoring": [],
+    "ideal_loads": [],
+    "availability": "Денонощна готовност и екип за експресни курсове",
+    "transportCardGraphic": "/assets/images/transport/gr-reno-master1.png"
   },
   {
-    "slug": "city-cooler-n1",
-    "title": "City Cooler N1",
-    "meta_title": "city-cooler-n1",
-    "shortDescription": "Компактен изотермичен ван за доставки в централни градски зони и труднодостъпни локации.",
-    "longDescription": "City Cooler N1 е маневрен и ефективен за последна миля, с възможност за чести спирания и бързо зареждане. Поддържа стабилна температура при кратки курсове и обслужва ресторанти, болници и малки магазини.",
+    "slug": "renault-master-6-paleta",
+    "title": "Renault Master (6 палета)",
+    "meta_title": "renault-master-6-paleta",
+    "shortDescription": "Хладилен ван за по-големи товари с капацитет за 6 евро палета.",
+    "longDescription": "Renault Master с капацитет за 6 евро палета е подходящ за по-големи обеми товари с широк температурен диапазон.",
     "images": [
-      "/assets/images/default-bus.png",
-      "/assets/images/projects/audi.jpg",
-      "/assets/images/projects/mercedes.jpg"
+      "/assets/images/transport/reno-master-6-evropaleta1.jpg",
+      "/assets/images/transport/reno-master-6-evropaleta2.jpg",
+      "/assets/images/transport/reno-master-6-evropaleta3.jpg"
     ],
     "serviceCardColor": "#E8D8F5",
-    "temperature_range": "-5°C до +8°C",
-    "capacity": "5 м³ / 2 европалета",
-    "payload": "750 kg",
-    "features": [
-      "Тих електрически агрегат за нощни доставки",
-      "Изолация клас IR за свежи продукти",
-      "Нисък праг за ръчно товарене",
-      "Компактен радиус на завой под 5.5 m"
+    "temperature_range": "-20°C до +20°C",
+    "capacity": "6 евро палета",
+    "payload": "1000 кг",
+    "features": [],
+    "monitoring": [],
+    "ideal_loads": [],
+    "availability": "Денонощна готовност и екип за експресни курсове",
+    "transportCardGraphic": "/assets/images/transport/gr-reno-master-6-evropaleta1.png"
+  },
+  {
+    "slug": "renault-master-7-paleta",
+    "title": "Renault Master (7 палета)",
+    "meta_title": "renault-master-7-paleta",
+    "shortDescription": "Хладилен ван за големи товари с максимален капацитет за 7 евро палета.",
+    "longDescription": "Renault Master с капацитет за 7 евро палета е подходящ за големи обеми товари с широк температурен диапазон.",
+    "images": [
+      "/assets/images/transport/reno-master-7-evropaleta1.jpg"
     ],
-    "monitoring": [
-      "Bluetooth логери за температурни отчети",
-      "Автоматично изпращане на данни към диспечер",
-      "Опция за електрически режим при док зареждане"
-    ],
-    "ideal_loads": [
-      "Пресни плодове и зеленчуци",
-      "Готови за консумация блюда",
-      "Пекарни и сладкарници",
-      "Спешни медицински доставки"
-    ],
-    "availability": "Гъвкави слотове и обслужване в централни градски зони"
+    "serviceCardColor": "#F5F6FF",
+    "temperature_range": "+20°C до -20°C",
+    "capacity": "7 евро палета",
+    "payload": "1000 кг",
+    "features": [],
+    "monitoring": [],
+    "ideal_loads": [],
+    "availability": "Денонощна готовност и екип за експресни курсове",
+    "transportCardGraphic": "/assets/images/transport/gr-reno-master-7-evropaleta1.png"
   }
 ]
-

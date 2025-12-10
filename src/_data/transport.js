@@ -78,6 +78,7 @@ module.exports = () => {
 				monitoring: vehicle.monitoring || [],
 				ideal_loads: vehicle.ideal_loads || [],
 				availability: vehicle.availability || '',
+				transportCardGraphic: vehicle['transport-card-graphic'] || vehicle.transportCardGraphic || '',
 				slug: uniqueSlug
 			});
 		}
