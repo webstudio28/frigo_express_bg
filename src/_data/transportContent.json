@@ -3,7 +3,6 @@
     "slug": "mercedes-sprinter",
     "title": "Mercedes Sprinter",
     "meta_title": "mercedes-sprinter",
-    "shortDescription": "Средноголям хладилен ван за градски и регионален дистрибуционен транспорт.",
     "longDescription": "Mercedes Sprinter е универсален хладилен ван, подходящ за доставки из цялата страна с постоянен температурен контрол.",
     "images": [
       "/assets/images/transport/mercedes-sprinter1.jpg",
@@ -23,7 +22,6 @@
     "slug": "renault-express",
     "title": "Renault Express",
     "meta_title": "renault-express",
-    "shortDescription": "Компактен хладилен ван за доставки в градски зони и труднодостъпни локации.",
     "longDescription": "Renault Express е маневрен и ефективен за кратки курсове и доставки в градски условия.",
     "images": [
       "/assets/images/transport/reno-expess1.jpg"
@@ -42,7 +40,6 @@
     "slug": "renault-master-4-paleta",
     "title": "Renault Master (4 палета)",
     "meta_title": "renault-master-4-paleta",
-    "shortDescription": "Хладилен ван за средни товари с капацитет за 4 евро палета.",
     "longDescription": "Renault Master с капацитет за 4 евро палета е подходящ за средни обеми товари с надежден температурен контрол.",
     "images": [
       "/assets/images/transport/reno-master1.jpg"
@@ -61,7 +58,6 @@
     "slug": "renault-master-6-paleta",
     "title": "Renault Master (6 палета)",
     "meta_title": "renault-master-6-paleta",
-    "shortDescription": "Хладилен ван за по-големи товари с капацитет за 6 евро палета.",
     "longDescription": "Renault Master с капацитет за 6 евро палета е подходящ за по-големи обеми товари с широк температурен диапазон.",
     "images": [
       "/assets/images/transport/reno-master-6-evropaleta1.jpg",
@@ -82,7 +78,6 @@
     "slug": "renault-master-7-paleta",
     "title": "Renault Master (7 палета)",
     "meta_title": "renault-master-7-paleta",
-    "shortDescription": "Хладилен ван за големи товари с максимален капацитет за 7 евро палета.",
     "longDescription": "Renault Master с капацитет за 7 евро палета е подходящ за големи обеми товари с широк температурен диапазон.",
     "images": [
       "/assets/images/transport/reno-master-7-evropaleta1.jpg"
