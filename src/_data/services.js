@@ -78,9 +78,13 @@ module.exports = () => {
 			const baseSlugValue = svc.slug ? baseSlug(svc.slug) : baseSlug(svc.title || svc.name);
 			const uniqueSlug = ensureUniqueSlug(baseSlugValue || svc.title || svc.name);
 
+			// Truncate description to 50 chars for service cards
+			const shortDesc = svc.shortDescription || svc.description || '';
+			const truncatedDesc = shortDesc.length > 100 ? shortDesc.substring(0, 100) + '...' : shortDesc;
+
 			services.push({
 				name: svc.title || svc.name,
-				description: svc.shortDescription || svc.description || '',
+				description: truncatedDesc,
 				longDescription: svc.longDescription || '',
 				metaTitle: svc.metaTitle || '',
 				metaDescription: svc.metaDescription || '',
