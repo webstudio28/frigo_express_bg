@@ -160,7 +160,7 @@ description: Frigo Express BG - професионален хладилен тр
                                         {{ service.name }}
                                     </h3>
                                     <p class="text-sm text-primary-deepsea leading-relaxed">
-                                        {{ service.description }}
+                                        {{ service.cardDescription | default(service.description) }}
                                     </p>
                                 </div>
                                 <div class="w-full flex justify-end">
