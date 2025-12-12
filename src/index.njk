@@ -13,7 +13,10 @@ description: Frigo Express BG - професионален хладилен тр
     
     
     <div id="hero-cars" class="absolute bottom-0 left-0 right-0 w-full pointer-events-none z-[2]">
-        <img src="{{ '/assets/images/hero-cars2.png' | url }}" alt="Хладилен автопарк на Frigo Express BG" class="w-full h-auto object-contain object-bottom">
+        <picture>
+            <source media="(max-width: 768px)" srcset="{{ '/assets/images/hero-cars2-mobile.png' | url }}">
+            <img src="{{ '/assets/images/hero-cars2.png' | url }}" alt="Хладилен автопарк на Frigo Express BG" class="w-full h-auto object-contain object-bottom">
+        </picture>
     </div>
 
     <div class="relative z-10 max-w-4xl w-full  flex flex-col items-center mb-[20vh] gap-6">
