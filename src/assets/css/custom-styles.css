@@ -367,20 +367,44 @@ html {
     right: -50%;
     opacity: 0.2;
     will-change: auto;
-    transition: none;
-    animation: none;
+    transition: none !important;
+    animation: none !important;
 }
 
 #hero-cars {
     will-change: auto;
-    transition: none;
-    animation: none;
+    transition: none !important;
+    animation: none !important;
 }
 
 #hero-cars img {
     will-change: auto;
-    transition: none;
-    animation: none;
+    transition: none !important;
+    animation: none !important;
+}
+
+/* Hard stop: prevent any transforms/animations on hero visuals */
+#europe-map,
+#thermometer {
+    transition: none !important;
+    animation: none !important;
+    transform: translateY(-50%) !important;
+}
+
+/* Hero height stabilization to avoid URL-bar stretch on mobile */
+.hero-section {
+    min-height: 100svh;
+    height: 100dvh;
+    max-height: 100dvh;
+    min-height: -webkit-fill-available;
+}
+
+@supports not (height: 100dvh) {
+    .hero-section {
+        height: 100vh;
+        min-height: 100vh;
+        max-height: 100vh;
+    }
 }
 
 @media (max-width: 800px) {
@@ -389,9 +413,12 @@ html {
         top: 70%;
         object-fit: contain;
         opacity: 0.3;
-        rotate: 10deg;
+        rotate: 0deg !important;
         height: 50%;
         object-fit: cover;
+        transition: none !important;
+        animation: none !important;
+        transform: translateY(-50%) !important;
     }
 
     #thermometer {
@@ -399,6 +426,9 @@ html {
         right: -10%;
         top: 58%;
         opacity: 0.3;
+        transition: none !important;
+        animation: none !important;
+        transform: translateY(-50%) !important;
     }
 }
 
@@ -408,9 +438,12 @@ html {
         top: 70%;
         object-fit: contain;
         opacity: 0.3;
-        rotate: 10deg;
+        rotate: 0deg !important;
         height: 50%;
         object-fit: cover;
+        transition: none !important;
+        animation: none !important;
+        transform: translateY(-50%) !important;
     }
 
     #thermometer {
@@ -418,6 +451,9 @@ html {
         right: -10%;
         top: 58%;
         opacity: 0.3;
+        transition: none !important;
+        animation: none !important;
+        transform: translateY(-50%) !important;
     }
 }
 
@@ -429,9 +465,12 @@ html {
         top: 65%;
         object-fit: contain;
         opacity: 0.3;
-        rotate: 40deg;
+        rotate: 0deg !important;
         height: 40vh;
         object-fit: cover;
+        transition: none !important;
+        animation: none !important;
+        transform: translateY(-50%) !important;
     }
 
     #thermometer {
@@ -439,6 +478,9 @@ html {
         right: -12%;
         top: 63%;
         opacity: 0.1;
+        transition: none !important;
+        animation: none !important;
+        transform: translateY(-50%) !important;
     }
 }
 
