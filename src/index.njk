@@ -71,6 +71,18 @@ description: Frigo Express BG - професионален хладилен тр
             { opacity: 0, scale: 0.5, transformOrigin: '50% 50%' },
             { opacity: 1, scale: 1, duration: 1, ease: '', stagger: 0.08 }
         );
+
+        // Decorative elements: slide in left/right
+        gsap.fromTo(
+            '#decorative-europe-map',
+            { opacity: 0, x: '-80px' },
+            { opacity: 0.5, x: '0px', duration: 1.5, ease: 'power2.out', delay: 0.1 }
+        );
+        gsap.fromTo(
+            '#decorative-thermometer',
+            { opacity: 0, x: '80px' },
+            { opacity: 0.5, x: '0px', duration: 1.5, ease: 'power2.out', delay: 0.1 }
+        );
     });
 </script>
 
