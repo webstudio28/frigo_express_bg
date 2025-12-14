@@ -393,96 +393,19 @@ html {
 
 /* Hero height stabilization to avoid URL-bar stretch on mobile */
 .hero-section {
-    min-height: 100svh;
-    height: 100dvh;
-    max-height: 100dvh;
-    min-height: -webkit-fill-available;
+    height: var(--hero-h, 100svh);
+    min-height: var(--hero-h, 100svh);
+    max-height: none;
 }
 
-@supports not (height: 100dvh) {
+@supports (height: 100dvh) {
     .hero-section {
-        height: 100vh;
-        min-height: 100vh;
-        max-height: 100vh;
-    }
-}
-
-@media (max-width: 800px) {
-    #europe-map {
-        left: -25%;
-        top: 70%;
-        object-fit: contain;
-        opacity: 0.3;
-        rotate: 0deg !important;
-        height: 50%;
-        object-fit: cover;
-        transition: none !important;
-        animation: none !important;
-        transform: translateY(-50%) !important;
-    }
-
-    #thermometer {
-        height: 35%;
-        right: -10%;
-        top: 58%;
-        opacity: 0.3;
-        transition: none !important;
-        animation: none !important;
-        transform: translateY(-50%) !important;
-    }
-}
-
-@media (max-width: 800px) {
-    #europe-map {
-        left: -25%;
-        top: 70%;
-        object-fit: contain;
-        opacity: 0.3;
-        rotate: 0deg !important;
-        height: 50%;
-        object-fit: cover;
-        transition: none !important;
-        animation: none !important;
-        transform: translateY(-50%) !important;
-    }
-
-    #thermometer {
-        height: 35%;
-        right: -10%;
-        top: 58%;
-        opacity: 0.3;
-        transition: none !important;
-        animation: none !important;
-        transform: translateY(-50%) !important;
+        height: var(--hero-h, 100dvh);
+        min-height: var(--hero-h, 100dvh);
     }
 }
 
 
-
-@media (max-width: 640px) {
-    #europe-map {
-        left: -65%;
-        top: 65%;
-        object-fit: contain;
-        opacity: 0.3;
-        rotate: 0deg !important;
-        height: 40vh;
-        object-fit: cover;
-        transition: none !important;
-        animation: none !important;
-        transform: translateY(-50%) !important;
-    }
-
-    #thermometer {
-        height: 25vh;
-        right: -12%;
-        top: 63%;
-        opacity: 0.1;
-        transition: none !important;
-        animation: none !important;
-        transform: translateY(-50%) !important;
-    }
-}
 
 /* Hide scrollbar but keep scrolling functionality */
 .scrollbar-hide {
@@ -492,4 +415,156 @@ html {
 
 .scrollbar-hide::-webkit-scrollbar {
     display: none;  /* Safari and Chrome */
+}
+
+#decorative-europe-map, #decorative-thermometer {
+    position: absolute;
+}
+
+#decorative-europe-map {
+    height: auto;
+    width: 40%;
+    bottom: -10%;
+    left: -15%;
+    transform: translateY(-50%);
+}
+
+#decorative-thermometer {
+    height: 200px;
+    width: 200px;
+    bottom: 25%;
+    right: -2%;
+    transform: translateY(-50%);
+}
+
+#decorative-europe-map img {
+    object-fit: contain;
+    opacity: 0.3;
+}
+
+#decorative-thermometer img {
+    object-fit: fill;
+    opacity: 0.3;
+}
+
+@media (max-width: 1630px) {
+
+    #decorative-europe-map {
+        height: auto;
+        width: 40%;
+        bottom: -10%;
+        left: -15%;
+        transform: translateY(-50%);
+    }
+
+    #decorative-thermometer {
+        height: 200px;
+        width: 200px;
+        bottom: 25%;
+        right: -2%;
+        transform: translateY(-50%);
+    }
+
+    #decorative-europe-map img {
+        object-fit: contain;
+        opacity: 0.3;
+    }
+
+    #decorative-thermometer img {
+        object-fit: fill;
+        opacity: 0.3;
+    }
+    
+}
+
+
+@media (max-width: 1030px) {
+
+    #decorative-europe-map {
+        height: auto;
+        width: 50%;
+        bottom: -15%;
+        left: -15%;
+        transform: translateY(-50%);
+    }
+
+    #decorative-thermometer {
+        height: 200px;
+        width: 200px;
+        bottom: 8%;
+        right: -5%;
+        transform: translateY(-50%);
+    }
+
+    #decorative-europe-map img {
+        object-fit: contain;
+        opacity: 0.5;
+    }
+
+    #decorative-thermometer img {
+        object-fit: fill;
+        opacity: 0.5;
+    }
+    
+}
+
+
+@media (max-width: 800px) {
+
+    #decorative-europe-map {
+        height: auto;
+        width: 50%;
+        bottom: -10%;
+        left: -10%;
+        transform: translateY(-50%);
+    }
+
+    #decorative-thermometer {
+        height: 200px;
+        width: 200px;
+        bottom: 0%;
+        right: -5%;
+        transform: translateY(-50%);
+    }
+
+    #decorative-europe-map img {
+        object-fit: contain;
+        opacity: 0.5;
+    }
+
+    #decorative-thermometer img {
+        object-fit: fill;
+        opacity: 0.5;
+    }
+    
+}
+
+@media (max-width: 400px) {
+
+    #decorative-europe-map {
+        height: auto;
+        width: 100%;
+        bottom: -20%;
+        left: -40%;
+        transform: translateY(-50%);
+    }
+
+    #decorative-thermometer {
+        height: 130px;
+        width: 130px;
+        bottom: 0%;
+        right: -10%;
+        transform: translateY(-50%);
+    }
+
+    #decorative-europe-map img {
+        object-fit: contain;
+        opacity: 0.5;
+    }
+
+    #decorative-thermometer img {
+        object-fit: fill;
+        opacity: 0.5;
+    }
+    
 }
