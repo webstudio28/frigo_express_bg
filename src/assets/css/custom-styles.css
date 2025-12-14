@@ -467,12 +467,10 @@ html {
 
     #decorative-europe-map img {
         object-fit: contain;
-        opacity: 0.3;
     }
 
     #decorative-thermometer img {
         object-fit: fill;
-        opacity: 0.3;
     }
     
 }
@@ -498,12 +496,10 @@ html {
 
     #decorative-europe-map img {
         object-fit: contain;
-        opacity: 0.5;
     }
 
     #decorative-thermometer img {
         object-fit: fill;
-        opacity: 0.5;
     }
     
 }
@@ -529,12 +525,10 @@ html {
 
     #decorative-europe-map img {
         object-fit: contain;
-        opacity: 0.5;
     }
 
     #decorative-thermometer img {
         object-fit: fill;
-        opacity: 0.5;
     }
     
 }
@@ -559,12 +553,10 @@ html {
 
     #decorative-europe-map img {
         object-fit: contain;
-        opacity: 0.5;
     }
 
     #decorative-thermometer img {
         object-fit: fill;
-        opacity: 0.5;
     }
     
 }

@@ -26,7 +26,7 @@ description: Frigo Express BG - професионален хладилен тр
     </div>
 
     <div class="relative z-10 max-w-4xl w-full  flex flex-col items-center mb-[20vh] gap-6">
-        <div class="text-2xl sm:text-4xl md:text-4xl lg:text-6xl font-semibold  space-y-4">
+        <div class="hero-fade text-2xl sm:text-4xl md:text-4xl lg:text-6xl font-semibold  space-y-4">
             <div class="flex flex-col items-center gap- tracking-wide">
                 <div class="flex items-center justify-center gap-3">
                     <span>Нашият бизнес</span>
@@ -39,11 +39,11 @@ description: Frigo Express BG - професионален хладилен тр
                 </div>
             </div>
 
-        <p class="text-white/80 font-light text-sm md:text-lg lg:text-xl max-w-2xl">
+        <p class="hero-fade text-white/80 font-light text-sm md:text-lg lg:text-xl max-w-2xl">
             Хладилен транспорт за храни, лекарства и мостри по европейските маршрути
         </p>
 
-        <a href="tel:+359895552692" class="inline-flex items-center justify-center rounded-full bg-white text-[#25425E] px-6 py-2 text-sm md:text-base font-semibold shadow-md hover:shadow-lg transition-all duration-200">
+        <a href="tel:+359895552692" class=" inline-flex items-center justify-center rounded-full bg-white text-[#25425E] px-6 py-2 text-sm md:text-base font-semibold shadow-md hover:shadow-lg transition-all duration-200">
             Обади ни се
         </a>
     </div>
@@ -60,6 +60,18 @@ description: Frigo Express BG - професионален хладилен тр
         // Only update on orientation change (not on scroll/resize) to keep height fixed
         window.addEventListener('orientationchange', setFixedHeroHeight);
     })();
+</script>
+
+<script src="{{ '/assets/js/gsap.min.js' | url }}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (!window.gsap) return;
+        gsap.fromTo(
+            '.hero-fade',
+            { opacity: 0, scale: 0.5, transformOrigin: '50% 50%' },
+            { opacity: 1, scale: 1, duration: 1, ease: '', stagger: 0.08 }
+        );
+    });
 </script>
 
 
