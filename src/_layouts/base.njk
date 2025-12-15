@@ -222,14 +222,14 @@
         <footer class="bg-primary-volcanic text-primary-sand mt-8 relative z-10">
             <div class="max-w-7xl mx-auto py-16 px-4">
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                    <div class="col-span-1 md:col-span-2">
+                    <div class="col-span-1 md:col-span-2 min-w-0">
                         <img src="{{ '/assets/images/logo-dark.png' | url }}" alt="Frigo Express BG" class="h-12 w-auto mb-4">
-                        <p class="text-white/90 mb-4 max-w-md">
+                        <p class="text-white/90 mb-4 break-words">
                             Професионален хладилен транспорт от България до цяла Европа. Контролирана температура и гарантирано качество за вашите стоки.
                         </p>
                     </div>
 
-                    <div>
+                    <div class="min-w-0">
                         <h4 class="text-lg font-semibold mb-4">Бърза навигация</h4>
                         <div class="space-y-2 text-white/90">
                             <a href="{{ '/' | url }}" class="block hover:text-white transition-colors">Начало</a>
@@ -240,22 +240,22 @@
                         </div>
                     </div>
 
-                    <div>
+                    <div class="min-w-0">
                         <h4 class="text-lg font-semibold mb-4">Контакти</h4>
                         <div class="space-y-3 text-white/90">
-                            <p class="flex items-center gap-2">
-                                <img src="{{ '/assets/images/phone.png' | url }}" alt="" class="w-4 h-4 object-contain" style="filter: brightness(0) invert(1);">
-                                <a href="tel:+359895552692" class="hover:text-white transition-colors">+359895552692</a>
+                            <p class="flex items-start gap-2">
+                                <img src="{{ '/assets/images/phone.png' | url }}" alt="" class="w-4 h-4 object-contain flex-shrink-0 mt-0.5" style="filter: brightness(0) invert(1);">
+                                <a href="tel:+359895552692" class="hover:text-white transition-colors break-all">+359895552692</a>
                             </p>
-                            <p class="flex items-center gap-2">
-                                <img src="{{ '/assets/images/phone.png' | url }}" alt="" class="w-4 h-4 object-contain" style="filter: brightness(0) invert(1);">
-                                <a href="tel:+359895552540" class="hover:text-white transition-colors">+359895552540</a>
+                            <p class="flex items-start gap-2">
+                                <img src="{{ '/assets/images/phone.png' | url }}" alt="" class="w-4 h-4 object-contain flex-shrink-0 mt-0.5" style="filter: brightness(0) invert(1);">
+                                <a href="tel:+359895552540" class="hover:text-white transition-colors break-all">+359895552540</a>
                             </p>
-                            <p class="flex items-center gap-2">
-                                <img src="{{ '/assets/images/mail.png' | url }}" alt="" class="w-4 h-4 object-contain" style="filter: brightness(0) invert(1);">
-                                <a href="mailto:dimitar2497@icloud.com" class="hover:text-white transition-colors">dimitar2497@icloud.com</a>
+                            <p class="flex items-start gap-2">
+                                <img src="{{ '/assets/images/mail.png' | url }}" alt="" class="w-4 h-4 object-contain flex-shrink-0 mt-0.5" style="filter: brightness(0) invert(1);">
+                                <a href="mailto:dimitar2497@icloud.com" class="hover:text-white transition-colors break-all">dimitar2497@icloud.com</a>
                             </p>
-                            <p class="text-sm text-white/70">Приемаме обаждания по всяко време на денонощието.</p>
+                            <p class="text-sm text-white/70 break-words">Приемаме обаждания по всяко време на денонощието.</p>
                         </div>
                     </div>
                 </div>

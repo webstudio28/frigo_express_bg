@@ -30,7 +30,7 @@ description: Frigo Express BG - професионален хладилен тр
     
     <div id="hero-cars" class="absolute bottom-0 left-0 right-0 w-full pointer-events-none z-[20]">
         <picture>
-            <source media="(max-width: 500px)" srcset="{{ '/assets/images/hero-cars2-mobile.png' | url }}">
+            <source media="(max-width: 500px)" srcset="{{ '/assets/images/final-mobile-hero2.png' | url }}">
             <img src="{{ '/assets/images/hero-cars2.png' | url }}" alt="Хладилен автопарк на Frigo Express BG" class=" w-full h-auto object-contain object-bottom">
         </picture>
     </div>
@@ -134,7 +134,7 @@ description: Frigo Express BG - професионален хладилен тр
 
             gsap.to(obj, {
                 val: numberPart,
-                duration: 2.4,
+                duration: 1.2,
                 ease: 'power1.out',
                 scrollTrigger: {
                     trigger: el.closest('.stats-trigger') || el,
@@ -246,6 +246,15 @@ description: Frigo Express BG - професионален хладилен тр
                     <p class="text-medium md:text-md text-primary-deepsea leading-relaxed">
                         Ние предлагаме хладилен транспорт от България до всяка точка в Европа и обратно – с модерни, надеждни и сертифицирани хладилни бусове, които поддържат идеалните условия за вашите продукти през целия път.
                     </p>
+                    <div class="rounded-3xl bg-[#25425E]/5 border border-[#25425E]/10 px-5 py-4">
+                        <div class="flex items-start gap-3">
+                            <img src="{{ '/assets/images/gps.png' | url }}" alt="GPS tracking" class="w-5 h-5 flex-shrink-0 mt-0.5">
+                            <div>
+                                <h2 class="text-lg font-semibold text-[#25425E]">GPS проследяване</h2>
+                                <p class="text-sm text-primary-deepsea mt-1">Всички наши превозни средства са оборудвани с GPS тракери. Вие можете да проследявате вашата пратка в реално време.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- CTA Button -->
