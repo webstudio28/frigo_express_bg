@@ -5,6 +5,8 @@ module.exports = function(eleventyConfig) {
   // Copy static assets
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy("favicon.ico");
+  eleventyConfig.addPassthroughCopy(".htaccess");
+
  
   // Expose env vars if needed in templates (keep debug optional)
   if (process.env.MAIL_KEY) {
