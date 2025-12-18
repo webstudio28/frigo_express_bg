@@ -40,4 +40,4 @@ jobs:
           password: ${{ secrets.CPANEL_PASS }}
           local-dir: _site/
           server-dir: public_html/
-          dangerous-clean-slate: true
+          dangerous-clean-slate: false
