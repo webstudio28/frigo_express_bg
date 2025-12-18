@@ -14,12 +14,8 @@ module.exports = function(eleventyConfig) {
   }
   eleventyConfig.addGlobalData("mailKey", process.env.MAIL_KEY || "");
  
-  // Determine pathPrefix: prefer explicit env; fallback to GH repo name if available
-  const explicitPrefix = process.env.PATH_PREFIX || process.env.ELEVENTY_PATH_PREFIX;
-  const repoPrefix = process.env.GITHUB_REPOSITORY
-    ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}`
-    : "/";
-  const pathPrefix = explicitPrefix || repoPrefix || "/";
+  // Determine pathPrefix: use explicit env or default to root
+  const pathPrefix = process.env.PATH_PREFIX || process.env.ELEVENTY_PATH_PREFIX || "/";
  
   return {
     pathPrefix,
