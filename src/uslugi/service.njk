@@ -17,10 +17,10 @@ eleventyComputed:
 	<div class="max-w-7xl w-full mx-auto px-4">
 		<div class="flex flex-col gap-2 md:gap-4">
 			<!-- Title -->
-			<h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-blue">{{ service.name }}</h1>
+			<h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-blue" data-service-title data-service-slug="{{ service.slug }}">{{ service.name }}</h1>
 			
 			<!-- Short Description -->
-			<p class="text-md pb-4 md:max-w-[100%] text-primary-deepsea leading-relaxed">
+			<p class="text-md pb-4 md:max-w-[100%] text-primary-deepsea leading-relaxed" data-service-description data-service-slug="{{ service.slug }}">
 				{{ service.description }}
 			</p>
 
@@ -47,18 +47,18 @@ eleventyComputed:
 {% if service.longDescription %}
 <section class="py-4 md:py-12">
 	<div class="max-w-7xl w-full mx-auto px-4">
-		<h2 class="text-2xl md:text-3xl font-bold text-primary-blue mb-8">Описание</h2>
+		<h2 class="text-2xl md:text-3xl font-bold text-primary-blue mb-8" data-translate="service.description">Описание</h2>
 		<div class="space-y-6">
 			{% if service.longDescription is string %}
 				<div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm">
-					<div class="prose prose-lg max-w-none">
+					<div class="prose prose-lg max-w-none" data-service-longdescription data-service-slug="{{ service.slug }}" data-service-index="0">
 						{{ service.longDescription | safe }}
 					</div>
 				</div>
 			{% else %}
 				{% for paragraph in service.longDescription %}
 					<div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm">
-						<p class="text-primary-deepsea leading-relaxed text-base md:text-lg">
+						<p class="text-primary-deepsea leading-relaxed text-base md:text-lg" data-service-longdescription data-service-slug="{{ service.slug }}" data-service-index="{{ loop.index0 }}">
 							{{ paragraph | safe }}
 						</p>
 					</div>
@@ -73,11 +73,11 @@ eleventyComputed:
 {% if service.keyPoints and service.keyPoints.length > 0 %}
 <section class="py-4 md:py-12">
 	<div class="max-w-7xl w-full mx-auto px-4">
-		<h2 class="text-2xl md:text-3xl font-bold text-primary-blue mb-8">Предимства</h2>
+		<h2 class="text-2xl md:text-3xl font-bold text-primary-blue mb-8" data-translate="service.benefits">Предимства</h2>
 		<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
 			{% for point in service.keyPoints %}
 				<div class="bg-white rounded-xl p-4 md:p-5 shadow-sm border border-[#25425E]/10">
-					<p class="text-primary-deepsea text-sm leading-relaxed">{{ point }}</p>
+					<p class="text-primary-deepsea text-sm leading-relaxed" data-service-keypoint data-service-slug="{{ service.slug }}" data-service-index="{{ loop.index0 }}">{{ point }}</p>
 				</div>
 			{% endfor %}
 		</div>
@@ -89,17 +89,17 @@ eleventyComputed:
 {% if service.faq and service.faq.length > 0 %}
 <section class="py-4 md:py-12">
 	<div class="max-w-7xl w-full mx-auto px-4">
-		<h2 class="text-2xl md:text-3xl font-bold text-primary-blue mb-8">Често задавани въпроси</h2>
+		<h2 class="text-2xl md:text-3xl font-bold text-primary-blue mb-8" data-translate="service.faq">Често задавани въпроси</h2>
 		<div class="flex flex-col gap-6">
 			{% for item in service.faq %}
 				<details class="group bg-white p-6 rounded-3xl shadow-sm" {% if loop.first %}open{% endif %}>
-					<summary class="flex justify-between items-center cursor-pointer font-semibold text-primary-deepsea">
+					<summary class="flex justify-between items-center cursor-pointer font-semibold text-primary-deepsea" data-service-faq-question data-service-slug="{{ service.slug }}" data-service-index="{{ loop.index0 }}">
 						{{ item.question }}
 						<svg class="w-5 h-5 transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
 						</svg>
 					</summary>
-					<div class="mt-4 text-primary-dark-gray">
+					<div class="mt-4 text-primary-dark-gray" data-service-faq-answer data-service-slug="{{ service.slug }}" data-service-index="{{ loop.index0 }}">
 						{{ item.answer }}
 					</div>
 				</details>
@@ -121,10 +121,10 @@ eleventyComputed:
             
             <div class="cta-left-side w-full sm-w-[50%] flex flex-col justify-center items-center sm:items-center text-center md:text-left">
 
-                <h2 class="text-white text-3xl md:text-4xl lg:text-5xl font-semibold">
+                <h2 class="text-white text-3xl md:text-4xl lg:text-5xl font-semibold" data-translate="home.cta.title">
                     Хладилен транспорт?
                 </h2>
-                <p class="text-white text-sm font-light">
+                <p class="text-white text-sm font-light" data-translate="home.cta.description">
                     Свържете се с нас и получите индивидуално предложение за вашата пратка. Работим 24/7 и гарантираме пълна сигурност.
                 </p>
 
@@ -134,14 +134,14 @@ eleventyComputed:
 
                 <div class="p-8 home-cta-buttons-ct bg-white/80 rounded-3xl flex flex-col gap-4 sm:flexcol">
 
-                    <p class="text-primary-volcanic text-sm font-semibold">Запазете час или получете предложение</p>
+                    <p class="text-primary-volcanic text-sm font-semibold" data-translate="home.cta.subtitle">Запазете час или получете предложение</p>
                     <div class="flex flex-col sm:flex-row gap-4">
 
-                        <a href="tel:+359895552692" class="text-white flex items-center justify-center gap-2 btn-primary w-full text-center rounded-3xl">
+                        <a href="tel:+359895552692" class="text-white flex items-center justify-center gap-2 btn-primary w-full text-center rounded-3xl" data-translate="home.cta.callUs">
                             Обадете ни се
                         </a>
 
-                        <a href="{{ '/kontakti/' | url }}" class="flex items-center justify-center gap-2 btn-secondary hover:scale-105 transition-all duration-300 w-full text-center rounded-3xl">
+                        <a href="{{ '/kontakti/' | url }}" class="flex items-center justify-center gap-2 btn-secondary hover:scale-105 transition-all duration-300 w-full text-center rounded-3xl" data-translate="home.cta.contacts">
                             Контакти
                         </a>
 

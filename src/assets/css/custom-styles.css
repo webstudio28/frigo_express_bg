@@ -334,6 +334,26 @@ html {
     }
 }
 
+/* Language Toggle */
+.lang-toggle-btn {
+    min-width: 40px;
+    cursor: pointer;
+}
+
+.lang-toggle-btn.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.lang-toggle-btn:not(.active) {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.lang-toggle-btn:not(.active):hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
 /* Services Carousel - Horizontal scrolling with flexbox */
 .services-carousel-track {
     width: max-content;

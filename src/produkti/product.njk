@@ -49,32 +49,32 @@ eleventyComputed:
                 <div class="rounded-3xl bg-transparent border-2 border-dotted border-[#25425E]/30 px-6 py-4">
                     <div class="flex items-start gap-3">
                         <img src="{{ '/assets/images/gps.png' | url }}" alt="GPS tracking" class="w-5 h-5 flex-shrink-0 mt-0.5">
-                        <p class="text-base text-[#25425E] leading-relaxed">Този бус е оборудван с GPS тракер. Можете да проследявате вашата пратка в реално време.</p>
+                        <p class="text-base text-[#25425E] leading-relaxed" data-translate="transportDetail.gpsText">Този бус е оборудван с GPS тракер. Можете да проследявате вашата пратка в реално време.</p>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {% if vehicle.temperature_range %}
                         <div class="rounded-xl border border-[#25425E]/15 bg-[#25425E]/5 px-4 py-3">
-                            <p class="text-xs uppercase tracking-wide text-[#25425E]/80 font-semibold">Температура</p>
+                            <p class="text-xs uppercase tracking-wide text-[#25425E]/80 font-semibold" data-translate="transport.temperature">Температура</p>
                             <p class="text-base font-semibold text-[#25425E] mt-1">{{ vehicle.temperature_range }}</p>
                         </div>
                     {% endif %}
                     {% if vehicle.capacity %}
                         <div class="rounded-xl border border-[#25425E]/15 bg-[#25425E]/5 px-4 py-3">
-                            <p class="text-xs uppercase tracking-wide text-[#25425E]/80 font-semibold">Капацитет</p>
+                            <p class="text-xs uppercase tracking-wide text-[#25425E]/80 font-semibold" data-translate="transport.capacity">Капацитет</p>
                             <p class="text-base font-semibold text-[#25425E] mt-1">{{ vehicle.capacity }}</p>
                         </div>
                     {% endif %}
                     {% if vehicle.payload %}
                         <div class="rounded-xl border border-[#25425E]/15 bg-[#25425E]/5 px-4 py-3">
-                            <p class="text-xs uppercase tracking-wide text-[#25425E]/80 font-semibold">Товароподемност</p>
+                            <p class="text-xs uppercase tracking-wide text-[#25425E]/80 font-semibold" data-translate="transport.payload">Товароподемност</p>
                             <p class="text-base font-semibold text-[#25425E] mt-1">{{ vehicle.payload }}</p>
                         </div>
                     {% endif %}
                 </div>
 
-                <a href="{{ '/kontakti/' | url }}" class="w-full inline-flex items-center justify-center rounded-full bg-[#25425E] text-white px-8 py-3 text-sm font-semibold uppercase tracking-wide shadow hover:shadow-lg transition-all duration-200">Заяви транспорт</a>
+                <a href="{{ '/kontakti/' | url }}" class="w-full inline-flex items-center justify-center rounded-full bg-[#25425E] text-white px-8 py-3 text-sm font-semibold uppercase tracking-wide shadow hover:shadow-lg transition-all duration-200" data-translate="transportDetail.requestTransport">Заяви транспорт</a>
             </div>
         </div>
     </div>
@@ -84,7 +84,7 @@ eleventyComputed:
 <section class="py-10">
     <div class="max-w-7xl w-full mx-auto px-4">
         <div class="rounded-3xl bg-white shadow-md border border-[#25425E]/10 p-6 md:p-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-[#25425E] mb-4">Описание и предназначение</h2>
+            <h2 class="text-2xl md:text-3xl font-bold text-[#25425E] mb-4" data-translate="transportDetail.description">Описание и предназначение</h2>
             <p class="text-primary-deepsea leading-relaxed text-base md:text-lg">{{ vehicle.long_description }}</p>
         </div>
     </div>
@@ -95,7 +95,7 @@ eleventyComputed:
 <section class="py-10">
     <div class="max-w-7xl w-full mx-auto px-4">
         <div class="rounded-3xl bg-white border border-[#25425E]/10 p-6 md:p-8 shadow-md">
-            <h2 class="text-2xl font-bold text-[#25425E] mb-4">Мониторинг и проследяване</h2>
+            <h2 class="text-2xl font-bold text-[#25425E] mb-4" data-translate="transportDetail.monitoring">Мониторинг и проследяване</h2>
             <ul class="space-y-3 text-base text-primary-deepsea leading-relaxed">
                 {% for item in vehicle.monitoring %}
                     <li class="flex items-start gap-3">
@@ -113,7 +113,7 @@ eleventyComputed:
 <section class="py-10">
     <div class="max-w-7xl w-full mx-auto px-4">
         <div class="rounded-3xl bg-white border border-[#25425E]/10 p-6 md:p-8 shadow-md">
-            <h2 class="text-2xl md:text-3xl font-bold text-[#25425E] mb-4">Подходящо за</h2>
+            <h2 class="text-2xl md:text-3xl font-bold text-[#25425E] mb-4" data-translate="transportDetail.suitableFor">Подходящо за</h2>
             <div class="flex flex-wrap gap-3">
                 {% for load in vehicle.ideal_loads %}
                     <span class="px-4 py-2 rounded-full bg-[#25425E]/10 text-[#25425E] text-sm font-semibold">{{ load }}</span>
@@ -127,7 +127,7 @@ eleventyComputed:
 {% if relatedProducts and relatedProducts.length > 0 %}
 <section class="py-4 md:py-12">
     <div class="max-w-7xl w-full mx-auto px-4">
-        <h2 class="text-2xl md:text-3xl font-bold text-primary-blue mb-8">Други превозни средства</h2>
+        <h2 class="text-2xl md:text-3xl font-bold text-primary-blue mb-8" data-translate="transportDetail.otherVehicles">Други превозни средства</h2>
         <div class="pb-2 flex overflow-x-auto sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:justify-items-center sm:overflow-visible scrollbar-hide">
             {% for item in relatedProducts %}
                 <div class="relative flex-shrink-0 sm:flex-shrink flex flex-col bg-white rounded-3xl shadow-md overflow-hidden w-full max-w-[280px] sm:max-w-[300px]">
