@@ -21,6 +21,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy(".htaccess");
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy("src/google043405ace894fdce.html");
+  eleventyConfig.addPassthroughCopy("src/sitemap.xml");
 
  
   // Expose env vars if needed in templates (keep debug optional)
