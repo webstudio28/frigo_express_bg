@@ -140,7 +140,7 @@
         <!-- Header -->
         <header id="header" class="{% if page.url == '/' or page.url == '/en/' %}absolute top-0 left-0 right-0{% else %}relative{% endif %} z-50 flex justify-center px-4 pt-8">
             <div class="flex w-full max-w-7xl items-center gap-4 rounded-full bg-[#25425E] text-white shadow-lg border border-white/10 px-4 py-4 md:px-6">
-                <a href="{{ '/' | url }}" class="flex items-center gap-3 flex-shrink-0">
+                <a href="{{ '/' | langUrl(lang) }}" class="flex items-center gap-3 flex-shrink-0">
                     <img src="{{ '/assets/images/logo-dark.png' | url }}" alt="Frigo Express BG" class="h-6 w-auto">
                 </a>
 
@@ -192,13 +192,13 @@
                                 </a>
                                 {% if services %}
                                     {% for service in services %}
-                                        <a href="{{ ('/uslugi/' ~ service.slug ~ '/') | url }}" class="flex items-center gap-3 rounded-xl border border-white/10 px-5 py-3 hover:bg-white/10 transition-colors text-base">
+                                        <a href="{{ ('/uslugi/' ~ service.slug ~ '/') | langUrl(lang) }}" class="flex items-center gap-3 rounded-xl border border-white/10 px-5 py-3 hover:bg-white/10 transition-colors text-base">
                                             {% if service.serviceIcon %}
                                                 <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-white/90 flex items-center justify-center p-1.5">
-                                                    <img src="{{ service.serviceIcon | url }}" alt="{{ service.name }}" class="w-full h-full object-contain">
+                                                    <img src="{{ service.serviceIcon | url }}" alt="{% if serviceTranslations[service.slug] and serviceTranslations[service.slug][lang] %}{{ serviceTranslations[service.slug][lang].title }}{% else %}{{ service.name }}{% endif %}" class="w-full h-full object-contain">
                                                 </div>
                                             {% endif %}
-                                            <span>{{ service.name }}</span>
+                                            <span>{% if serviceTranslations[service.slug] and serviceTranslations[service.slug][lang] %}{{ serviceTranslations[service.slug][lang].title }}{% else %}{{ service.name }}{% endif %}</span>
                                         </a>
                                     {% endfor %}
                                 {% endif %}
@@ -219,7 +219,7 @@
                                 <a href="{{ '/transport/' | langUrl(lang) }}" class="block rounded-xl border border-white/10 px-5 py-3 hover:bg-white/10 transition-colors text-base">{{ 'nav.allVehicles' | t(lang) }}</a>
                                 {% if transport %}
                                     {% for vehicle in transport %}
-                                        <a href="{{ ('/transport/' ~ vehicle.meta_title ~ '/') | url }}" class="block rounded-xl border border-white/10 px-5 py-3 hover:bg-white/10 transition-colors text-base">{{ vehicle.title }}</a>
+                                        <a href="{{ ('/transport/' ~ vehicle.meta_title ~ '/') | langUrl(lang) }}" class="block rounded-xl border border-white/10 px-5 py-3 hover:bg-white/10 transition-colors text-base">{% if transportTranslations[vehicle.meta_title] and transportTranslations[vehicle.meta_title][lang] %}{{ transportTranslations[vehicle.meta_title][lang].title }}{% else %}{{ vehicle.title }}{% endif %}</a>
                                     {% endfor %}
                                 {% endif %}
                             </div>
@@ -247,7 +247,9 @@
             <div class="max-w-7xl mx-auto py-16 px-4">
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                     <div class="col-span-1 md:col-span-2 min-w-0">
-                        <img src="{{ '/assets/images/logo-dark.png' | url }}" alt="Frigo Express BG" class="h-12 w-auto mb-4">
+                        <a href="{{ '/' | langUrl(lang) }}">
+                            <img src="{{ '/assets/images/logo-dark.png' | url }}" alt="Frigo Express BG" class="h-12 w-auto mb-4">
+                        </a>
                         <p class="text-white/90 mb-4 break-words">
                             {{ 'footer.description' | t(lang) }}
                         </p>
