@@ -1,26 +1,31 @@
 ---
 layout: base.njk
-title: За нас
-description: Frigo Express BG – надежден партньор в хладилната логистика
-permalink: /za-nas/
+pagination:
+  data: languages
+  size: 1
+  alias: lang
+permalink: "{% if lang == 'en' %}/en/za-nas/{% else %}/za-nas/{% endif %}"
+eleventyComputed:
+  title: "{{ 'about.title' | t(lang) }}"
+  description: "Frigo Express BG – надежден партньор в хладилната логистика"
 ---
 
 <section class="py-4 md:py-12">
     <div class="max-w-7xl w-full mx-auto px-4">
         <div class="grid gap-10 md:grid-cols-2 md:items-center">
             <div class="space-y-6">
-                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-[#25425E]">Frigo Express BG</h1>
-                <p class="text-primary-deepsea leading-relaxed" data-translate="about.mission">
-                    Нашата мисия е да осигурим бързо, сигурно и контролирано транспортиране на стоки, изискващи прецизна температура. Работим със съвременни хладилни бусове, подходящи за всякакъв тип стоки - от хранителни продукти до фармацевтични изделия. С нас получавате спокойствие, качество и партньор, на който можете да се доверите.
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-[#25425E]">{{ 'about.title' | t(lang) }}</h1>
+                <p class="text-primary-deepsea leading-relaxed">
+                    {{ 'about.mission' | t(lang) }}
                 </p>
                 <div class="grid gap-4 md:grid-cols-2">
                     <div class="rounded-3xl bg-[#25425E]/5 border border-[#25425E]/10 px-5 py-4">
-                        <h2 class="text-lg font-semibold text-[#25425E]" data-translate="about.feature1.title">Хладилен транспорт в Европа</h2>
-                        <p class="text-sm text-primary-deepsea mt-1" data-translate="about.feature1.text">Бързи и сигурни доставки между България и Европа с контролирана температура през целия маршрут.</p>
+                        <h2 class="text-lg font-semibold text-[#25425E]">{{ 'about.feature1.title' | t(lang) }}</h2>
+                        <p class="text-sm text-primary-deepsea mt-1">{{ 'about.feature1.text' | t(lang) }}</p>
                     </div>
                     <div class="rounded-3xl bg-[#25425E]/5 border border-[#25425E]/10 px-5 py-4">
-                        <h2 class="text-lg font-semibold text-[#25425E]" data-translate="about.feature2.title">Пълен контрол и сигурност</h2>
-                        <p class="text-sm text-primary-deepsea mt-1" data-translate="about.feature2.text">Следим товара в реално време и гарантираме надеждност, точност и професионално обслужване.</p>
+                        <h2 class="text-lg font-semibold text-[#25425E]">{{ 'about.feature2.title' | t(lang) }}</h2>
+                        <p class="text-sm text-primary-deepsea mt-1">{{ 'about.feature2.text' | t(lang) }}</p>
                     </div>
                 </div>
             </div>
@@ -47,13 +52,13 @@ permalink: /za-nas/
     <div class="max-w-7xl w-full mx-auto px-4">
         <div class="flex flex-col gap-6">
             <div class="bg-white rounded-3xl shadow-md p-6 md:p-8">
-                <p class="text-primary-deepsea leading-relaxed" data-translate="about.p1">
-                    Нашият фокус е върху сигурността, точността и коректно обслужване. Поддържаме постоянно проследяване на всяка пратка, за да осигурим максимална защита на товара.
+                <p class="text-primary-deepsea leading-relaxed">
+                    {{ 'about.paragraph1' | t(lang) }}
                 </p>
             </div>
             <div class="bg-white rounded-3xl shadow-md p-6 md:p-8">
-                <p class="text-primary-deepsea leading-relaxed" data-translate="about.p2">
-                    Разполагаме със съвременен автопарк и екип, ориентъран към високи стандарти и детайлно планиране. Frigo Express BG е изборът за клиенти, които ценят качество, надежност и премиум логистични решения.
+                <p class="text-primary-deepsea leading-relaxed">
+                    {{ 'about.paragraph2' | t(lang) }}
                 </p>
             </div>
         </div>
@@ -65,11 +70,11 @@ permalink: /za-nas/
     <div class="max-w-7xl w-full mx-auto px-4 flex flex-col justify-center items-center gap-8 md:gap-12">
         <!-- Header -->
         <div class="w-full text-left">
-            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-blue mb-4" data-translate="about.specialization.title">
-                Нашата специализация
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-blue mb-4">
+                {{ 'about.specialization.title' | t(lang) }}
             </h2>
-            <p class="text-medium md:text-lg text-primary-deepsea max-w-5xl leading-relaxed" data-translate="about.specialization.description">
-                Превозваме свежи, замразени и чувствителни стоки – от хранителни продукти и фармацевтични товари до деликатни материали.
+            <p class="text-medium md:text-lg text-primary-deepsea max-w-5xl leading-relaxed">
+                {{ 'about.specialization.description' | t(lang) }}
             </p>
         </div>
 
@@ -77,23 +82,23 @@ permalink: /za-nas/
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
             <!-- Feature 1 -->
             <div class="bg-white rounded-xl shadow-md p-4 flex flex-col items-start gap-3">
-                <img src="{{ '/assets/images/temperature-feature.png' | url }}" alt="Температурен контрол" class="h-8 flex-shrink-0">
-                <h3 class="text-md font-bold text-secondary-blue" data-translate="about.specialization.feature1">Постоянен температурен контрол</h3>
+                <img src="{{ '/assets/images/temperature-feature.png' | url }}" alt="{{ 'about.specialization.feature1' | t(lang) }}" class="h-8 flex-shrink-0">
+                <h3 class="text-md font-bold text-secondary-blue">{{ 'about.specialization.feature1' | t(lang) }}</h3>
             </div>
             <!-- Feature 2 -->
             <div class="bg-white rounded-xl shadow-md p-4 flex flex-col items-start gap-3">
-                <img src="{{ '/assets/images/earth.png' | url }}" alt="Международни курсове" class="h-8 flex-shrink-0">
-                <h3 class="text-md font-bold text-secondary-blue" data-translate="about.specialization.feature2">Международни курсове всеки ден</h3>
+                <img src="{{ '/assets/images/earth.png' | url }}" alt="{{ 'about.specialization.feature2' | t(lang) }}" class="h-8 flex-shrink-0">
+                <h3 class="text-md font-bold text-secondary-blue">{{ 'about.specialization.feature2' | t(lang) }}</h3>
             </div>
             <!-- Feature 3 -->
             <div class="bg-white rounded-xl shadow-md p-4 flex flex-col items-start gap-3">
-                <img src="{{ '/assets/images/deadline.png' | url }}" alt="Бърза реакция" class="h-8 flex-shrink-0">
-                <h3 class="text-md font-bold text-secondary-blue" data-translate="about.specialization.feature3">Бърза реакция и индивидуални решения</h3>
+                <img src="{{ '/assets/images/deadline.png' | url }}" alt="{{ 'about.specialization.feature3' | t(lang) }}" class="h-8 flex-shrink-0">
+                <h3 class="text-md font-bold text-secondary-blue">{{ 'about.specialization.feature3' | t(lang) }}</h3>
             </div>
             <!-- Feature 4 -->
             <div class="bg-white rounded-xl shadow-md p-4 flex flex-col items-start gap-3">
-                <img src="{{ '/assets/images/track.png' | url }}" alt="Проследяване" class="h-8 flex-shrink-0">
-                <h3 class="text-md font-bold text-secondary-blue" data-translate="about.specialization.feature4">Проследяване в реално време</h3>
+                <img src="{{ '/assets/images/track.png' | url }}" alt="{{ 'about.specialization.feature4' | t(lang) }}" class="h-8 flex-shrink-0">
+                <h3 class="text-md font-bold text-secondary-blue">{{ 'about.specialization.feature4' | t(lang) }}</h3>
             </div>
         </div>
     </div>
@@ -110,11 +115,11 @@ permalink: /za-nas/
                             
                             <div class="cta-left-side w-full sm-w-[50%] flex flex-col justify-center items-center sm:items-center text-center md:text-left">
 
-                                <h2 class="text-white text-3xl md:text-4xl lg:text-5xl font-semibold" data-translate="home.cta.title">
-                                    Хладилен транспорт?
+                                <h2 class="text-white text-3xl md:text-4xl lg:text-5xl font-semibold">
+                                    {{ 'home.cta.title' | t(lang) }}
                                 </h2>
-                                <p class="text-white text-sm font-light" data-translate="home.cta.description">
-                                    Свържете се с нас и получите индивидуално предложение за вашата пратка. Работим 24/7 и гарантираме пълна сигурност.
+                                <p class="text-white text-sm font-light">
+                                    {{ 'home.cta.description' | t(lang) }}
                                 </p>
 
                             </div>
@@ -123,15 +128,15 @@ permalink: /za-nas/
 
                                 <div class="p-8 home-cta-buttons-ct bg-white/80 rounded-3xl flex flex-col gap-4 sm:flexcol">
 
-                                    <p class="text-primary-volcanic text-sm font-semibold" data-translate="home.cta.subtitle">Запазете час или получете предложение</p>
+                                    <p class="text-primary-volcanic text-sm font-semibold">{{ 'home.cta.subtitle' | t(lang) }}</p>
                                     <div class="flex flex-col sm:flex-row gap-4">
 
-                                        <a href="tel:+359895552692" class="text-white flex items-center justify-center gap-2 btn-primary w-full text-center rounded-3xl" data-translate="home.cta.callUs">
-                                            Обадете ни се
+                                        <a href="tel:+359895552692" class="text-white flex items-center justify-center gap-2 btn-primary w-full text-center rounded-3xl">
+                                            {{ 'home.cta.callUs' | t(lang) }}
                                         </a>
 
-                                        <a href="{{ '/kontakti/' | url }}" class="flex items-center justify-center gap-2 btn-secondary hover:scale-105 transition-all duration-300 w-full text-center rounded-3xl" data-translate="home.cta.contacts">
-                                            Контакти
+                                        <a href="{{ '/kontakti/' | langUrl(lang) }}" class="flex items-center justify-center gap-2 btn-secondary hover:scale-105 transition-all duration-300 w-full text-center rounded-3xl">
+                                            {{ 'home.cta.contacts' | t(lang) }}
                                         </a>
 
                                     </div>

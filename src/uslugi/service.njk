@@ -1,15 +1,14 @@
 ---
 layout: base.njk
 pagination:
-  data: services
+  data: servicesByLang
   size: 1
-  alias: service
-permalink: "/uslugi/{{ service.slug }}/"
+  alias: item
+permalink: "{% if item.lang == 'en' %}/en/uslugi/{{ item.service.slug }}/{% else %}/uslugi/{{ item.service.slug }}/{% endif %}"
 eleventyComputed:
-  title: "{{ service.name }}"
-  description: "{{ service.metaDescription or service.description }}"
-  metaTitle: "{{ service.metaTitle or service.name }}"
-  metaDescription: "{{ service.metaDescription or service.description }}"
+  lang: "{{ item.lang }}"
+  title: "{% if serviceTranslations[item.service.slug] and serviceTranslations[item.service.slug][item.lang] %}{{ serviceTranslations[item.service.slug][item.lang].title }}{% else %}{{ item.service.name }}{% endif %}"
+  description: "{% if serviceTranslations[item.service.slug] and serviceTranslations[item.service.slug][item.lang] %}{{ serviceTranslations[item.service.slug][item.lang].description }}{% else %}{{ item.service.metaDescription or item.service.description }}{% endif %}"
 ---
 
 <!-- Hero Section with Image Carousel -->
@@ -17,23 +16,33 @@ eleventyComputed:
 	<div class="max-w-7xl w-full mx-auto px-4">
 		<div class="flex flex-col gap-2 md:gap-4">
 			<!-- Title -->
-			<h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-blue" data-service-title data-service-slug="{{ service.slug }}">{{ service.name }}</h1>
+			<h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-blue">
+				{% if serviceTranslations[item.service.slug] and serviceTranslations[item.service.slug][item.lang] %}
+					{{ serviceTranslations[item.service.slug][item.lang].title }}
+				{% else %}
+					{{ item.service.name }}
+				{% endif %}
+			</h1>
 			
 			<!-- Short Description -->
-			<p class="text-md pb-4 md:max-w-[100%] text-primary-deepsea leading-relaxed" data-service-description data-service-slug="{{ service.slug }}">
-				{{ service.description }}
+			<p class="text-md pb-4 md:max-w-[100%] text-primary-deepsea leading-relaxed">
+				{% if serviceTranslations[item.service.slug] and serviceTranslations[item.service.slug][item.lang] %}
+					{{ serviceTranslations[item.service.slug][item.lang].description }}
+				{% else %}
+					{{ item.service.description }}
+				{% endif %}
 			</p>
 
 			<!-- Service Icon Container with Background Color -->
 			<div class="relative rounded-3xl overflow-hidden shadow-xl w-full">
 				<div 
 					class="relative w-full h-80 md:h-[500px] flex items-center justify-center"
-					style="background-color: {{ service.serviceCardColor or '#F5F5F5' }};"
+					style="background-color: {{ item.service.serviceCardColor or '#F5F5F5' }};"
 				>
-					{% if service.serviceIcon %}
+					{% if item.service.serviceIcon %}
 						<img
-							src="{{ service.serviceIcon | url }}"
-							alt="{{ service.name }}"
+							src="{{ item.service.serviceIcon | url }}"
+							alt="{% if serviceTranslations[item.service.slug] and serviceTranslations[item.service.slug][item.lang] %}{{ serviceTranslations[item.service.slug][item.lang].title }}{% else %}{{ item.service.name }}{% endif %}"
 							class="h-32 w-auto md:h-40 object-contain"
 						>
 					{% endif %}
@@ -44,22 +53,32 @@ eleventyComputed:
 </section>
 
 <!-- Long Description Section -->
-{% if service.longDescription %}
+{% if item.service.longDescription %}
 <section class="py-4 md:py-12">
 	<div class="max-w-7xl w-full mx-auto px-4">
-		<h2 class="text-2xl md:text-3xl font-bold text-primary-blue mb-8" data-translate="service.description">Описание</h2>
+		<h2 class="text-2xl md:text-3xl font-bold text-primary-blue mb-8">{{ 'service.description' | t(item.lang) }}</h2>
 		<div class="space-y-6">
-			{% if service.longDescription is string %}
+			{% if item.service.longDescription is string %}
 				<div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm">
-					<div class="prose prose-lg max-w-none" data-service-longdescription data-service-slug="{{ service.slug }}" data-service-index="0">
-						{{ service.longDescription | safe }}
+					<div class="prose prose-lg max-w-none">
+						{% if serviceTranslations[item.service.slug] and serviceTranslations[item.service.slug][item.lang] and serviceTranslations[item.service.slug][item.lang].longDescription %}
+							{% for paragraph in serviceTranslations[item.service.slug][item.lang].longDescription %}
+								<p>{{ paragraph | safe }}</p>
+							{% endfor %}
+						{% else %}
+							{{ item.service.longDescription | safe }}
+						{% endif %}
 					</div>
 				</div>
 			{% else %}
-				{% for paragraph in service.longDescription %}
+				{% for paragraph in item.service.longDescription %}
 					<div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm">
-						<p class="text-primary-deepsea leading-relaxed text-base md:text-lg" data-service-longdescription data-service-slug="{{ service.slug }}" data-service-index="{{ loop.index0 }}">
-							{{ paragraph | safe }}
+						<p class="text-primary-deepsea leading-relaxed text-base md:text-lg">
+							{% if serviceTranslations[item.service.slug] and serviceTranslations[item.service.slug][item.lang] and serviceTranslations[item.service.slug][item.lang].longDescription %}
+								{{ serviceTranslations[item.service.slug][item.lang].longDescription[loop.index0] | safe }}
+							{% else %}
+								{{ paragraph | safe }}
+							{% endif %}
 						</p>
 					</div>
 				{% endfor %}
@@ -70,14 +89,20 @@ eleventyComputed:
 {% endif %}
 
 <!-- Key Points Section -->
-{% if service.keyPoints and service.keyPoints.length > 0 %}
+{% if item.service.keyPoints and item.service.keyPoints.length > 0 %}
 <section class="py-4 md:py-12">
 	<div class="max-w-7xl w-full mx-auto px-4">
-		<h2 class="text-2xl md:text-3xl font-bold text-primary-blue mb-8" data-translate="service.benefits">Предимства</h2>
+		<h2 class="text-2xl md:text-3xl font-bold text-primary-blue mb-8">{{ 'service.benefits' | t(item.lang) }}</h2>
 		<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-			{% for point in service.keyPoints %}
+			{% for point in item.service.keyPoints %}
 				<div class="bg-white rounded-xl p-4 md:p-5 shadow-sm border border-[#25425E]/10">
-					<p class="text-primary-deepsea text-sm leading-relaxed" data-service-keypoint data-service-slug="{{ service.slug }}" data-service-index="{{ loop.index0 }}">{{ point }}</p>
+					<p class="text-primary-deepsea text-sm leading-relaxed">
+						{% if serviceTranslations[item.service.slug] and serviceTranslations[item.service.slug][item.lang] and serviceTranslations[item.service.slug][item.lang].keyPoints %}
+							{{ serviceTranslations[item.service.slug][item.lang].keyPoints[loop.index0] }}
+						{% else %}
+							{{ point }}
+						{% endif %}
+					</p>
 				</div>
 			{% endfor %}
 		</div>
@@ -86,24 +111,45 @@ eleventyComputed:
 {% endif %}
 
 <!-- FAQ Section -->
-{% if service.faq and service.faq.length > 0 %}
+{% set translatedFaq = null %}
+{% if serviceTranslations[item.service.slug] and serviceTranslations[item.service.slug][item.lang] and serviceTranslations[item.service.slug][item.lang].faq %}
+	{% set translatedFaq = serviceTranslations[item.service.slug][item.lang].faq %}
+{% endif %}
+{% set serviceFaq = item.service.faq or [] %}
+{% if (translatedFaq and translatedFaq.length > 0) or (serviceFaq and serviceFaq.length > 0) %}
 <section class="py-4 md:py-12">
 	<div class="max-w-7xl w-full mx-auto px-4">
-		<h2 class="text-2xl md:text-3xl font-bold text-primary-blue mb-8" data-translate="service.faq">Често задавани въпроси</h2>
+		<h2 class="text-2xl md:text-3xl font-bold text-primary-blue mb-8">{{ 'service.faq' | t(item.lang) }}</h2>
 		<div class="flex flex-col gap-6">
-			{% for item in service.faq %}
-				<details class="group bg-white p-6 rounded-3xl shadow-sm" {% if loop.first %}open{% endif %}>
-					<summary class="flex justify-between items-center cursor-pointer font-semibold text-primary-deepsea" data-service-faq-question data-service-slug="{{ service.slug }}" data-service-index="{{ loop.index0 }}">
-						{{ item.question }}
-						<svg class="w-5 h-5 transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-						</svg>
-					</summary>
-					<div class="mt-4 text-primary-dark-gray" data-service-faq-answer data-service-slug="{{ service.slug }}" data-service-index="{{ loop.index0 }}">
-						{{ item.answer }}
-					</div>
-				</details>
-			{% endfor %}
+			{% if translatedFaq and translatedFaq.length > 0 %}
+				{% for faqItem in translatedFaq %}
+					<details class="group bg-white p-6 rounded-3xl shadow-sm" {% if loop.first %}open{% endif %}>
+						<summary class="flex justify-between items-center cursor-pointer font-semibold text-primary-deepsea">
+							{{ faqItem.question }}
+							<svg class="w-5 h-5 transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+							</svg>
+						</summary>
+						<div class="mt-4 text-primary-dark-gray">
+							{{ faqItem.answer }}
+						</div>
+					</details>
+				{% endfor %}
+			{% else %}
+				{% for faqItem in serviceFaq %}
+					<details class="group bg-white p-6 rounded-3xl shadow-sm" {% if loop.first %}open{% endif %}>
+						<summary class="flex justify-between items-center cursor-pointer font-semibold text-primary-deepsea">
+							{{ faqItem.question }}
+							<svg class="w-5 h-5 transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+							</svg>
+						</summary>
+						<div class="mt-4 text-primary-dark-gray">
+							{{ faqItem.answer }}
+						</div>
+					</details>
+				{% endfor %}
+			{% endif %}
 		</div>
 	</div>
 </section>
@@ -121,12 +167,8 @@ eleventyComputed:
             
             <div class="cta-left-side w-full sm-w-[50%] flex flex-col justify-center items-center sm:items-center text-center md:text-left">
 
-                <h2 class="text-white text-3xl md:text-4xl lg:text-5xl font-semibold" data-translate="home.cta.title">
-                    Хладилен транспорт?
-                </h2>
-                <p class="text-white text-sm font-light" data-translate="home.cta.description">
-                    Свържете се с нас и получите индивидуално предложение за вашата пратка. Работим 24/7 и гарантираме пълна сигурност.
-                </p>
+                <h2 class="text-white text-3xl md:text-4xl lg:text-5xl font-semibold">{{ 'home.cta.title' | t(item.lang) }}</h2>
+                <p class="text-white text-sm font-light">{{ 'home.cta.description' | t(item.lang) }}</p>
 
             </div>
 
@@ -134,16 +176,12 @@ eleventyComputed:
 
                 <div class="p-8 home-cta-buttons-ct bg-white/80 rounded-3xl flex flex-col gap-4 sm:flexcol">
 
-                    <p class="text-primary-volcanic text-sm font-semibold" data-translate="home.cta.subtitle">Запазете час или получете предложение</p>
+                    <p class="text-primary-volcanic text-sm font-semibold">{{ 'home.cta.subtitle' | t(item.lang) }}</p>
                     <div class="flex flex-col sm:flex-row gap-4">
 
-                        <a href="tel:+359895552692" class="text-white flex items-center justify-center gap-2 btn-primary w-full text-center rounded-3xl" data-translate="home.cta.callUs">
-                            Обадете ни се
-                        </a>
+                        <a href="tel:+359895552692" class="text-white flex items-center justify-center gap-2 btn-primary w-full text-center rounded-3xl">{{ 'home.cta.callUs' | t(item.lang) }}</a>
 
-                        <a href="{{ '/kontakti/' | url }}" class="flex items-center justify-center gap-2 btn-secondary hover:scale-105 transition-all duration-300 w-full text-center rounded-3xl" data-translate="home.cta.contacts">
-                            Контакти
-                        </a>
+                        <a href="{{ '/kontakti/' | langUrl(item.lang) }}" class="flex items-center justify-center gap-2 btn-secondary hover:scale-105 transition-all duration-300 w-full text-center rounded-3xl">{{ 'home.cta.contacts' | t(item.lang) }}</a>
 
                     </div>
                 </div>

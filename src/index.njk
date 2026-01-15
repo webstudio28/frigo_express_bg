@@ -1,7 +1,10 @@
 ---
 layout: base.njk
-title: Начало
-description: Frigo Express BG - професионален хладилен транспорт от България до цяла Европа. Контролирана температура, GPS проследяване и гарантирано качество.
+pagination:
+  data: languages
+  size: 1
+  alias: lang
+permalink: "{% if lang == 'en' %}/en/{% else %}/{% endif %}"
 ---
 
 
@@ -22,16 +25,16 @@ description: Frigo Express BG - професионален хладилен тр
     <div class="display-none absolute inset-0 pointer-events-none z-0" style="background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 150%);"></div>
     
     <div id="decorative-europe-map"> 
-       <img src="{{ '/assets/images/europe-map.png' | url }}" alt="Карта на Европа">
+       <img src="{{ '/assets/images/europe-map.png' | url }}" alt="{{ 'alt.europeMap' | t(lang) }}">
     </div>
     <div id="decorative-thermometer" >
-       <img src="{{ '/assets/images/thermometer.png' | url }}" alt="Термометър">
+       <img src="{{ '/assets/images/thermometer.png' | url }}" alt="{{ 'alt.thermometer' | t(lang) }}">
     </div>
     
     <div id="hero-cars" class="absolute bottom-0 left-0 right-0 w-full pointer-events-none z-[20]">
         <picture>
             <source media="(max-width: 500px)" srcset="{{ '/assets/images/final-mobile-hero2.png' | url }}">
-            <img src="{{ '/assets/images/hero-cars2.webp' | url }}" alt="Хладилен автопарк на Frigo Express BG" class=" w-full h-auto object-contain object-bottom">
+            <img src="{{ '/assets/images/hero-cars2.webp' | url }}" alt="{{ 'alt.refrigeratedFleet' | t(lang) }}" class=" w-full h-auto object-contain object-bottom">
         </picture>
     </div>
 
@@ -39,22 +42,20 @@ description: Frigo Express BG - професионален хладилен тр
         <div class="hero-fade text-2xl sm:text-4xl md:text-4xl lg:text-6xl font-semibold  space-y-4">
             <div class="flex flex-col items-center gap- tracking-wide">
                 <div class="flex items-center justify-center gap-3">
-                    <span data-translate="home.hero.line1">Нашият бизнес</span>
-                    <img src="{{ '/assets/images/bus-icon-dark.png' | url }}" alt="Иконка хладилен бус" class="h-8 w-auto md:h-10 vertical-align-middle pt-2">
+                    <span>{{ 'home.hero.line1' | t(lang) }}</span>
+                    <img src="{{ '/assets/images/bus-icon-dark.png' | url }}" alt="{{ 'alt.busIcon' | t(lang) }}" class="h-8 w-auto md:h-10 vertical-align-middle pt-2">
                 </div>
-                <div class="flex items-center justify-center gap-1">
-                    <span data-translate="home.hero.line2a">движи</span>
-                    <span class="text-[#C8E6C9] text-3xl md:text-5xl lg:text-6xl font-semibold" data-translate="home.hero.line2b">вашият</span>
-                    <span data-translate="home.hero.line2c">бизнес</span>
+                <div class="flex items-center justify-center">
+                    <span>{{ 'home.hero.line2a' | t(lang) }}<span class="text-[#C8E6C9] text-3xl md:text-5xl lg:text-6xl px-2 font-semibold">{{ 'home.hero.line2b' | t(lang) }}</span>{{ 'home.hero.line2c' | t(lang) }}</span>
                 </div>
             </div>
 
-        <p class="hero-fade text-white/80 font-light text-sm md:text-lg lg:text-xl max-w-2xl" data-translate="home.hero.subtitle">
-            Хладилен транспорт за храни, лекарства и мостри по европейските маршрути
+        <p class="hero-fade text-white/80 font-light text-sm md:text-lg lg:text-xl max-w-2xl">
+            {{ 'home.hero.subtitle' | t(lang) }}
         </p>
 
-        <a href="tel:+359895552692" class=" inline-flex items-center justify-center rounded-full bg-white text-[#25425E] px-6 py-2 text-sm md:text-base font-semibold shadow-md hover:shadow-lg transition-all duration-200" data-translate="home.hero.cta">
-            Обадете ни се
+        <a href="tel:+359895552692" class=" inline-flex items-center justify-center rounded-full bg-white text-[#25425E] px-6 py-2 text-sm md:text-base font-semibold shadow-md hover:shadow-lg transition-all duration-200">
+            {{ 'home.hero.cta' | t(lang) }}
         </a>
     </div>
 </section>
@@ -198,20 +199,21 @@ description: Frigo Express BG - професионален хладилен тр
 
             <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-blue mb-4">
                 <div class="flex items-center gap-3">
-                    <span data-translate="home.whyChoose.title">Защо да изберете Frigo Express BG</span>
+                    <span>{{ 'home.whyChoose.title' | t(lang) }}</span>
                     <img src="{{ '/assets/images/trust.png' | url }}" alt="Trust icon" class="h-8 w-auto md:h-8 lg:h-10">
                 </div>
             </h2>
-            <p class="text-medium md:text-lg text-primary-deepsea leading-relaxed" data-translate="home.whyChoose.description">
-                Frigo Express BG е специализирана фирма за хладилен транспорт между България и Европа, предлагаща бързи, надеждни и напълно контролирани превози на стоки, изискващи поддържане на точна температура от -20°C до +20°C.
+            <p class="text-medium md:text-lg text-primary-deepsea leading-relaxed">
+                {{ 'home.whyChoose.description' | t(lang) }}
             </p>
             
             <!-- Mobile Statistics Cards - 2x2 Grid -->
             <div class="grid grid-cols-2 gap-3 mt-6 md:hidden stats-trigger">
-                {% for stat in statistics %}
+                {% set statKeys = ['s1', 's2', 's3', 's4'] %}
+                {% for statKey in statKeys %}
                 <div class="bg-white rounded-xl shadow-md p-3 flex flex-col items-center justify-center text-center">
-                    <div class="text-lg font-bold text-primary-blue mb-1 leading-tight stat-number" data-target="{{ stat.number }}">0</div>
-                    <div class="text-xs text-primary-dark-gray leading-tight">{{ stat.description }}</div>
+                    <div class="text-lg font-bold text-primary-blue mb-1 leading-tight stat-number" data-target="{{ ('statistics.' ~ statKey ~ '.number') | t(lang) }}">0</div>
+                    <div class="text-xs text-primary-dark-gray leading-tight">{{ ('statistics.' ~ statKey ~ '.description') | t(lang) }}</div>
                 </div>
                 {% endfor %}
             </div>
@@ -222,14 +224,15 @@ description: Frigo Express BG - професионален хладилен тр
             <!-- Left Side: Image -->
             <div id="approach-media" class="order-1 sm:order-1 relative">
                 <div class="rounded-2xl overflow-hidden shadow-xl relative h-full">
-                    <img src="{{ '/assets/images/why-choose.jpg' | url }}" alt="При мен в БиоВел" class=" border-primary-dune rounded-2xl w-full h-full object-cover">
+                    <img src="{{ '/assets/images/why-choose.jpg' | url }}" alt="{{ 'alt.whyChooseImage' | t(lang) }}" class=" border-primary-dune rounded-2xl w-full h-full object-cover">
                     
                     <!-- Statistics Cards - Desktop Only -->
                     <div class="hidden md:flex absolute left-0 bottom-0 md:left-0 md:right-0 flex-row gap-4 p-4 stats-trigger">
-                        {% for stat in statistics %}
+                        {% set statKeys = ['s1', 's2', 's3', 's4'] %}
+                        {% for statKey in statKeys %}
                         <div class="bg-white/70 backdrop-blur-sm rounded-xl shadow-lg p-2 flex-1 flex flex-col items-center justify-center text-center max-w-[150px]">
-                            <div class="text-lg lg:text-xl font-bold text-primary-blue mb-1 leading-tight stat-number" data-target="{{ stat.number }}">0</div>
-                            <div class="text-xs text-primary-dark-gray leading-tight">{{ stat.description }}</div>
+                            <div class="text-lg lg:text-xl font-bold text-primary-blue mb-1 leading-tight stat-number" data-target="{{ ('statistics.' ~ statKey ~ '.number') | t(lang) }}">0</div>
+                            <div class="text-xs text-primary-dark-gray leading-tight">{{ ('statistics.' ~ statKey ~ '.description') | t(lang) }}</div>
                         </div>
                         {% endfor %}
                     </div>
@@ -240,18 +243,18 @@ description: Frigo Express BG - професионален хладилен тр
             <div class="order-2 sm:order-2 flex flex-col justify-between gap-6">
                 <!-- Text Content -->
                 <div class="flex flex-col gap-4 md:gap-6">
-                    <p class="text-medium md:text-md text-primary-deepsea leading-relaxed" data-translate="home.whyChoose.p1">
-                        Ако търсите сигурността на контролирана температура, точност до минута и гарантирано качество при доставката, вие сте на правилното място.
+                    <p class="text-medium md:text-md text-primary-deepsea leading-relaxed">
+                        {{ 'home.whyChoose.paragraph1' | t(lang) }}
                     </p>
-                    <p class="text-medium md:text-md text-primary-deepsea leading-relaxed" data-translate="home.whyChoose.p2">
-                        Ние предлагаме хладилен транспорт от България до всяка точка в Европа и обратно – с модерни, надеждни и сертифицирани хладилни бусове, които поддържат идеалните условия за вашите продукти през целия път.
+                    <p class="text-medium md:text-md text-primary-deepsea leading-relaxed">
+                        {{ 'home.whyChoose.paragraph2' | t(lang) }}
                     </p>
                     <div class="rounded-3xl bg-[#25425E]/5 border border-[#25425E]/10 px-5 py-4">
                         <div class="flex items-start gap-3">
                             <img src="{{ '/assets/images/gps.png' | url }}" alt="GPS tracking" class="w-5 h-5 flex-shrink-0 mt-0.5">
                             <div>
-                                <h2 class="text-lg font-semibold text-[#25425E]" data-translate="home.whyChoose.gpsTitle">GPS проследяване</h2>
-                                <p class="text-sm text-primary-deepsea mt-1" data-translate="home.whyChoose.gpsText">Всички наши превозни средства са оборудвани с GPS тракери. Вие можете да проследявате вашата пратка в реално време.</p>
+                                <h2 class="text-lg font-semibold text-[#25425E]">{{ 'home.whyChoose.gpsTitle' | t(lang) }}</h2>
+                                <p class="text-sm text-primary-deepsea mt-1">{{ 'home.whyChoose.gpsText' | t(lang) }}</p>
                             </div>
                         </div>
                     </div>
@@ -259,8 +262,8 @@ description: Frigo Express BG - професионален хладилен тр
                 
                 <!-- CTA Button -->
                 <div class="w-full mt-2">
-                    <a href="{{ '/za-nas/' | url }}" class="w-full flex items-center justify-center rounded-full bg-primary-blue text-white px-8 py-3 text-base  font-semibold shadow-md hover:shadow-lg transition-all duration-200" data-translate="home.whyChoose.cta">
-                        Вижте повече за нас
+                    <a href="{{ '/za-nas/' | langUrl(lang) }}" class="w-full flex items-center justify-center rounded-full bg-primary-blue text-white px-8 py-3 text-base  font-semibold shadow-md hover:shadow-lg transition-all duration-200">
+                        {{ 'home.whyChoose.cta' | t(lang) }}
                     </a>
                 </div>
             </div>
@@ -278,12 +281,12 @@ description: Frigo Express BG - професионален хладилен тр
         <div class="w-full text-left z-[100]">
             <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-blue mb-4">
                 <div class="flex items-center gap-3">
-                    <span data-translate="home.services.title">Нашите услуги</span>
+                    <span>{{ 'home.services.title' | t(lang) }}</span>
                     <img src="{{ '/assets/images/gps.png' | url }}" alt="GPS icon" class="h-8 w-auto md:h-8 lg:h-10">
                 </div>
             </h2>
-            <p class="text-medium md:text-lg text-primary-deepsea leading-relaxed" data-translate="home.services.description">
-                Предлагаме надежден хладилен транспорт за български фирми в цяла Европа — с постоянна температура, бързи маршрути и максимална сигурност за вашите стоки.
+            <p class="text-medium md:text-lg text-primary-deepsea leading-relaxed">
+                {{ 'home.services.description' | t(lang) }}
             </p>
         </div>
 
@@ -299,8 +302,7 @@ description: Frigo Express BG - професионален хладилен тр
                 <button
                     type="button"
                     class="services-carousel-prev flex-shrink-0 inline-flex items-center justify-center rounded-full bg-white text-primary-blue shadow-md hover:shadow-lg border border-primary-blue/10 w-7 h-7 md:w-10 md:h-10 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-blue/60"
-                    aria-label="Предишна услуга"
-                    data-translate-aria-label="home.services.prevService"
+                    aria-label="{{ 'home.services.prevService' | t(lang) }}"
                 >
                     <svg class="w-3.5 h-3.5 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -326,18 +328,26 @@ description: Frigo Express BG - професионален хладилен тр
                                 </div>
                                 <div class="flex flex-col gap-3 flex-1">
                                     <h3 class="text-lg font-semibold text-primary-blue leading-snug">
-                                        {{ service.name }}
+                                        {% if serviceTranslations[service.slug] and serviceTranslations[service.slug][lang] %}
+                                            {{ serviceTranslations[service.slug][lang].title }}
+                                        {% else %}
+                                            {{ service.name }}
+                                        {% endif %}
                                     </h3>
                                     <p class="text-sm text-primary-deepsea leading-relaxed">
-                                        {{ service.cardDescription | default(service.description) }}
+                                        {% if serviceTranslations[service.slug] and serviceTranslations[service.slug][lang] %}
+                                            {{ serviceTranslations[service.slug][lang].description }}
+                                        {% else %}
+                                            {{ service.cardDescription | default(service.description) }}
+                                        {% endif %}
                                     </p>
                                 </div>
                                 <div class="w-full flex justify-end">
                                     <a
-                                        href="{{ ('/uslugi/' ~ service.slug ~ '/') | url }}"
+                                        href="{{ ('/uslugi/' ~ service.slug ~ '/') | langUrl(lang) }}"
                                         class="inline-flex items-center gap-2 rounded-full bg-primary-blue text-white px-5 py-2 text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-200"
                                     >
-                                        <span data-translate="home.services.viewService">Вижте услугата</span>
+                                        <span>{{ 'home.services.viewService' | t(lang) }}</span>
                                     </a>
                                 </div>
                             </div>
@@ -349,8 +359,7 @@ description: Frigo Express BG - професионален хладилен тр
                 <button
                     type="button"
                     class="services-carousel-next flex-shrink-0 inline-flex items-center justify-center rounded-full bg-white text-primary-blue shadow-md hover:shadow-lg border border-primary-blue/10 w-7 h-7 md:w-10 md:h-10 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-blue/60"
-                    aria-label="Следваща услуга"
-                    data-translate-aria-label="home.services.nextService"
+                    aria-label="{{ 'home.services.nextService' | t(lang) }}"
                 >
                     <svg class="w-3.5 h-3.5 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -368,12 +377,12 @@ description: Frigo Express BG - професионален хладилен тр
                         <div class="w-full text-left z-[100]">
                             <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-blue mb-4">
                                 <div class="flex items-center gap-3">
-                                    <span data-translate="home.transport.title">Нашият транспорт</span>
+                                    <span>{{ 'home.transport.title' | t(lang) }}</span>
                                     <img src="{{ '/assets/images/bus-icon-light.png' | url }}" alt="Bus icon" class="h-8 w-auto md:h-8 lg:h-10">
                                 </div>
                             </h2>
-                            <p class="text-medium md:text-lg text-primary-deepsea leading-relaxed" data-translate="home.transport.description">
-                                Сертифицирани хладилни превозни средства с валидирани агрегати и 24/7 температурен мониторинг за доставки из цяла Европа.
+                            <p class="text-medium md:text-lg text-primary-deepsea leading-relaxed">
+                                {{ 'home.transport.description' | t(lang) }}
                             </p>
                         </div>
 
@@ -389,7 +398,7 @@ description: Frigo Express BG - професионален хладилен тр
                                 <button
                                     type="button"
                                     class="transport-carousel-prev flex-shrink-0 inline-flex items-center justify-center rounded-full bg-white text-primary-blue shadow-md hover:shadow-lg border border-primary-blue/10 w-7 h-7 md:w-10 md:h-10 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-blue/60"
-                                    aria-label="Предишен транспорт"
+                                    aria-label="{{ 'home.transport.prevVehicle' | t(lang) }}"
                                 >
                                     <svg class="w-3.5 h-3.5 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -420,7 +429,7 @@ description: Frigo Express BG - професионален хладилен тр
                                                         <div class="relative z-10 h-full flex items-center justify-center pt-4">
                                                             <img
                                                                 src="{{ vehicle.transportCardGraphic | url }}"
-                                                                alt="{{ vehicle.title }}"
+                                                                alt="{% if transportTranslations[vehicle.meta_title] and transportTranslations[vehicle.meta_title][lang] %}{{ transportTranslations[vehicle.meta_title][lang].title }}{% else %}{{ vehicle.title }}{% endif %}"
                                                                 class="w-[80%] max-h-[140px] object-contain"
                                                             >
                                                         </div>
@@ -428,7 +437,7 @@ description: Frigo Express BG - професионален хладилен тр
                                                         <div class="relative z-10 h-full flex items-center justify-center pt-4">
                                                             <img
                                                                 src="{{ vehicle.images[0] | url }}"
-                                                                alt="{{ vehicle.title }}"
+                                                                alt="{% if transportTranslations[vehicle.meta_title] and transportTranslations[vehicle.meta_title][lang] %}{{ transportTranslations[vehicle.meta_title][lang].title }}{% else %}{{ vehicle.title }}{% endif %}"
                                                                 class="w-[80%] max-h-[140px] object-contain"
                                                             >
                                                         </div>
@@ -438,7 +447,11 @@ description: Frigo Express BG - професионален хладилен тр
                                                 <!-- Text Content Container - With Padding -->
                                                 <div class="px-2 py-3 md:px-6 md:py-4 flex flex-col gap-3 flex-1">
                                                     <h3 class="text-lg font-semibold text-primary-blue leading-snug">
-                                                        {{ vehicle.title }}
+                                                        {% if transportTranslations[vehicle.meta_title] and transportTranslations[vehicle.meta_title][lang] %}
+                                                            {{ transportTranslations[vehicle.meta_title][lang].title }}
+                                                        {% else %}
+                                                            {{ vehicle.title }}
+                                                        {% endif %}
                                                     </h3>
                                                     <p class="text-sm text-primary-deepsea leading-relaxed">
                                                         {{ vehicle.shortDescription }}
@@ -447,24 +460,36 @@ description: Frigo Express BG - професионален хладилен тр
                                                     <div class="flex flex-col gap-2 text-sm">
                                                         {% if vehicle.temperature_range %}
                                                             <div class="flex items-center justify-between gap-2 bg-[#25425E]/5 rounded-2xl px-3 py-2">
-                                                                <span class="font-semibold text-[#25425E]" data-translate="home.transport.temperature">Температура</span>
-                                                                <span>{{ vehicle.temperature_range }}</span>
+                                                                <span class="font-semibold text-[#25425E]">{{ 'home.transport.temperature' | t(lang) }}</span>
+                                                                <span>
+                                                                    {% if transportTranslations[vehicle.meta_title] and transportTranslations[vehicle.meta_title][lang] %}
+                                                                        {{ transportTranslations[vehicle.meta_title][lang].temperature_range }}
+                                                                    {% else %}
+                                                                        {{ vehicle.temperature_range }}
+                                                                    {% endif %}
+                                                                </span>
                                                             </div>
                                                         {% endif %}
                                                         {% if vehicle.capacity %}
                                                             <div class="flex items-center justify-between gap-2 bg-[#25425E]/5 rounded-2xl px-3 py-2">
-                                                                <span class="font-semibold text-[#25425E]" data-translate="home.transport.capacity">Капацитет</span>
-                                                                <span>{{ vehicle.capacity }}</span>
+                                                                <span class="font-semibold text-[#25425E]">{{ 'home.transport.capacity' | t(lang) }}</span>
+                                                                <span>
+                                                                    {% if transportTranslations[vehicle.meta_title] and transportTranslations[vehicle.meta_title][lang] %}
+                                                                        {{ transportTranslations[vehicle.meta_title][lang].capacity }}
+                                                                    {% else %}
+                                                                        {{ vehicle.capacity }}
+                                                                    {% endif %}
+                                                                </span>
                                                             </div>
                                                         {% endif %}
                                                     </div>
                                                     
                                                     <div class="w-full flex justify-end mt-2">
                                                         <a
-                                                            href="{{ ('/transport/' ~ vehicle.meta_title ~ '/') | url }}"
+                                                            href="{{ ('/transport/' ~ vehicle.meta_title ~ '/') | langUrl(lang) }}"
                                                             class="inline-flex items-center gap-2 rounded-full bg-primary-blue text-white px-5 py-2 text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-200"
                                                         >
-                                                            <span data-translate="home.transport.viewMore">Вижте повече</span>
+                                                            <span>{{ 'home.transport.viewMore' | t(lang) }}</span>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -477,7 +502,7 @@ description: Frigo Express BG - професионален хладилен тр
                                 <button
                                     type="button"
                                     class="transport-carousel-next flex-shrink-0 inline-flex items-center justify-center rounded-full bg-white text-primary-blue shadow-md hover:shadow-lg border border-primary-blue/10 w-7 h-7 md:w-10 md:h-10 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-blue/60"
-                                    aria-label="Следващ транспорт"
+                                    aria-label="{{ 'home.transport.nextVehicle' | t(lang) }}"
                                 >
                                     <svg class="w-3.5 h-3.5 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -493,23 +518,25 @@ description: Frigo Express BG - професионален хладилен тр
                     <div class="max-w-7xl w-full mx-auto px-4 flex flex-col justify-center items-center gap-12 md:gap-14">
                         <!-- Header -->
                         <div class="w-full text-left">
-                            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-blue mb-4" data-translate="home.faq.title">
-                                {{ faq.title }}
+                            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-blue mb-4">
+                                {{ 'home.faq.title' | t(lang) }}
                             </h2>
                         </div>
 
                         <!-- FAQ Items - Full Width -->
                         <div class="w-full flex flex-col gap-6">
-                            {% for item in faq.faqs %}
+                            {% set faqKeys = ['question1', 'question2', 'question3'] %}
+                            {% for faqKey in faqKeys %}
+                                {% set answerKey = faqKey | replace('question', 'answer') %}
                                 <details class="group bg-white p-6 rounded-3xl shadow-sm" {% if loop.first %}open{% endif %}>
                                     <summary class="flex justify-between items-center cursor-pointer font-semibold text-primary-deepsea">
-                                        {{ item.question }}
+                                        {{ ('faq.' ~ faqKey) | t(lang) }}
                                         <svg class="w-5 h-5 transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                         </svg>
                                     </summary>
                                     <div class="mt-4 text-primary-dark-gray">
-                                        {{ item.answer }}
+                                        {{ ('faq.' ~ answerKey) | t(lang) }}
                                     </div>
                                 </details>
                             {% endfor %}
@@ -528,11 +555,11 @@ description: Frigo Express BG - професионален хладилен тр
                             
                             <div class="cta-left-side w-full sm-w-[50%] flex flex-col justify-center items-center sm:items-center text-center md:text-left">
 
-                                <h2 class="text-white text-3xl md:text-4xl lg:text-5xl font-semibold" data-translate="home.cta.title">
-                                    Хладилен транспорт?
+                                <h2 class="text-white text-3xl md:text-4xl lg:text-5xl font-semibold">
+                                    {{ 'home.cta.title' | t(lang) }}
                                 </h2>
-                                <p class="text-white text-sm font-light" data-translate="home.cta.description">
-                                    Свържете се с нас и получите индивидуално предложение за вашата пратка. Работим 24/7 и гарантираме пълна сигурност.
+                                <p class="text-white text-sm font-light">
+                                    {{ 'home.cta.description' | t(lang) }}
                                 </p>
 
                             </div>
@@ -541,15 +568,15 @@ description: Frigo Express BG - професионален хладилен тр
 
                                 <div class="p-8 home-cta-buttons-ct bg-white/80 rounded-3xl flex flex-col gap-4 sm:flexcol">
 
-                                    <p class="text-primary-volcanic text-sm font-semibold" data-translate="home.cta.subtitle">Запазете час или получете предложение</p>
+                                    <p class="text-primary-volcanic text-sm font-semibold">{{ 'home.cta.subtitle' | t(lang) }}</p>
                                     <div class="flex flex-col sm:flex-row gap-4">
 
-                                        <a href="tel:+359895552692" class="text-white flex items-center justify-center gap-2 btn-primary w-full text-center rounded-3xl" data-translate="home.cta.callUs">
-                                            Обадете ни се
+                                        <a href="tel:+359895552692" class="text-white flex items-center justify-center gap-2 btn-primary w-full text-center rounded-3xl">
+                                            {{ 'home.cta.callUs' | t(lang) }}
                                         </a>
 
-                                        <a href="{{ '/kontakti/' | url }}" class="flex items-center justify-center gap-2 btn-secondary hover:scale-105 transition-all duration-300 w-full text-center rounded-3xl" data-translate="home.cta.contacts">
-                                            Контакти
+                                        <a href="{{ '/kontakti/' | langUrl(lang) }}" class="flex items-center justify-center gap-2 btn-secondary hover:scale-105 transition-all duration-300 w-full text-center rounded-3xl">
+                                            {{ 'home.cta.contacts' | t(lang) }}
                                         </a>
 
                                     </div>
@@ -571,7 +598,7 @@ description: Frigo Express BG - професионален хладилен тр
                         type="button"
                         id="certificate-lightbox-close"
                         class="absolute top-4 right-4 rounded-full text-white text-3xl p-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-evergreen/80"
-                        aria-label="Затвори изображението"
+                        aria-label="{{ 'close' | t(lang) }}"
                     >
                         ✕
                     </button>

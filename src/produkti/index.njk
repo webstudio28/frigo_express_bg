@@ -1,24 +1,25 @@
 ---
 layout: base.njk
-title: Транспорт
-description: Нашият хладилен автопарк - модерни, сертифицирани превозни средства с валидирани агрегати и 24/7 мониторинг за сигурен транспорт на вашите стоки.
-permalink: /transport/
 pagination:
-    data: transport
-    size: 1000
-    alias: fleet
+  data: languages
+  size: 1
+  alias: lang
+permalink: "{% if lang == 'en' %}/en/transport/{% else %}/transport/{% endif %}"
+eleventyComputed:
+  title: "{{ 'transport.title' | t(lang) }}"
+  description: "{{ 'transport.description' | t(lang) }}"
 ---
 
 <section class="py-4 md:py-12">
     <div class="max-w-7xl w-full mx-auto px-4 flex flex-col gap-8">
         <div class="w-full text-left">
-            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-[#25425E]" data-translate="transport.title">Нашият хладилен автопарк</h1>
-            <p class="mt-3 text-primary-deepsea max-w-7xl" data-translate="transport.description">Изберете подходящото превозно средство според товара, температурния диапазон и дестинацията. Всички камиони и бусове са оборудвани със системи за мониторинг и документиране на студената верига.</p>
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-[#25425E]">{{ 'transport.title' | t(lang) }}</h1>
+            <p class="mt-3 text-primary-deepsea max-w-7xl">{{ 'transport.description' | t(lang) }}</p>
         </div>
 
         <div class="pt-8">
             <div class="pb-2 flex overflow-x-auto sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:justify-items-center sm:overflow-visible scrollbar-hide">
-                {% for vehicle in fleet %}
+                {% for vehicle in transport %}
                 <div class="relative flex-shrink-0 flex flex-col bg-white rounded-3xl shadow-md overflow-hidden w-full max-w-[280px] sm:max-w-[300px]">
                     <!-- Diagonal Color Block - Absolute to card -->
                     <div
@@ -38,7 +39,7 @@ pagination:
                             <div class="relative z-10 h-full flex items-center justify-center pt-4">
                                 <img
                                     src="{{ vehicle.transportCardGraphic | url }}"
-                                    alt="{{ vehicle.title }}"
+                                    alt="{% if transportTranslations[vehicle.meta_title] and transportTranslations[vehicle.meta_title][lang] %}{{ transportTranslations[vehicle.meta_title][lang].title }}{% else %}{{ vehicle.title }}{% endif %}"
                                     class="w-[80%] max-h-[140px] object-contain"
                                 >
                             </div>
@@ -46,7 +47,7 @@ pagination:
                             <div class="relative z-10 h-full flex items-center justify-center pt-4">
                                 <img
                                     src="{{ vehicle.images[0] | url }}"
-                                    alt="{{ vehicle.title }}"
+                                    alt="{% if transportTranslations[vehicle.meta_title] and transportTranslations[vehicle.meta_title][lang] %}{{ transportTranslations[vehicle.meta_title][lang].title }}{% else %}{{ vehicle.title }}{% endif %}"
                                     class="w-[80%] max-h-[140px] object-contain"
                                 >
                             </div>
@@ -56,7 +57,11 @@ pagination:
                     <!-- Text Content Container - With Padding -->
                     <div class="px-4 py-4 flex flex-col gap-3 flex-1">
                         <h3 class="text-lg font-semibold text-primary-blue leading-snug">
-                            {{ vehicle.title }}
+                            {% if transportTranslations[vehicle.meta_title] and transportTranslations[vehicle.meta_title][lang] %}
+                                {{ transportTranslations[vehicle.meta_title][lang].title }}
+                            {% else %}
+                                {{ vehicle.title }}
+                            {% endif %}
                         </h3>
                         <p class="text-sm text-primary-deepsea leading-relaxed">
                             {{ vehicle.shortDescription or vehicle.short_description }}
@@ -65,24 +70,36 @@ pagination:
                         <div class="flex flex-col gap-2 text-sm">
                             {% if vehicle.temperature_range %}
                                 <div class="flex items-center justify-between gap-2 bg-[#25425E]/5 rounded-2xl px-3 py-2">
-                                    <span class="font-semibold text-[#25425E]" data-translate="transport.temperature">Температура</span>
-                                    <span>{{ vehicle.temperature_range }}</span>
+                                    <span class="font-semibold text-[#25425E]">{{ 'transport.temperature' | t(lang) }}</span>
+                                    <span>
+                                        {% if transportTranslations[vehicle.meta_title] and transportTranslations[vehicle.meta_title][lang] %}
+                                            {{ transportTranslations[vehicle.meta_title][lang].temperature_range }}
+                                        {% else %}
+                                            {{ vehicle.temperature_range }}
+                                        {% endif %}
+                                    </span>
                                 </div>
                             {% endif %}
                             {% if vehicle.capacity %}
                                 <div class="flex items-center justify-between gap-2 bg-[#25425E]/5 rounded-2xl px-3 py-2">
-                                    <span class="font-semibold text-[#25425E]" data-translate="transport.capacity">Капацитет</span>
-                                    <span>{{ vehicle.capacity }}</span>
+                                    <span class="font-semibold text-[#25425E]">{{ 'transport.capacity' | t(lang) }}</span>
+                                    <span>
+                                        {% if transportTranslations[vehicle.meta_title] and transportTranslations[vehicle.meta_title][lang] %}
+                                            {{ transportTranslations[vehicle.meta_title][lang].capacity }}
+                                        {% else %}
+                                            {{ vehicle.capacity }}
+                                        {% endif %}
+                                    </span>
                                 </div>
                             {% endif %}
                         </div>
                         
                         <div class="w-full flex justify-end mt-2">
                             <a
-                                href="{{ ('/transport/' ~ vehicle.meta_title ~ '/') | url }}"
+                                href="{{ ('/transport/' ~ vehicle.meta_title ~ '/') | langUrl(lang) }}"
                                 class="inline-flex items-center gap-2 rounded-full bg-primary-blue text-white px-5 py-2 text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-200"
                             >
-                                <span data-translate="transport.viewMore">Вижте повече</span>
+                                <span>{{ 'transport.viewMore' | t(lang) }}</span>
                             </a>
                         </div>
                     </div>

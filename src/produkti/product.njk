@@ -1,35 +1,42 @@
 ---
 layout: base.njk
 pagination:
-    data: transport
-    size: 1
-    alias: vehicle
-permalink: "/transport/{{ vehicle.meta_title }}/"
+  data: transportByLang
+  size: 1
+  alias: item
+permalink: "{% if item.lang == 'en' %}/en/transport/{{ item.vehicle.meta_title }}/{% else %}/transport/{{ item.vehicle.meta_title }}/{% endif %}"
 eleventyComputed:
-    title: "{{ vehicle.title }}"
-    description: "{{ vehicle.shortDescription or vehicle.short_description }}"
+  lang: "{{ item.lang }}"
+  title: "{% if transportTranslations[item.vehicle.meta_title] and transportTranslations[item.vehicle.meta_title][item.lang] %}{{ transportTranslations[item.vehicle.meta_title][item.lang].title }}{% else %}{{ item.vehicle.title }}{% endif %}"
+  description: "{{ item.vehicle.shortDescription or item.vehicle.short_description }}"
 ---
 
 <section class="py-6">
     <div class="max-w-7xl w-full mx-auto px-4">
         <div class="mb-6 md:hidden">
-            <h1 class="text-2xl text-center font-bold text-[#25425E]">{{ vehicle.title }}</h1>
+            <h1 class="text-2xl text-center font-bold text-[#25425E]">
+                {% if transportTranslations[item.vehicle.meta_title] and transportTranslations[item.vehicle.meta_title][item.lang] %}
+                    {{ transportTranslations[item.vehicle.meta_title][item.lang].title }}
+                {% else %}
+                    {{ item.vehicle.title }}
+                {% endif %}
+            </h1>
         </div>
 
         <div class="flex flex-col md:flex-row gap-8 md:gap-12">
             <!-- Image gallery -->
             <div class="w-full md:w-1/2 flex flex-col gap-4">
-                {% if vehicle.images and vehicle.images.length > 0 %}
+                {% if item.vehicle.images and item.vehicle.images.length > 0 %}
                     <div class="bg-white rounded-3xl shadow-lg overflow-hidden aspect-[4/3]">
-                        <img id="vehicle-main-image" src="{{ vehicle.images[0] | url }}" alt="{{ vehicle.title }}" class="w-full h-full object-cover transition-opacity duration-300">
+                        <img id="vehicle-main-image" src="{{ item.vehicle.images[0] | url }}" alt="{% if transportTranslations[item.vehicle.meta_title] and transportTranslations[item.vehicle.meta_title][item.lang] %}{{ transportTranslations[item.vehicle.meta_title][item.lang].title }}{% else %}{{ item.vehicle.title }}{% endif %}" class="w-full h-full object-cover transition-opacity duration-300">
                     </div>
 
-                    {% if vehicle.images.length > 1 %}
+                    {% if item.vehicle.images.length > 1 %}
                         <div class="flex flex-wrap gap-3 justify-center">
-                            {% for image in vehicle.images %}
+                            {% for image in item.vehicle.images %}
                                 {% if image %}
                                     <button class="vehicle-thumbnail flex-shrink-0 w-24 h-24 opacity-60 hover:opacity-100 rounded-2xl overflow-hidden transition-opacity cursor-pointer border border-white/20 shadow" data-image-src="{{ image | url }}">
-                                        <img src="{{ image | url }}" alt="{{ vehicle.title }} thumbnail {{ loop.index }}" class="w-full h-full object-cover">
+                                        <img src="{{ image | url }}" alt="{% if transportTranslations[item.vehicle.meta_title] and transportTranslations[item.vehicle.meta_title][item.lang] %}{{ transportTranslations[item.vehicle.meta_title][item.lang].title }}{% else %}{{ item.vehicle.title }}{% endif %} thumbnail {{ loop.index }}" class="w-full h-full object-cover">
                                     </button>
                                 {% endif %}
                             {% endfor %}
@@ -41,66 +48,96 @@ eleventyComputed:
             <!-- Vehicle info -->
             <div class="w-full md:w-1/2 flex flex-col gap-6">
                 <div class="hidden md:block">
-                    <h1 class="text-3xl font-bold text-[#25425E]">{{ vehicle.title }}</h1>
+                    <h1 class="text-3xl font-bold text-[#25425E]">
+                        {% if transportTranslations[item.vehicle.meta_title] and transportTranslations[item.vehicle.meta_title][item.lang] %}
+                            {{ transportTranslations[item.vehicle.meta_title][item.lang].title }}
+                        {% else %}
+                            {{ item.vehicle.title }}
+                        {% endif %}
+                    </h1>
                 </div>
 
-                <p class="text-primary-deepsea text-base leading-relaxed">{{ vehicle.short_description }}</p>
+                <p class="text-primary-deepsea text-base leading-relaxed">{{ item.vehicle.short_description }}</p>
 
                 <div class="rounded-3xl bg-transparent border-2 border-dotted border-[#25425E]/30 px-6 py-4">
                     <div class="flex items-start gap-3">
                         <img src="{{ '/assets/images/gps.png' | url }}" alt="GPS tracking" class="w-5 h-5 flex-shrink-0 mt-0.5">
-                        <p class="text-base text-[#25425E] leading-relaxed" data-translate="transportDetail.gpsText">Този бус е оборудван с GPS тракер. Можете да проследявате вашата пратка в реално време.</p>
+                        <p class="text-base text-[#25425E] leading-relaxed">{{ 'transportDetail.gpsText' | t(item.lang) }}</p>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {% if vehicle.temperature_range %}
+                    {% if item.vehicle.temperature_range %}
                         <div class="rounded-xl border border-[#25425E]/15 bg-[#25425E]/5 px-4 py-3">
-                            <p class="text-xs uppercase tracking-wide text-[#25425E]/80 font-semibold" data-translate="transport.temperature">Температура</p>
-                            <p class="text-base font-semibold text-[#25425E] mt-1">{{ vehicle.temperature_range }}</p>
+                            <p class="text-xs uppercase tracking-wide text-[#25425E]/80 font-semibold">{{ 'transport.temperature' | t(item.lang) }}</p>
+                            <p class="text-base font-semibold text-[#25425E] mt-1">
+                                {% if transportTranslations[item.vehicle.meta_title] and transportTranslations[item.vehicle.meta_title][item.lang] %}
+                                    {{ transportTranslations[item.vehicle.meta_title][item.lang].temperature_range }}
+                                {% else %}
+                                    {{ item.vehicle.temperature_range }}
+                                {% endif %}
+                            </p>
                         </div>
                     {% endif %}
-                    {% if vehicle.capacity %}
+                    {% if item.vehicle.capacity %}
                         <div class="rounded-xl border border-[#25425E]/15 bg-[#25425E]/5 px-4 py-3">
-                            <p class="text-xs uppercase tracking-wide text-[#25425E]/80 font-semibold" data-translate="transport.capacity">Капацитет</p>
-                            <p class="text-base font-semibold text-[#25425E] mt-1">{{ vehicle.capacity }}</p>
+                            <p class="text-xs uppercase tracking-wide text-[#25425E]/80 font-semibold">{{ 'transport.capacity' | t(item.lang) }}</p>
+                            <p class="text-base font-semibold text-[#25425E] mt-1">
+                                {% if transportTranslations[item.vehicle.meta_title] and transportTranslations[item.vehicle.meta_title][item.lang] %}
+                                    {{ transportTranslations[item.vehicle.meta_title][item.lang].capacity }}
+                                {% else %}
+                                    {{ item.vehicle.capacity }}
+                                {% endif %}
+                            </p>
                         </div>
                     {% endif %}
-                    {% if vehicle.payload %}
+                    {% if item.vehicle.payload %}
                         <div class="rounded-xl border border-[#25425E]/15 bg-[#25425E]/5 px-4 py-3">
-                            <p class="text-xs uppercase tracking-wide text-[#25425E]/80 font-semibold" data-translate="transport.payload">Товароподемност</p>
-                            <p class="text-base font-semibold text-[#25425E] mt-1">{{ vehicle.payload }}</p>
+                            <p class="text-xs uppercase tracking-wide text-[#25425E]/80 font-semibold">{{ 'transport.payload' | t(item.lang) }}</p>
+                            <p class="text-base font-semibold text-[#25425E] mt-1">
+                                {% if transportTranslations[item.vehicle.meta_title] and transportTranslations[item.vehicle.meta_title][item.lang] %}
+                                    {{ transportTranslations[item.vehicle.meta_title][item.lang].payload }}
+                                {% else %}
+                                    {{ item.vehicle.payload }}
+                                {% endif %}
+                            </p>
                         </div>
                     {% endif %}
                 </div>
 
-                <a href="{{ '/kontakti/' | url }}" class="w-full inline-flex items-center justify-center rounded-full bg-[#25425E] text-white px-8 py-3 text-sm font-semibold uppercase tracking-wide shadow hover:shadow-lg transition-all duration-200" data-translate="transportDetail.requestTransport">Заяви транспорт</a>
+                <a href="{{ '/kontakti/' | langUrl(item.lang) }}" class="w-full inline-flex items-center justify-center rounded-full bg-[#25425E] text-white px-8 py-3 text-sm font-semibold uppercase tracking-wide shadow hover:shadow-lg transition-all duration-200">{{ 'transportDetail.requestTransport' | t(item.lang) }}</a>
             </div>
         </div>
     </div>
 </section>
 
-{% if vehicle.long_description %}
+{% if item.vehicle.long_description %}
 <section class="py-10">
     <div class="max-w-7xl w-full mx-auto px-4">
         <div class="rounded-3xl bg-white shadow-md border border-[#25425E]/10 p-6 md:p-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-[#25425E] mb-4" data-translate="transportDetail.description">Описание и предназначение</h2>
-            <p class="text-primary-deepsea leading-relaxed text-base md:text-lg">{{ vehicle.long_description }}</p>
+            <h2 class="text-2xl md:text-3xl font-bold text-[#25425E] mb-4">{{ 'transportDetail.description' | t(item.lang) }}</h2>
+            <p class="text-primary-deepsea leading-relaxed text-base md:text-lg">
+                {% if transportTranslations[item.vehicle.meta_title] and transportTranslations[item.vehicle.meta_title][item.lang] %}
+                    {{ transportTranslations[item.vehicle.meta_title][item.lang].longDescription }}
+                {% else %}
+                    {{ item.vehicle.long_description }}
+                {% endif %}
+            </p>
         </div>
     </div>
 </section>
 {% endif %}
 
-{% if vehicle.monitoring and vehicle.monitoring.length > 0 %}
+{% if item.vehicle.monitoring and item.vehicle.monitoring.length > 0 %}
 <section class="py-10">
     <div class="max-w-7xl w-full mx-auto px-4">
         <div class="rounded-3xl bg-white border border-[#25425E]/10 p-6 md:p-8 shadow-md">
-            <h2 class="text-2xl font-bold text-[#25425E] mb-4" data-translate="transportDetail.monitoring">Мониторинг и проследяване</h2>
+            <h2 class="text-2xl font-bold text-[#25425E] mb-4">{{ 'transportDetail.monitoring' | t(item.lang) }}</h2>
             <ul class="space-y-3 text-base text-primary-deepsea leading-relaxed">
-                {% for item in vehicle.monitoring %}
+                {% for monitoringItem in item.vehicle.monitoring %}
                     <li class="flex items-start gap-3">
                         <span class="w-2 h-2 mt-2 rounded-full bg-[#25425E]"></span>
-                        <span>{{ item }}</span>
+                        <span>{{ monitoringItem }}</span>
                     </li>
                 {% endfor %}
             </ul>
@@ -109,13 +146,13 @@ eleventyComputed:
 </section>
 {% endif %}
 
-{% if vehicle.ideal_loads and vehicle.ideal_loads.length > 0 %}
+{% if item.vehicle.ideal_loads and item.vehicle.ideal_loads.length > 0 %}
 <section class="py-10">
     <div class="max-w-7xl w-full mx-auto px-4">
         <div class="rounded-3xl bg-white border border-[#25425E]/10 p-6 md:p-8 shadow-md">
-            <h2 class="text-2xl md:text-3xl font-bold text-[#25425E] mb-4" data-translate="transportDetail.suitableFor">Подходящо за</h2>
+            <h2 class="text-2xl md:text-3xl font-bold text-[#25425E] mb-4">{{ 'transportDetail.suitableFor' | t(item.lang) }}</h2>
             <div class="flex flex-wrap gap-3">
-                {% for load in vehicle.ideal_loads %}
+                {% for load in item.vehicle.ideal_loads %}
                     <span class="px-4 py-2 rounded-full bg-[#25425E]/10 text-[#25425E] text-sm font-semibold">{{ load }}</span>
                 {% endfor %}
             </div>
@@ -127,14 +164,14 @@ eleventyComputed:
 {% if relatedProducts and relatedProducts.length > 0 %}
 <section class="py-4 md:py-12">
     <div class="max-w-7xl w-full mx-auto px-4">
-        <h2 class="text-2xl md:text-3xl font-bold text-primary-blue mb-8" data-translate="transportDetail.otherVehicles">Други превозни средства</h2>
+        <h2 class="text-2xl md:text-3xl font-bold text-primary-blue mb-8">{{ 'transportDetail.otherVehicles' | t(item.lang) }}</h2>
         <div class="pb-2 flex overflow-x-auto sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:justify-items-center sm:overflow-visible scrollbar-hide">
-            {% for item in relatedProducts %}
+            {% for relatedItem in relatedProducts %}
                 <div class="relative flex-shrink-0 sm:flex-shrink flex flex-col bg-white rounded-3xl shadow-md overflow-hidden w-full max-w-[280px] sm:max-w-[300px]">
                     <!-- Diagonal Color Block - Absolute to card -->
                     <div
                         class="absolute top-0 left-0 w-full"
-                        style="background-color: {{ item.serviceCardColor or '#D8E8DB' }}; clip-path: polygon(0 0, 100% 0, 100% 45%, 0 85%); height: 200px;"
+                        style="background-color: {{ relatedItem.serviceCardColor or '#D8E8DB' }}; clip-path: polygon(0 0, 100% 0, 100% 45%, 0 85%); height: 200px;"
                     ></div>
                     
                     <div
@@ -145,19 +182,19 @@ eleventyComputed:
                     <!-- Image Container - Full Width, Fixed Height -->
                     <div class="relative h-48 w-full overflow-hidden">
                         <!-- Vehicle Graphic -->
-                        {% if item.transportCardGraphic %}
+                        {% if relatedItem.transportCardGraphic %}
                             <div class="relative z-10 h-full flex items-center justify-center pt-4">
                                 <img
-                                    src="{{ item.transportCardGraphic | url }}"
-                                    alt="{{ item.title }}"
+                                    src="{{ relatedItem.transportCardGraphic | url }}"
+                                    alt="{% if transportTranslations[relatedItem.meta_title] and transportTranslations[relatedItem.meta_title][item.lang] %}{{ transportTranslations[relatedItem.meta_title][item.lang].title }}{% else %}{{ relatedItem.title }}{% endif %}"
                                     class="w-[80%] max-h-[140px] object-contain"
                                 >
                             </div>
-                        {% elif item.images and item.images[0] %}
+                        {% elif relatedItem.images and relatedItem.images[0] %}
                             <div class="relative z-10 h-full flex items-center justify-center pt-4">
                                 <img
-                                    src="{{ item.images[0] | url }}"
-                                    alt="{{ item.title }}"
+                                    src="{{ relatedItem.images[0] | url }}"
+                                    alt="{% if transportTranslations[relatedItem.meta_title] and transportTranslations[relatedItem.meta_title][item.lang] %}{{ transportTranslations[relatedItem.meta_title][item.lang].title }}{% else %}{{ relatedItem.title }}{% endif %}"
                                     class="w-[80%] max-h-[140px] object-contain"
                                 >
                             </div>
@@ -167,33 +204,49 @@ eleventyComputed:
                     <!-- Text Content Container - With Padding -->
                     <div class="px-4 py-4 flex flex-col gap-3 flex-1">
                         <h3 class="text-lg font-semibold text-primary-blue leading-snug">
-                            {{ item.title }}
+                            {% if transportTranslations[relatedItem.meta_title] and transportTranslations[relatedItem.meta_title][item.lang] %}
+                                {{ transportTranslations[relatedItem.meta_title][item.lang].title }}
+                            {% else %}
+                                {{ relatedItem.title }}
+                            {% endif %}
                         </h3>
                         <p class="text-sm text-primary-deepsea leading-relaxed">
-                            {{ item.shortDescription or item.short_description }}
+                            {{ relatedItem.shortDescription or relatedItem.short_description }}
                         </p>
                         
                         <div class="flex flex-col gap-2 text-sm">
-                            {% if item.temperature_range %}
+                            {% if relatedItem.temperature_range %}
                                 <div class="flex items-center justify-between gap-2 bg-[#25425E]/5 rounded-2xl px-3 py-2">
-                                    <span class="font-semibold text-[#25425E]">Температура</span>
-                                    <span>{{ item.temperature_range }}</span>
+                                    <span class="font-semibold text-[#25425E]">{{ 'transport.temperature' | t(item.lang) }}</span>
+                                    <span>
+                                        {% if transportTranslations[relatedItem.meta_title] and transportTranslations[relatedItem.meta_title][item.lang] %}
+                                            {{ transportTranslations[relatedItem.meta_title][item.lang].temperature_range }}
+                                        {% else %}
+                                            {{ relatedItem.temperature_range }}
+                                        {% endif %}
+                                    </span>
                                 </div>
                             {% endif %}
-                            {% if item.capacity %}
+                            {% if relatedItem.capacity %}
                                 <div class="flex items-center justify-between gap-2 bg-[#25425E]/5 rounded-2xl px-3 py-2">
-                                    <span class="font-semibold text-[#25425E]">Капацитет</span>
-                                    <span>{{ item.capacity }}</span>
+                                    <span class="font-semibold text-[#25425E]">{{ 'transport.capacity' | t(item.lang) }}</span>
+                                    <span>
+                                        {% if transportTranslations[relatedItem.meta_title] and transportTranslations[relatedItem.meta_title][item.lang] %}
+                                            {{ transportTranslations[relatedItem.meta_title][item.lang].capacity }}
+                                        {% else %}
+                                            {{ relatedItem.capacity }}
+                                        {% endif %}
+                                    </span>
                                 </div>
                             {% endif %}
                         </div>
                         
                         <div class="w-full flex justify-end mt-2">
                             <a
-                                href="{{ ('/transport/' ~ item.meta_title ~ '/') | url }}"
+                                href="{{ ('/transport/' ~ relatedItem.meta_title ~ '/') | langUrl(item.lang) }}"
                                 class="inline-flex items-center gap-2 rounded-full bg-primary-blue text-white px-5 py-2 text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-200"
                             >
-                                Вижте повече
+                                {{ 'transport.viewMore' | t(item.lang) }}
                             </a>
                         </div>
                     </div>
