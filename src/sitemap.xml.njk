@@ -3,12 +3,10 @@ permalink: /sitemap.xml
 eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   {% set baseUrl = 'https://www.expressfrigo.com' %}
   {% set currentDate = build.date | default('2024-01-01') %}
-  
-  {# Home pages #}
+
   <url>
     <loc>{{ baseUrl }}/</loc>
     <lastmod>{{ currentDate }}</lastmod>
@@ -100,7 +98,7 @@ eleventyExcludeFromCollections: true
     <xhtml:link rel="alternate" hreflang="bg" href="{{ baseUrl }}/uslugi/{{ service.slug }}/"/>
     <xhtml:link rel="alternate" hreflang="en" href="{{ baseUrl }}/en/uslugi/{{ service.slug }}/"/>
   </url>
-  {% endfor %}
+{%- endfor %}
 
   {# Transport index pages #}
   <url>
@@ -138,6 +136,6 @@ eleventyExcludeFromCollections: true
     <xhtml:link rel="alternate" hreflang="bg" href="{{ baseUrl }}/transport/{{ vehicle.meta_title }}/"/>
     <xhtml:link rel="alternate" hreflang="en" href="{{ baseUrl }}/en/transport/{{ vehicle.meta_title }}/"/>
   </url>
-  {% endfor %}
+{%- endfor %}
 </urlset>
 

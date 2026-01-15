@@ -6,6 +6,15 @@ Options -Indexes
 DirectoryIndex index.html
 
 # ---------------------------------------------------------
+# Set proper Content-Type headers
+# ---------------------------------------------------------
+<IfModule mod_mime.c>
+  # XML files
+  AddType application/xml .xml
+  AddType text/xml .xml
+</IfModule>
+
+# ---------------------------------------------------------
 # Security headers
 # ---------------------------------------------------------
 <IfModule mod_headers.c>
