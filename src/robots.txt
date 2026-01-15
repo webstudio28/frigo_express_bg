@@ -1,0 +1,54 @@
+# robots.txt for Frigo Express BG
+# https://www.expressfrigo.com
+
+User-agent: *
+Allow: /
+
+# Disallow admin or private areas (if any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Allow all common search engine bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Sogou
+Allow: /
+
+User-agent: Exabot
+Allow: /
+
+User-agent: facebot
+Allow: /
+
+User-agent: ia_archiver
+Allow: /
+
+# Crawl-delay (optional - adjust if needed)
+# Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://www.expressfrigo.com/sitemap.xml
+
+# Additional sitemaps if you have them (images, news, etc.)
+# Sitemap: https://www.expressfrigo.com/sitemap-images.xml
+# Sitemap: https://www.expressfrigo.com/sitemap-news.xml
+

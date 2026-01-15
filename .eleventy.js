@@ -19,6 +19,7 @@ module.exports = function(eleventyConfig) {
     }
   });
   eleventyConfig.addPassthroughCopy(".htaccess");
+  eleventyConfig.addPassthroughCopy("src/robots.txt");
 
  
   // Expose env vars if needed in templates (keep debug optional)
@@ -55,6 +56,11 @@ module.exports = function(eleventyConfig) {
     return url;
   });
  
+  // Add global build date for sitemap
+  eleventyConfig.addGlobalData("build", {
+    date: new Date().toISOString().split('T')[0] // YYYY-MM-DD format
+  });
+
   // Determine pathPrefix: use explicit env or default to root
   const pathPrefix = process.env.PATH_PREFIX || process.env.ELEVENTY_PATH_PREFIX || "/";
  

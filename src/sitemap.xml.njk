@@ -1,0 +1,143 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  {% set baseUrl = 'https://www.expressfrigo.com' %}
+  {% set currentDate = build.date | default('2024-01-01') %}
+  
+  {# Home pages #}
+  <url>
+    <loc>{{ baseUrl }}/</loc>
+    <lastmod>{{ currentDate }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="bg" href="{{ baseUrl }}/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="{{ baseUrl }}/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ baseUrl }}/"/>
+  </url>
+  <url>
+    <loc>{{ baseUrl }}/en/</loc>
+    <lastmod>{{ currentDate }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="bg" href="{{ baseUrl }}/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="{{ baseUrl }}/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ baseUrl }}/"/>
+  </url>
+
+  {# About Us pages #}
+  <url>
+    <loc>{{ baseUrl }}/za-nas/</loc>
+    <lastmod>{{ currentDate }}</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="bg" href="{{ baseUrl }}/za-nas/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="{{ baseUrl }}/en/za-nas/"/>
+  </url>
+  <url>
+    <loc>{{ baseUrl }}/en/za-nas/</loc>
+    <lastmod>{{ currentDate }}</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="bg" href="{{ baseUrl }}/za-nas/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="{{ baseUrl }}/en/za-nas/"/>
+  </url>
+
+  {# Contact pages #}
+  <url>
+    <loc>{{ baseUrl }}/kontakti/</loc>
+    <lastmod>{{ currentDate }}</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="bg" href="{{ baseUrl }}/kontakti/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="{{ baseUrl }}/en/kontakti/"/>
+  </url>
+  <url>
+    <loc>{{ baseUrl }}/en/kontakti/</loc>
+    <lastmod>{{ currentDate }}</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="bg" href="{{ baseUrl }}/kontakti/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="{{ baseUrl }}/en/kontakti/"/>
+  </url>
+
+  {# Services index pages #}
+  <url>
+    <loc>{{ baseUrl }}/uslugi/</loc>
+    <lastmod>{{ currentDate }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="bg" href="{{ baseUrl }}/uslugi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="{{ baseUrl }}/en/uslugi/"/>
+  </url>
+  <url>
+    <loc>{{ baseUrl }}/en/uslugi/</loc>
+    <lastmod>{{ currentDate }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="bg" href="{{ baseUrl }}/uslugi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="{{ baseUrl }}/en/uslugi/"/>
+  </url>
+
+  {# Service detail pages #}
+  {% for service in services %}
+  <url>
+    <loc>{{ baseUrl }}/uslugi/{{ service.slug }}/</loc>
+    <lastmod>{{ currentDate }}</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="bg" href="{{ baseUrl }}/uslugi/{{ service.slug }}/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="{{ baseUrl }}/en/uslugi/{{ service.slug }}/"/>
+  </url>
+  <url>
+    <loc>{{ baseUrl }}/en/uslugi/{{ service.slug }}/</loc>
+    <lastmod>{{ currentDate }}</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="bg" href="{{ baseUrl }}/uslugi/{{ service.slug }}/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="{{ baseUrl }}/en/uslugi/{{ service.slug }}/"/>
+  </url>
+  {% endfor %}
+
+  {# Transport index pages #}
+  <url>
+    <loc>{{ baseUrl }}/transport/</loc>
+    <lastmod>{{ currentDate }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="bg" href="{{ baseUrl }}/transport/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="{{ baseUrl }}/en/transport/"/>
+  </url>
+  <url>
+    <loc>{{ baseUrl }}/en/transport/</loc>
+    <lastmod>{{ currentDate }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="bg" href="{{ baseUrl }}/transport/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="{{ baseUrl }}/en/transport/"/>
+  </url>
+
+  {# Transport detail pages #}
+  {% for vehicle in transport %}
+  <url>
+    <loc>{{ baseUrl }}/transport/{{ vehicle.meta_title }}/</loc>
+    <lastmod>{{ currentDate }}</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="bg" href="{{ baseUrl }}/transport/{{ vehicle.meta_title }}/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="{{ baseUrl }}/en/transport/{{ vehicle.meta_title }}/"/>
+  </url>
+  <url>
+    <loc>{{ baseUrl }}/en/transport/{{ vehicle.meta_title }}/</loc>
+    <lastmod>{{ currentDate }}</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="bg" href="{{ baseUrl }}/transport/{{ vehicle.meta_title }}/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="{{ baseUrl }}/en/transport/{{ vehicle.meta_title }}/"/>
+  </url>
+  {% endfor %}
+</urlset>
+
