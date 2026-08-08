@@ -1,5 +1,23 @@
 [
   {
+    "slug": "toyota",
+    "title": "Toyota Proace",
+    "meta_title": "toyota",
+    "longDescription": "Toyota Proace е компактен хладилен ван, подходящ за градски доставки и кратки курсове с надежден температурен контрол.",
+    "images": [
+      "/assets/images/transport/toyota1-full.jpg"
+    ],
+    "serviceCardColor": "#FFE8E0",
+    "temperature_range": "+20°C до -20°C",
+    "capacity": "1 евро пале",
+    "payload": "500 кг",
+    "features": [],
+    "monitoring": [],
+    "ideal_loads": [],
+    "availability": "Денонощна готовност и екип за експресни курсове",
+    "transportCardGraphic": "/assets/images/transport/toyota1.webp"
+  },
+  {
     "slug": "mercedes-sprinter",
     "title": "Mercedes Sprinter",
     "meta_title": "mercedes-sprinter",

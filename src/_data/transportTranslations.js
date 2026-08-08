@@ -79,6 +79,22 @@ module.exports = {
       capacity: '7 euro pallets',
       payload: '1000 kg'
     }
+  },
+  'toyota': {
+    bg: {
+      title: 'Toyota Proace',
+      longDescription: 'Toyota Proace е компактен хладилен ван, подходящ за градски доставки и кратки курсове с надежден температурен контрол.',
+      temperature_range: '+20°C до -20°C',
+      capacity: '1 евро пале',
+      payload: '500 кг'
+    },
+    en: {
+      title: 'Toyota Proace',
+      longDescription: 'Toyota Proace is a compact refrigerated van, suitable for urban deliveries and short routes with reliable temperature control.',
+      temperature_range: '+20°C to -20°C',
+      capacity: '1 euro pallet',
+      payload: '500 kg'
+    }
   }
 };
 

@@ -28,7 +28,7 @@ eleventyComputed:
             <div class="w-full md:w-1/2 flex flex-col gap-4">
                 {% if item.vehicle.images and item.vehicle.images.length > 0 %}
                     <div class="bg-white rounded-3xl shadow-lg overflow-hidden aspect-[4/3]">
-                        <img id="vehicle-main-image" src="{{ item.vehicle.images[0] | url }}" alt="{% if transportTranslations[item.vehicle.meta_title] and transportTranslations[item.vehicle.meta_title][item.lang] %}{{ transportTranslations[item.vehicle.meta_title][item.lang].title }}{% else %}{{ item.vehicle.title }}{% endif %}" class="w-full h-full object-cover transition-opacity duration-300">
+                        <img id="vehicle-main-image" src="{{ item.vehicle.images[0] | url }}" alt="{% if transportTranslations[item.vehicle.meta_title] and transportTranslations[item.vehicle.meta_title][item.lang] %}{{ transportTranslations[item.vehicle.meta_title][item.lang].title }}{% else %}{{ item.vehicle.title }}{% endif %}" class="w-full h-full object-cover transition-opacity duration-300"{% if item.vehicle.meta_title == 'toyota' or item.vehicle.slug == 'toyota' %} style="object-position: left center;"{% endif %}>
                     </div>
 
                     {% if item.vehicle.images.length > 1 %}
