@@ -7,7 +7,7 @@
     "images": [
       "/assets/images/transport/toyota1-full.jpg"
     ],
-    "serviceCardColor": "#FFE8E0",
+    "serviceCardColor": "#7A7A88",
     "temperature_range": "+20°C до -20°C",
     "capacity": "1 евро пале",
     "payload": "500 кг",
